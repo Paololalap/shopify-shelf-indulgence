@@ -15,8 +15,11 @@
   .si-hero-ornament{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.07}
   .si-hero-card{position:relative;z-index:2;text-align:center;padding:2.5rem;border:1px solid rgba(212,184,150,0.3)}
   .si-hero-card-image{max-width:220px;height:auto;margin:0.5rem auto 1.5rem;display:block}
+  .si-hero-card-columns{display:grid;grid-template-columns:1fr 1.2fr;gap:1.5rem;align-items:center;margin:1.5rem 0;text-align:left;max-width:480px}
+  .si-hero-card-columns .si-hero-card-image{margin:0 auto;width:100%;max-width:220px}
+  .si-hero-card-text{font-size:calc(0.65rem + 5px);line-height:1.6;color:rgba(255,255,255,0.85);font-family:var(--si-sans);font-weight:300;margin:0}
   .si-hero-card-label{font-size:calc(0.6rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:var(--si-gold-light);margin-bottom:0;font-weight:300;font-family:var(--si-sans)}
-  .si-hero-card-title{font-family:var(--si-serif);font-size:calc(1.8rem + 10px);color:#fff;font-weight:300;font-style:italic;margin-top:0;margin-bottom:0.4rem}
+  .si-hero-card-title{font-family:var(--si-serif);font-size:calc(1.8rem + 10px);color:#fff;font-weight:300;font-style:italic;margin-top:0;margin-bottom:0.4rem;white-space:nowrap}
   .si-hero-card-from{font-size:calc(0.62rem + 10px);letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,184,150,0.4);font-weight:300;margin:0.5rem 0 0;font-family:var(--si-sans)}
   .si-hero-card-price{font-family:var(--si-serif);font-size:calc(2.8rem + 10px);color:var(--si-gold-light);font-weight:300;margin:1rem 0}
   .si-hero-card-price span{font-size:calc(1.1rem + 10px);opacity:0.5}
@@ -24,6 +27,7 @@
   .si-hero-card-btn:hover{background:rgba(212,184,150,0.12);border-color:var(--si-gold-light)}
   .si-page-effect{height:4px;background:linear-gradient(90deg,var(--si-burg-deep),var(--si-gold),var(--si-burg-deep));opacity:0.35}
   @media screen and (max-width:749px){
+    .si-hero-card-columns{grid-template-columns:1fr;text-align:center}
     .si-hero{grid-template-columns:1fr;min-height:auto}
     .si-hero-left{padding:3rem 1.5rem 2.5rem}
     .si-hero-title{font-size:calc(2.4rem + 10px)}
@@ -60,14 +64,29 @@
     <div class="si-hero-card">
       <p class="si-hero-card-label">{{ section.settings.card_label }}</p>
       <p class="si-hero-card-title">{{ section.settings.card_title }}</p>
-      {% if section.settings.card_image != blank %}
-        <img src="{{ section.settings.card_image | image_url: width: 400 }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
-      {% elsif section.settings.card_image_asset != blank %}
-        <img src="{{ section.settings.card_image_asset | asset_url }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
-      {% else %}
-        <p class="si-hero-card-from">From</p>
-        <p class="si-hero-card-price">{{ section.settings.card_price }}<span>.00</span></p>
-      {% endif %}
+      <div class="si-hero-card-columns">
+        <div>
+          {% if section.settings.card_image != blank %}
+            <img src="{{ section.settings.card_image | image_url: width: 400 }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
+          {% elsif section.settings.card_image_asset != blank %}
+            <img src="{{ section.settings.card_image_asset | asset_url }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
+          {% else %}
+            <p class="si-hero-card-from">From</p>
+            <p class="si-hero-card-price">{{ section.settings.card_price }}<span>.00</span></p>
+          {% endif %}
+        </div>
+        <div>
+          <p class="si-hero-card-text">
+            Four students.<br>
+            Four elements.<br>
+            One fragile balance.<br>
+            Everflow was meant to train them.<br>
+            Instead, it might destroy them.<br>
+            Because when the elements awaken…<br>
+            the truth rises with them.
+          </p>
+        </div>
+      </div>
       <a href="{{ section.settings.card_link }}" class="si-hero-card-btn">{{ section.settings.card_btn_text }}</a>
     </div>
   </div>

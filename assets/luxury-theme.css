@@ -1,0 +1,232 @@
+/* ============================================
+   SHELF INDULGENCE — Luxury Theme Overrides
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
+
+:root {
+  --si-burg: #6b1d2e;
+  --si-burg-deep: #4a1220;
+  --si-burg-mid: #8b2d42;
+  --si-burg-light: #c47a8a;
+  --si-burg-faint: #f5eaed;
+  --si-cream: #fdf9f4;
+  --si-cream-warm: #f7f0e6;
+  --si-cream-dark: #ede4d6;
+  --si-cream-border: #e4d8c8;
+  --si-gold: #b89a6a;
+  --si-gold-light: #d4b896;
+  --si-text-dark: #1e0a10;
+  --si-text-mid: #6b4050;
+  --si-text-soft: #9b7a82;
+  --si-serif: 'Cormorant Garamond', Georgia, serif;
+  --si-sans: 'Jost', system-ui, sans-serif;
+}
+
+/* --- GLOBAL BODY --- */
+body {
+  background: var(--si-cream) !important;
+  color: var(--si-text-dark) !important;
+  font-family: var(--si-sans) !important;
+  font-weight: 300 !important;
+  overflow-x: hidden;
+}
+
+/* --- HEADER OVERRIDES --- */
+.section-header {
+  background: var(--si-cream) !important;
+  border-bottom: 1px solid var(--si-cream-border) !important;
+}
+.header-wrapper {
+  background: var(--si-cream) !important;
+  border-bottom: 1px solid var(--si-cream-border) !important;
+}
+.header {
+  background: var(--si-cream) !important;
+  font-family: var(--si-sans) !important;
+}
+.header__heading-link .h2,
+.header__heading-link span {
+  font-family: var(--si-serif) !important;
+  font-size: calc(1.05rem + 10px) !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--si-burg-deep) !important;
+  font-weight: 400 !important;
+}
+.header__heading-link {
+  color: var(--si-burg-deep) !important;
+}
+.header__inline-menu .list-menu__item,
+.header__inline-menu .header__menu-item {
+  font-family: var(--si-sans) !important;
+  font-size: calc(0.68rem + 6px) !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--si-text-mid) !important;
+  font-weight: 400 !important;
+}
+.header__inline-menu .list-menu__item:hover,
+.header__inline-menu .header__menu-item:hover {
+  color: var(--si-burg) !important;
+}
+.header__icon {
+  color: var(--si-text-mid) !important;
+}
+.header__icon:hover {
+  color: var(--si-burg) !important;
+}
+
+/* --- ANNOUNCEMENT BAR --- */
+.utility-bar,
+.announcement-bar-section {
+  background: var(--si-burg-deep) !important;
+}
+.announcement-bar__message {
+  font-family: var(--si-sans) !important;
+  font-size: calc(0.63rem + 6px) !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: var(--si-cream) !important;
+  font-weight: 300 !important;
+}
+
+/* --- BUTTONS --- */
+.button, .shopify-challenge__button, .customer button,
+button.button {
+  font-family: var(--si-sans) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  font-size: calc(0.65rem + 10px) !important;
+  background: var(--si-burg-deep) !important;
+  color: var(--si-cream) !important;
+  border: none !important;
+  transition: background 0.2s !important;
+}
+.button:hover {
+  background: var(--si-burg) !important;
+}
+.button--secondary {
+  background: transparent !important;
+  color: var(--si-text-mid) !important;
+  border: 1px solid var(--si-cream-border) !important;
+}
+.button--secondary:hover {
+  border-color: var(--si-burg-light) !important;
+  color: var(--si-burg) !important;
+}
+
+/* --- HEADINGS --- */
+h1, h2, h3, .h0, .h1, .h2, .h3 {
+  font-family: var(--si-serif) !important;
+  color: var(--si-burg-deep) !important;
+  font-weight: 300 !important;
+}
+
+/* --- PRODUCT CARDS --- */
+.card-wrapper {
+  font-family: var(--si-sans) !important;
+}
+.card__heading,
+.card__heading a {
+  font-family: var(--si-serif) !important;
+  color: var(--si-text-dark) !important;
+  font-weight: 400 !important;
+}
+.price__regular .price-item,
+.price .price-item {
+  font-family: var(--si-sans) !important;
+  color: var(--si-text-soft) !important;
+  font-weight: 300 !important;
+}
+.card__inner {
+  border-radius: 0 !important;
+}
+
+/* --- SECTION TITLES --- */
+.section-header__title,
+.title,
+.collection__title {
+  font-family: var(--si-serif) !important;
+  color: var(--si-burg-deep) !important;
+}
+
+/* --- FOOTER --- */
+.footer {
+  background: var(--si-burg-deep) !important;
+  color: var(--si-cream) !important;
+  font-family: var(--si-sans) !important;
+}
+.footer-block__heading {
+  font-family: var(--si-sans) !important;
+  font-size: calc(0.6rem + 10px) !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: rgba(184,154,106,0.6) !important;
+  font-weight: 400 !important;
+}
+.footer a,
+.footer .link,
+.footer .list-menu__item {
+  color: rgba(255,255,255,0.45) !important;
+  font-size: calc(0.78rem + 10px) !important;
+  font-weight: 300 !important;
+  font-family: var(--si-sans) !important;
+}
+.footer a:hover,
+.footer .link:hover {
+  color: var(--si-gold-light) !important;
+}
+.footer .copyright__content {
+  color: rgba(255,255,255,0.25) !important;
+  font-size: calc(0.63rem + 10px) !important;
+}
+.footer__content-bottom {
+  border-top: 1px solid rgba(184,154,106,0.15) !important;
+}
+
+/* --- NEWSLETTER IN FOOTER --- */
+.footer .newsletter-form__field-wrapper .field__input {
+  background: transparent !important;
+  border: 1px solid rgba(184,154,106,0.3) !important;
+  color: var(--si-cream) !important;
+  font-family: var(--si-sans) !important;
+}
+.footer .newsletter-form__button {
+  background: transparent !important;
+  border: 1px solid rgba(184,154,106,0.3) !important;
+  color: var(--si-gold-light) !important;
+}
+
+/* --- LINKS --- */
+a {
+  transition: color 0.25s;
+}
+
+/* --- IMAGE BANNER SECTION OVERRIDES --- */
+.banner {
+  min-height: 540px !important;
+}
+.banner__content {
+  font-family: var(--si-sans) !important;
+}
+.banner__heading {
+  font-family: var(--si-serif) !important;
+  color: #fff !important;
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--si-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--si-cream-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--si-burg-light);
+}

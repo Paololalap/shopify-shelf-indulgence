@@ -1,0 +1,16 @@
+# Shopify specific
+config/settings_data.json
+# If you want to keep settings_data.json in git, uncomment the line above. 
+# Usually, it's better to keep it to track theme configuration changes.
+# However, if you are collaborating, it might cause conflicts.
+# For now, I'll leave it tracked but mention it.
+
+# General
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Shopify CLI
+.shopify-cli/
+.env

@@ -1,0 +1,180 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "si_hero": {
+      "type": "si-hero",
+      "settings": {
+        "eyebrow": "Australia's bookish vendor",
+        "title": "We all deserve a<br>little <em>shelf<br>indulgence.<\/em>",
+        "subtitle": "Event-loved treasures, curated mystery boxes, and beautiful shelf décor — delivered across Australia.",
+        "btn_primary_text": "Shop products",
+        "btn_primary_link": "shopify:\/\/collections\/all",
+        "btn_ghost_text": "Find us at events",
+        "btn_ghost_link": "",
+        "card_label": "Coming Soon",
+        "card_image_asset": "coming-soon-jessie-heart.png",
+        "card_title": "Everflow —<br>The Balance-Born Saga<br><span style=\"font-size: 0.6em; font-family: var(--si-sans); font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;\">Year 1</span>",
+        "card_price": "$25",
+        "card_btn_text": "See teaser",
+        "card_link": "/search?view=everflow"
+      }
+    },
+    "si_marquee": {
+      "type": "si-marquee",
+      "settings": {}
+    },
+    "si_mothers_day": {
+      "type": "si-mothers-day",
+      "settings": {
+        "headline": "\ud83c\udf38 Mother's Day Special: Free Self-Care Gift for Mum with Every Purchase | Limited Quantities Available",
+        "subheading": "Our limited Mother's Day release has arrived.",
+        "body": "Receive a complimentary self-care gift for Mum with every order. A little something for your reading life… and something lovely for hers.",
+        "btn_text": "Shop now",
+        "btn_link": "shopify:\/\/collections\/all"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "si_collections": {
+      "type": "si-collections",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "category": "Mystery box",
+            "title": "A Novel Encounter",
+            "description": "A blind date with a book — choose your genre, receive a surprise read plus handpicked bookish goodies.",
+            "alt_bg": false
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "category": "Curated set",
+            "title": "Ink & Indulgence Box",
+            "description": "A celebration of self-gifting — a book, thematic décor, and soothing self-care items, beautifully presented.",
+            "alt_bg": true
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "category": "Home & décor",
+            "title": "Shelf Décor",
+            "description": "Whimsical, enchanting pieces that make every bookshelf a stunning expression of your unique story.",
+            "alt_bg": true
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "category": "Accessories",
+            "title": "Readers' Guilty Pleasures",
+            "description": "Bookish apparel, hair clips, key rings, and collectibles for the devoted reader in your life.",
+            "alt_bg": false
+          }
+        }
+      },
+      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4"],
+      "settings": {}
+    },
+    "si_feature": {
+      "type": "si-feature-dark",
+      "settings": {
+        "eyebrow": "New release — available now",
+        "title": "Everflow —<br><em>The Balance-Born<br>Saga<\/em>",
+        "description": "Four students. Four elements. One fragile balance. Everflow was meant to train them. Instead, it might destroy them.",
+        "btn_text": "Read more about Everflow",
+        "btn_link": "",
+        "panel_tag": "The Balance-Born Saga · Year One",
+        "panel_quote": "\"When the elements awaken…<br>the truth rises with them.\"",
+        "panel_sub": "Fantasy · Young adult · Series debut<br>Available in store now",
+        "author": "Jessie Heart"
+      }
+    },
+    "si_about": {
+      "type": "si-about",
+      "settings": {
+        "initials": "JH",
+        "eyebrow": "The mind behind stories",
+        "name": "Jessie Heart",
+        "bio": "Always living with one foot in reality and the other in a story. A passionate school teacher for 24 years, wife, and proud mother of four, Jessie's love for storytelling, history, and all things royal has shaped a brand that celebrates imagination, resilience, and the magic that lives in us all."
+      }
+    },
+    "si_events": {
+      "type": "si-events",
+      "blocks": {
+        "ev_1": {
+          "type": "event",
+          "settings": {
+            "date": "9 Aug 2026",
+            "name": "Indie Bookworm — Chapter 6, Book Lovers Day"
+          }
+        },
+        "ev_2": {
+          "type": "event",
+          "settings": {
+            "date": "29 Aug 2026",
+            "name": "Romance on the Vines"
+          }
+        },
+        "ev_3": {
+          "type": "event",
+          "settings": {
+            "date": "Coming soon",
+            "name": "More events to be announced"
+          }
+        }
+      },
+      "block_order": ["ev_1", "ev_2", "ev_3"],
+      "settings": {
+        "eyebrow": "On the road",
+        "heading": "Find us at events across Australia"
+      }
+    }
+  },
+  "order": [
+    "si_hero",
+    "si_marquee",
+    "si_mothers_day",
+    "featured_collection",
+    "si_collections",
+    "si_feature",
+    "si_about",
+    "si_events"
+  ]
+}

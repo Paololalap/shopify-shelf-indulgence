@@ -1,0 +1,47 @@
+<style>
+  .si-about{display:grid;grid-template-columns:1fr 1fr;min-height:380px}
+  .si-about-left{background:var(--si-burg-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;position:relative;overflow:hidden}
+  .si-about-left-circle{width:180px;height:180px;border-radius:50%;border:1px solid rgba(184,154,106,0.2);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+  .si-about-left-inner{width:130px;height:130px;border-radius:50%;border:1px solid rgba(184,154,106,0.15);display:flex;align-items:center;justify-content:center}
+  .si-about-initials{font-family:var(--si-serif);font-size:calc(3rem + 10px);color:rgba(184,154,106,0.4);font-style:italic;font-weight:300}
+  .si-about-outer-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(184,154,106,0.08);top:50%;left:50%;transform:translate(-50%,-50%)}
+  .si-about-right{padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--si-cream-warm)}
+  .si-about-eyebrow{font-size:calc(0.62rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:var(--si-gold);margin-bottom:0.8rem;font-weight:400;font-family:var(--si-sans)}
+  .si-about-name{font-family:var(--si-serif);font-size:calc(2rem + 10px);color:var(--si-burg-deep);font-weight:300;margin-bottom:0.5rem}
+  .si-about-rule{width:35px;height:1px;background:var(--si-gold);margin-bottom:1.4rem}
+  .si-about-body{font-size:calc(0.82rem + 10px);line-height:2;color:var(--si-text-mid);font-weight:300;font-family:var(--si-sans)}
+  @media screen and (max-width:749px){
+    .si-about{grid-template-columns:1fr}
+    .si-about-left{min-height:250px}
+  }
+</style>
+
+<div class="si-about">
+  <div class="si-about-left">
+    <div class="si-about-outer-ring"></div>
+    <div class="si-about-left-circle">
+      <div class="si-about-left-inner">
+        <span class="si-about-initials">{{ section.settings.initials }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="si-about-right">
+    <p class="si-about-eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="si-about-name">{{ section.settings.name }}</h2>
+    <div class="si-about-rule"></div>
+    <p class="si-about-body">{{ section.settings.bio }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SI About",
+  "settings": [
+    { "type": "text", "id": "initials", "label": "Initials", "default": "JH" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The mind behind stories" },
+    { "type": "text", "id": "name", "label": "Name", "default": "Jessie Heart" },
+    { "type": "textarea", "id": "bio", "label": "Bio", "default": "Always living with one foot in reality and the other in a story. A passionate school teacher for 24 years, wife, and proud mother of four, Jessie's love for storytelling, history, and all things royal has shaped a brand that celebrates imagination, resilience, and the magic that lives in us all." }
+  ],
+  "presets": [{ "name": "SI About" }]
+}
+{% endschema %}

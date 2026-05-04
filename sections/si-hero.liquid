@@ -1,0 +1,98 @@
+<style>
+  .si-hero{position:relative;min-height:540px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+  .si-hero-left{padding:5rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;background:var(--si-cream)}
+  .si-hero-eyebrow{font-size:calc(0.62rem + 10px);letter-spacing:0.35em;text-transform:uppercase;color:var(--si-gold);margin-bottom:1.4rem;font-weight:400;font-family:var(--si-sans)}
+  .si-hero-title{font-family:var(--si-serif);font-size:calc(3.4rem + 10px);line-height:1.05;color:var(--si-burg-deep);font-weight:300;margin-bottom:1.6rem}
+  .si-hero-title em{font-style:italic;color:var(--si-burg)}
+  .si-hero-divider{width:40px;height:1px;background:var(--si-gold);margin-bottom:1.4rem}
+  .si-hero-sub{font-size:calc(0.82rem + 10px);line-height:2;color:var(--si-text-mid);margin-bottom:2.2rem;max-width:300px;font-weight:300;font-family:var(--si-sans)}
+  .si-btn-row{display:flex;gap:1.2rem;align-items:center}
+  .si-btn-primary{background:var(--si-burg-deep);color:var(--si-cream);padding:0.85rem 2rem;font-size:calc(0.65rem + 10px);letter-spacing:0.2em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--si-sans);font-weight:400;transition:background 0.2s;text-decoration:none;display:inline-block}
+  .si-btn-primary:hover{background:var(--si-burg)}
+  .si-btn-ghost{font-size:calc(0.65rem + 10px);letter-spacing:0.2em;text-transform:uppercase;color:var(--si-text-mid);cursor:pointer;background:none;border:1px solid var(--si-cream-border);font-family:var(--si-sans);padding:0.85rem 1.6rem;font-weight:400;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .si-btn-ghost:hover{border-color:var(--si-burg-light);color:var(--si-burg)}
+  .si-hero-right{background:var(--si-burg-deep);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .si-hero-ornament{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.07}
+  .si-hero-card{position:relative;z-index:2;text-align:center;padding:2.5rem;border:1px solid rgba(212,184,150,0.3)}
+  .si-hero-card-image{max-width:220px;height:auto;margin:0.5rem auto 1.5rem;display:block}
+  .si-hero-card-label{font-size:calc(0.6rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:var(--si-gold-light);margin-bottom:0;font-weight:300;font-family:var(--si-sans)}
+  .si-hero-card-title{font-family:var(--si-serif);font-size:calc(1.8rem + 10px);color:#fff;font-weight:300;font-style:italic;margin-top:0;margin-bottom:0.4rem}
+  .si-hero-card-from{font-size:calc(0.62rem + 10px);letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,184,150,0.4);font-weight:300;margin:0.5rem 0 0;font-family:var(--si-sans)}
+  .si-hero-card-price{font-family:var(--si-serif);font-size:calc(2.8rem + 10px);color:var(--si-gold-light);font-weight:300;margin:1rem 0}
+  .si-hero-card-price span{font-size:calc(1.1rem + 10px);opacity:0.5}
+  .si-hero-card-btn{background:transparent;border:1px solid rgba(212,184,150,0.5);color:var(--si-gold-light);padding:0.65rem 1.8rem;font-size:calc(0.62rem + 10px);letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;font-family:var(--si-sans);font-weight:300;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .si-hero-card-btn:hover{background:rgba(212,184,150,0.12);border-color:var(--si-gold-light)}
+  .si-page-effect{height:4px;background:linear-gradient(90deg,var(--si-burg-deep),var(--si-gold),var(--si-burg-deep));opacity:0.35}
+  @media screen and (max-width:749px){
+    .si-hero{grid-template-columns:1fr;min-height:auto}
+    .si-hero-left{padding:3rem 1.5rem 2.5rem}
+    .si-hero-title{font-size:calc(2.4rem + 10px)}
+    .si-hero-right{min-height:350px}
+    .si-btn-row{flex-direction:column;align-items:flex-start}
+  }
+</style>
+
+<div class="si-hero">
+  <div class="si-hero-left">
+    <p class="si-hero-eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="si-hero-title">{{ section.settings.title }}</h1>
+    <div class="si-hero-divider"></div>
+    <p class="si-hero-sub">{{ section.settings.subtitle }}</p>
+    <div class="si-btn-row">
+      <a href="{{ section.settings.btn_primary_link }}" class="si-btn-primary">{{ section.settings.btn_primary_text }}</a>
+      <a href="{{ section.settings.btn_ghost_link }}" class="si-btn-ghost">{{ section.settings.btn_ghost_text }}</a>
+    </div>
+  </div>
+  <div class="si-hero-right">
+    <div class="si-hero-ornament">
+      <svg viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg" width="400" height="540">
+        <rect x="30" y="30" width="340" height="480" fill="none" stroke="white" stroke-width="1"/>
+        <rect x="60" y="60" width="280" height="420" fill="none" stroke="white" stroke-width="0.5"/>
+        <circle cx="200" cy="270" r="100" fill="none" stroke="white" stroke-width="0.5"/>
+        <circle cx="200" cy="270" r="60" fill="none" stroke="white" stroke-width="0.5"/>
+        <circle cx="200" cy="270" r="20" fill="none" stroke="white" stroke-width="0.5"/>
+        <line x1="30" y1="270" x2="370" y2="270" stroke="white" stroke-width="0.5"/>
+        <line x1="200" y1="30" x2="200" y2="510" stroke="white" stroke-width="0.5"/>
+        <line x1="30" y1="30" x2="370" y2="510" stroke="white" stroke-width="0.3"/>
+        <line x1="370" y1="30" x2="30" y2="510" stroke="white" stroke-width="0.3"/>
+      </svg>
+    </div>
+    <div class="si-hero-card">
+      <p class="si-hero-card-label">{{ section.settings.card_label }}</p>
+      <p class="si-hero-card-title">{{ section.settings.card_title }}</p>
+      {% if section.settings.card_image != blank %}
+        <img src="{{ section.settings.card_image | image_url: width: 400 }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
+      {% elsif section.settings.card_image_asset != blank %}
+        <img src="{{ section.settings.card_image_asset | asset_url }}" alt="{{ section.settings.card_title | strip_html | escape }}" class="si-hero-card-image">
+      {% else %}
+        <p class="si-hero-card-from">From</p>
+        <p class="si-hero-card-price">{{ section.settings.card_price }}<span>.00</span></p>
+      {% endif %}
+      <a href="{{ section.settings.card_link }}" class="si-hero-card-btn">{{ section.settings.card_btn_text }}</a>
+    </div>
+  </div>
+</div>
+<div class="si-page-effect"></div>
+
+{% schema %}
+{
+  "name": "SI Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Australia's bookish vendor" },
+    { "type": "html", "id": "title", "label": "Title", "default": "We all deserve a<br>little <em>shelf<br>indulgence.</em>" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Event-loved treasures, curated mystery boxes, and beautiful shelf décor — delivered across Australia." },
+    { "type": "text", "id": "btn_primary_text", "label": "Primary button text", "default": "Shop products" },
+    { "type": "url", "id": "btn_primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "btn_ghost_text", "label": "Secondary button text", "default": "Find us at events" },
+    { "type": "url", "id": "btn_ghost_link", "label": "Secondary button link" },
+    { "type": "text", "id": "card_label", "label": "Card label", "default": "Featured drop" },
+    { "type": "image_picker", "id": "card_image", "label": "Card image" },
+    { "type": "text", "id": "card_image_asset", "label": "Card image asset filename" },
+    { "type": "html", "id": "card_title", "label": "Card title", "default": "Ink & Indulgence<br>Mystery Box" },
+    { "type": "text", "id": "card_price", "label": "Card price", "default": "$25" },
+    { "type": "text", "id": "card_btn_text", "label": "Card button text", "default": "Discover the drop" },
+    { "type": "url", "id": "card_link", "label": "Card button link" }
+  ],
+  "presets": [{ "name": "SI Hero" }]
+}
+{% endschema %}

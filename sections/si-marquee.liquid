@@ -1,21 +1,48 @@
 <style>
-  .si-marquee-wrap{overflow:hidden;border-top:1px solid var(--si-cream-border);border-bottom:1px solid var(--si-cream-border);padding:0.85rem 0;background:var(--si-cream-warm)}
-  .si-marquee-track{display:flex;white-space:nowrap;animation:si-marquee 20s linear infinite}
-  .si-marquee-item{font-size:calc(0.65rem + 10px);letter-spacing:0.25em;text-transform:uppercase;color:var(--si-text-mid);padding:0 2.5rem;font-weight:300;font-family:var(--si-sans)}
-  .si-marquee-dot{color:var(--si-gold)}
-  @keyframes si-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .si-marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--si-cream-border);
+    border-bottom: 1px solid var(--si-cream-border);
+    padding: 0.85rem 0;
+    background: var(--si-cream-warm);
+  }
+  .si-marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: si-marquee 20s linear infinite;
+  }
+  .si-marquee-item {
+    font-size: calc(0.65rem + 10px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--si-text-mid);
+    padding: 0 2.5rem;
+    font-weight: 300;
+    font-family: var(--si-sans);
+  }
+  .si-marquee-dot {
+    color: var(--si-gold);
+  }
+  @keyframes si-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 </style>
 
-<div class="si-marquee-wrap">
-  <div class="si-marquee-track">
+<div class='si-marquee-wrap'>
+  <div class='si-marquee-track'>
     {% for i in (1..2) %}
-      <span class="si-marquee-item">Bookish gifts <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Shelf décor <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Mystery boxes <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Reader accessories <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Author events <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Wear your story <span class="si-marquee-dot">✦</span></span>
-      <span class="si-marquee-item">Free Australian shipping <span class="si-marquee-dot">✦</span></span>
+      <span class='si-marquee-item'>Bookish gifts <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Shelf décor <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Mystery boxes <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Reader accessories <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Author events <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Wear your story <span class='si-marquee-dot'>✦</span></span>
+      <span class='si-marquee-item'>Free Australian shipping <span class='si-marquee-dot'>✦</span></span>
     {% endfor %}
   </div>
 </div>

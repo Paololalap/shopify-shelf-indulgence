@@ -14,36 +14,36 @@
 {% # theme-check-disable %}
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
 {% # theme-check-enable %}
-<div class="quick-order-list-container color-{{ section.settings.color_scheme }}{% unless is_modal %} gradient{% endunless %}">
+<div class='quick-order-list-container color-{{ section.settings.color_scheme }}{% unless is_modal %} gradient{% endunless %}'>
   <quick-order-list
-    class="page-width section-{{ section.id }}-padding"
-    id="{{ section.id }}-{{ product.id }}"
-    data-section="{{ section.id }}"
-    data-product-id="{{ product.id }}"
-    data-url="{{ product.url }}"
+    class='page-width section-{{ section.id }}-padding'
+    id='{{ section.id }}-{{ product.id }}'
+    data-section='{{ section.id }}'
+    data-product-id='{{ product.id }}'
+    data-url='{{ product.url }}'
   >
     <form
-      action="{{ routes.cart_update_url }}"
-      class="quick-order-list__contents critical-hidden"
-      method="post"
-      id="QuickOrderList"
+      action='{{ routes.cart_update_url }}'
+      class='quick-order-list__contents critical-hidden'
+      method='post'
+      id='QuickOrderList'
     >
       {% paginate product.variants by section.settings.variants_per_page %}
-        <div class="quick-order-list__container" id="main-variant-items">
-          <table class="quick-order-list__table">
-            <caption class="visually-hidden">
+        <div class='quick-order-list__container' id='main-variant-items'>
+          <table class='quick-order-list__table'>
+            <caption class='visually-hidden'>
               {{ 'sections.cart.title' | t }}
             </caption>
             <thead>
               <tr>
-                <th class="caption-with-letter-spacing" scope="col">
+                <th class='caption-with-letter-spacing' scope='col'>
                   {%- if product.has_only_default_variant -%}
                     {{ 'sections.quick_order_list.product' | t }}
                   {%- else -%}
                     {{ 'sections.quick_order_list.variant' | t }}
                   {%- endif -%}
                 </th>
-                <th class="large-up-hide right caption-with-letter-spacing" scope="col">
+                <th class='large-up-hide right caption-with-letter-spacing' scope='col'>
                   {%- if product.has_only_default_variant -%}
                     {{ 'sections.quick_order_list.product_total' | t }}
                   {%- else -%}
@@ -51,18 +51,18 @@
                   {%- endif -%}
                 </th>
                 <th
-                  class="quick-order-list__table-heading--wide small-hide medium-hide caption-with-letter-spacing"
-                  scope="col"
+                  class='quick-order-list__table-heading--wide small-hide medium-hide caption-with-letter-spacing'
+                  scope='col'
                 >
                   {{ 'products.product.quantity.label' | t }}
                 </th>
                 <th
-                  class="quick-order-list__table-heading--wide small-hide medium-hide caption-with-letter-spacing"
-                  scope="col"
+                  class='quick-order-list__table-heading--wide small-hide medium-hide caption-with-letter-spacing'
+                  scope='col'
                 >
                   {{ 'sections.cart.headings.price' | t }}
                 </th>
-                <th class="small-hide medium-hide right caption-with-letter-spacing" scope="col">
+                <th class='small-hide medium-hide right caption-with-letter-spacing' scope='col'>
                   {%- if product.has_only_default_variant -%}
                     {{ 'sections.quick_order_list.product_total' | t }}
                   {%- else -%}
@@ -99,90 +99,90 @@
             </tbody>
           </table>
         </div>
-        <div class="js-paginate">
+        <div class='js-paginate'>
           {% render 'pagination', paginate: paginate %}
         </div>
       {%- endpaginate -%}
 
       <p
-        class="visually-hidden"
-        id="quick-order-list-live-region-text-{{ product.id }}"
-        aria-live="polite"
-        role="status"
+        class='visually-hidden'
+        id='quick-order-list-live-region-text-{{ product.id }}'
+        aria-live='polite'
+        role='status'
       ></p>
       <p
-        class="visually-hidden"
-        id="shopping-cart-variant-item-status"
-        aria-live="polite"
-        aria-hidden="true"
-        role="status"
+        class='visually-hidden'
+        id='shopping-cart-variant-item-status'
+        aria-live='polite'
+        aria-hidden='true'
+        role='status'
       >
         {{ 'accessibility.loading' | t }}
       </p>
     </form>
 
     {%- if product.has_only_default_variant or product.variants_count == 1 -%}
-      <span class="quick-order-list-error">
+      <span class='quick-order-list-error'>
         {% comment %} Populated by JS {% endcomment %}
       </span>
     {%- else -%}
       <div
-        class="quick-order-list__total{% unless is_modal %} gradient{% endunless %}"
-        id="quick-order-list-total-{{ product.id }}-{{ section.id }}"
+        class='quick-order-list__total{% unless is_modal %} gradient{% endunless %}'
+        id='quick-order-list-total-{{ product.id }}-{{ section.id }}'
       >
-        <div class="quick-order-list-total__info">
-          <div class="quick-order-list-total__column small-hide medium-hide">
-            <div class="quick-order-list-buttons">
+        <div class='quick-order-list-total__info'>
+          <div class='quick-order-list-total__column small-hide medium-hide'>
+            <div class='quick-order-list-buttons'>
               <a
-                href="{{ routes.cart_url }} "
-                class="quick-order-list__button button button--secondary small-hide  medium-hide"
+                href='{{ routes.cart_url }} '
+                class='quick-order-list__button button button--secondary small-hide  medium-hide'
               >
-                <span class="quick-order-list__button-text">{{- 'sections.quick_order_list.view_cart' | t -}}</span>
+                <span class='quick-order-list__button-text'>{{- 'sections.quick_order_list.view_cart' | t -}}</span>
               </a>
-              <div class="variant-remove-total{% if items_in_cart == 0 %} variant-remove-total--empty{% endif %}">
+              <div class='variant-remove-total{% if items_in_cart == 0 %} variant-remove-total--empty{% endif %}'>
                 {%- render 'loading-spinner' -%}
                 <quick-order-list-remove-all-button
-                  data-action="confirm"
-                  class="{% if items_in_cart == 0 %}hidden{% endif %}"
+                  data-action='confirm'
+                  class='{% if items_in_cart == 0 %}hidden{% endif %}'
                 >
-                  <button class="button button--tertiary" type="button">
-                    <span class="svg-wrapper">
+                  <button class='button button--tertiary' type='button'>
+                    <span class='svg-wrapper'>
                       {{- 'icon-remove.svg' | inline_asset_content -}}
                     </span>
-                    <span class="text-body">{{ 'sections.quick_order_list.remove_all' | t }}</span>
+                    <span class='text-body'>{{ 'sections.quick_order_list.remove_all' | t }}</span>
                   </button>
                 </quick-order-list-remove-all-button>
               </div>
             </div>
-            <span class="quick-order-list__message caption-large" role="status">
-              <span class="quick-order-list__message-icon hidden">
-                <span class="svg-wrapper">
+            <span class='quick-order-list__message caption-large' role='status'>
+              <span class='quick-order-list__message-icon hidden'>
+                <span class='svg-wrapper'>
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
               </span>
-              <span class="quick-order-list__message-text"></span>
+              <span class='quick-order-list__message-text'></span>
             </span>
-            <span class="quick-order-list-error">
+            <span class='quick-order-list-error'>
               {% comment %} Populated by JS {% endcomment %}
             </span>
           </div>
-          <div class="quick-order-list__total-items">
+          <div class='quick-order-list__total-items'>
             <span>
               {{ items_in_cart }}
             </span>
-            <p class="h5">{{ 'sections.quick_order_list.total_items' | t }}</p>
+            <p class='h5'>{{ 'sections.quick_order_list.total_items' | t }}</p>
           </div>
-          <div class="quick-order-list-total__price">
-            <div class="totals__product-total">
-              <span class="totals__subtotal-value">
+          <div class='quick-order-list-total__price'>
+            <div class='totals__product-total'>
+              <span class='totals__subtotal-value'>
                 {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
                 {% # theme-check-disable %}
                 {{ cart | line_items_for: product | sum: 'original_line_price' | money }}
                 {% # theme-check-enable %}
               </span>
-              <p class="totals__subtotal h5">{{ 'sections.quick_order_list.product_total' | t }}</p>
+              <p class='totals__subtotal h5'>{{ 'sections.quick_order_list.product_total' | t }}</p>
             </div>
-            <small class="tax-note caption-large rte">
+            <small class='tax-note caption-large rte'>
               {%- if cart.duties_included and cart.taxes_included -%}
                 {%- if shop.shipping_policy.body == blank -%}
                   {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
@@ -222,79 +222,79 @@
               {%- endif -%}
             </small>
           </div>
-          <div class="quick-order-list-total__column large-up-hide">
-            <div class="quick-order-list-buttons">
+          <div class='quick-order-list-total__column large-up-hide'>
+            <div class='quick-order-list-buttons'>
               <a
-                href="{{ routes.cart_url }}"
-                class="quick-order-list__button button button--secondary button--full-width"
+                href='{{ routes.cart_url }}'
+                class='quick-order-list__button button button--secondary button--full-width'
               >
-                <span class="quick-order-list__button-text">{{- 'sections.quick_order_list.view_cart' | t -}}</span>
+                <span class='quick-order-list__button-text'>{{- 'sections.quick_order_list.view_cart' | t -}}</span>
               </a>
-              <div class="variant-remove-total">
+              <div class='variant-remove-total'>
                 {%- render 'loading-spinner' -%}
                 <quick-order-list-remove-all-button
-                  class="{% if items_in_cart == 0 %}hidden{% endif %}"
-                  data-action="confirm"
+                  class='{% if items_in_cart == 0 %}hidden{% endif %}'
+                  data-action='confirm'
                 >
-                  <button class="button button--tertiary" type="button">
-                    <span class="svg-wrapper">
+                  <button class='button button--tertiary' type='button'>
+                    <span class='svg-wrapper'>
                       {{- 'icon-remove.svg' | inline_asset_content -}}
                     </span>
 
-                    <span class="text-body">{{ 'sections.quick_order_list.remove_all' | t }}</span>
+                    <span class='text-body'>{{ 'sections.quick_order_list.remove_all' | t }}</span>
                   </button>
                 </quick-order-list-remove-all-button>
               </div>
             </div>
-            <span class="quick-order-list__message caption-large" role="status">
-              <span class="quick-order-list__message-icon hidden">
-                <span class="svg-wrapper">
+            <span class='quick-order-list__message caption-large' role='status'>
+              <span class='quick-order-list__message-icon hidden'>
+                <span class='svg-wrapper'>
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
               </span>
-              <span class="quick-order-list__message-text"></span>
+              <span class='quick-order-list__message-text'></span>
             </span>
-            <span class="quick-order-list-error">
+            <span class='quick-order-list-error'>
               {% comment %} Populated by JS {% endcomment %}
             </span>
           </div>
         </div>
-        <div class="quick-order-list-total__confirmation hidden">
-          <span class="text-body">
+        <div class='quick-order-list-total__confirmation hidden'>
+          <span class='text-body'>
             {{ 'sections.quick_order_list.remove_all_items_confirmation' | t: quantity: items_in_cart }}
           </span>
           <quick-order-list-remove-all-button
-            data-action="remove"
+            data-action='remove'
           >
             <button
-              class="quick-order-list__button-confirm button button--secondary"
-              type="button"
+              class='quick-order-list__button-confirm button button--secondary'
+              type='button'
             >
               {{- 'sections.quick_order_list.remove_all' | t -}}
             </button>
           </quick-order-list-remove-all-button>
           <quick-order-list-remove-all-button
-            data-action="cancel"
+            data-action='cancel'
           >
             <button
-              class="quick-order-list__button-cancel button button--tertiary"
-              type="button"
+              class='quick-order-list__button-cancel button button--tertiary'
+              type='button'
             >
               {{- 'sections.quick_order_list.cancel' | t -}}
             </button>
           </quick-order-list-remove-all-button>
         </div>
 
-        <script type="application/json" data-cart-contents>
+        <script type='application/json' data-cart-contents>
           {{ cart | line_items_for: product | map: "variant_id" | json }}
         </script>
       </div>
     {%- endif -%}
   </quick-order-list>
-  <template id="QuickOrderListErrorTemplate-{{ product.id }}">
-    <span class="svg-wrapper">
+  <template id='QuickOrderListErrorTemplate-{{ product.id }}'>
+    <span class='svg-wrapper'>
       {{ 'icon-error.svg' | inline_asset_content }}
     </span>
-    <span class="quick-order-list-error-message caption-large" role="alert"></span>
+    <span class='quick-order-list-error-message caption-large' role='alert'></span>
   </template>
 </div>

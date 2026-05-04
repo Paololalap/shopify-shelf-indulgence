@@ -8,12 +8,12 @@
 {% endcomment %}
 
 <tr
-  class="product"
+  class='product'
 >
-  <td class="product-item__inner">
-    <div class="product-item__title--wrapper">
-      <div class="variant-item__media">
-        <div class="variant-item__image-container gradient global-media-settings">
+  <td class='product-item__inner'>
+    <div class='product-item__title--wrapper'>
+      <div class='variant-item__media'>
+        <div class='variant-item__image-container gradient global-media-settings'>
           {%- if image -%}
             {%- assign img_height = 36 | divided_by: image.aspect_ratio | ceil -%}
             {{
@@ -33,8 +33,8 @@
           {% endif %}
         </div>
       </div>
-      <div class="small-hide">
-        <a href="{{ item.url }}" class="variant-item__name h4 break">{{ item.title | escape }}</a>
+      <div class='small-hide'>
+        <a href='{{ item.url }}' class='variant-item__name h4 break'>{{ item.title | escape }}</a>
       </div>
     </div>
   </td>

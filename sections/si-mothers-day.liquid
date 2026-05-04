@@ -1,5 +1,5 @@
 <style>
-  .si-md{
+  .si-md {
     background: var(--si-cream-warm, #faf7f2);
     padding: 3.5rem 2rem;
     position: relative;
@@ -21,7 +21,7 @@
     min-width: 300px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .si-md-image {
@@ -31,11 +31,11 @@
     object-fit: cover;
   }
 
-  .si-md-inner{
+  .si-md-inner {
     flex: 1.2;
     text-align: left;
   }
-  .si-md-headline{
+  .si-md-headline {
     font-family: var(--si-sans, sans-serif);
     font-size: 32px;
     font-weight: 400;
@@ -44,7 +44,7 @@
     line-height: 1.5;
     margin: 0 0 1.6rem;
   }
-  .si-md-arrival{
+  .si-md-arrival {
     font-family: var(--si-serif, serif);
     font-size: calc(1.6rem + 10px);
     font-weight: 600;
@@ -53,13 +53,13 @@
     line-height: 1.25;
     margin: 0 0 1.2rem;
   }
-  .si-md-divider{
+  .si-md-divider {
     width: 50px;
     height: 1px;
     background: var(--si-gold, #c5a46d);
     margin: 0 0 1.2rem 0;
   }
-  .si-md-body{
+  .si-md-body {
     font-family: var(--si-sans, sans-serif);
     font-size: calc(0.78rem + 10px);
     font-weight: 300;
@@ -67,7 +67,7 @@
     line-height: 1.85;
     margin: 0 0 2.2rem;
   }
-  .si-md-btn{
+  .si-md-btn {
     display: inline-block;
     background: #ec0ac6;
     color: #fff;
@@ -84,29 +84,52 @@
     position: relative;
     overflow: hidden;
   }
-  .si-md-btn:hover{
+  .si-md-btn:hover {
     background: #d009b3;
     transform: translateY(-1px);
     box-shadow: 0 4px 20px rgba(236, 10, 198, 0.3);
   }
   /* Decorative petals */
-  .si-md-petal{
+  .si-md-petal {
     position: absolute;
     font-size: 1.4rem;
     opacity: 0.15;
     pointer-events: none;
     animation: si-md-float 6s ease-in-out infinite;
   }
-  .si-md-petal:nth-child(1){ top: 12%; left: 8%; animation-delay: 0s; }
-  .si-md-petal:nth-child(2){ top: 18%; right: 10%; animation-delay: 1.5s; }
-  .si-md-petal:nth-child(3){ bottom: 15%; left: 12%; animation-delay: 3s; }
-  .si-md-petal:nth-child(4){ bottom: 20%; right: 8%; animation-delay: 4.5s; }
-  @keyframes si-md-float{
-    0%,100%{ transform: translateY(0) rotate(0deg); }
-    50%{ transform: translateY(-8px) rotate(10deg); }
+  .si-md-petal:nth-child(1) {
+    top: 12%;
+    left: 8%;
+    animation-delay: 0s;
   }
-  @media screen and (max-width: 749px){
-    .si-md{ padding: 2.5rem 1.5rem; }
+  .si-md-petal:nth-child(2) {
+    top: 18%;
+    right: 10%;
+    animation-delay: 1.5s;
+  }
+  .si-md-petal:nth-child(3) {
+    bottom: 15%;
+    left: 12%;
+    animation-delay: 3s;
+  }
+  .si-md-petal:nth-child(4) {
+    bottom: 20%;
+    right: 8%;
+    animation-delay: 4.5s;
+  }
+  @keyframes si-md-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(10deg);
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .si-md {
+      padding: 2.5rem 1.5rem;
+    }
     .si-md-container {
       flex-direction: column;
       gap: 2.5rem;
@@ -117,27 +140,36 @@
     .si-md-divider {
       margin: 0 auto 1.2rem auto;
     }
-    .si-md-headline{ font-size: 24px; }
-    .si-md-arrival{ font-size: calc(1.2rem + 10px); }
+    .si-md-headline {
+      font-size: 24px;
+    }
+    .si-md-arrival {
+      font-size: calc(1.2rem + 10px);
+    }
   }
 </style>
 
-<section class="si-md" id="mothers-day-section">
-  <span class="si-md-petal">🌸</span>
-  <span class="si-md-petal">🌷</span>
-  <span class="si-md-petal">🌸</span>
-  <span class="si-md-petal">🌷</span>
+<section class='si-md' id='mothers-day-section'>
+  <span class='si-md-petal'>🌸</span>
+  <span class='si-md-petal'>🌷</span>
+  <span class='si-md-petal'>🌸</span>
+  <span class='si-md-petal'>🌷</span>
 
-  <div class="si-md-container">
-    <div class="si-md-image-wrapper">
-      <img src="{{ 'holding-tenderness.jpg' | asset_url }}" alt="Mother's Day Special" class="si-md-image" loading="lazy">
+  <div class='si-md-container'>
+    <div class='si-md-image-wrapper'>
+      <img
+        src='{{ 'holding-tenderness.jpg' | asset_url }}'
+        alt="Mother's Day Special"
+        class='si-md-image'
+        loading='lazy'
+      >
     </div>
-    <div class="si-md-inner">
-      <p class="si-md-headline">{{ section.settings.headline }}</p>
-      <h2 class="si-md-arrival">{{ section.settings.subheading }}</h2>
-      <div class="si-md-divider"></div>
-      <p class="si-md-body">{{ section.settings.body }}</p>
-      <a href="{{ section.settings.btn_link }}" class="si-md-btn">{{ section.settings.btn_text }}</a>
+    <div class='si-md-inner'>
+      <p class='si-md-headline'>{{ section.settings.headline }}</p>
+      <h2 class='si-md-arrival'>{{ section.settings.subheading }}</h2>
+      <div class='si-md-divider'></div>
+      <p class='si-md-body'>{{ section.settings.body }}</p>
+      <a href='{{ section.settings.btn_link }}' class='si-md-btn'>{{ section.settings.btn_text }}</a>
     </div>
   </div>
 </section>

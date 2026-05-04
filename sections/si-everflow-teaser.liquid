@@ -10,7 +10,12 @@
   /* ── Top gradient accent ── */
   .si-ef-accent {
     height: 4px;
-    background: linear-gradient(90deg, var(--si-burg-deep, #610a1e), var(--si-gold, #d4b896), var(--si-burg-deep, #610a1e));
+    background: linear-gradient(
+      90deg,
+      var(--si-burg-deep, #610a1e),
+      var(--si-gold, #d4b896),
+      var(--si-burg-deep, #610a1e)
+    );
     opacity: 0.45;
   }
 
@@ -54,7 +59,7 @@
     height: auto;
     display: block;
     border-radius: 2px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
 
   /* ── Divider ── */
@@ -99,7 +104,7 @@
   .si-ef-character {
     margin-bottom: 2rem;
     padding-left: 1.2rem;
-    border-left: 2px solid rgba(212,184,150,0.3);
+    border-left: 2px solid rgba(212, 184, 150, 0.3);
   }
   .si-ef-character-name {
     font-family: var(--si-serif, 'Playfair Display', Georgia, serif);
@@ -118,10 +123,18 @@
   .si-ef-character-element-air .si-ef-character-name span { color: #b0c4de; }
   .si-ef-character-element-water .si-ef-character-name span { color: #5b9bd5; } */
 
-  .si-ef-character-element-fire { border-left-color: rgba(232,131,74,0.4); }
-  .si-ef-character-element-earth { border-left-color: rgba(143,170,107,0.4); }
-  .si-ef-character-element-air { border-left-color: rgba(176,196,222,0.4); }
-  .si-ef-character-element-water { border-left-color: rgba(91,155,213,0.4); }
+  .si-ef-character-element-fire {
+    border-left-color: rgba(232, 131, 74, 0.4);
+  }
+  .si-ef-character-element-earth {
+    border-left-color: rgba(143, 170, 107, 0.4);
+  }
+  .si-ef-character-element-air {
+    border-left-color: rgba(176, 196, 222, 0.4);
+  }
+  .si-ef-character-element-water {
+    border-left-color: rgba(91, 155, 213, 0.4);
+  }
 
   .si-ef-character p {
     font-size: 15px;
@@ -168,29 +181,34 @@
   }
 </style>
 
-<div class="si-everflow-teaser">
-  <div class="si-ef-accent"></div>
-  <div class="si-ef-content">
-
+<div class='si-everflow-teaser'>
+  <div class='si-ef-accent'></div>
+  <div class='si-ef-content'>
     <!-- Title -->
-    <h1 class="si-ef-title">{{ section.settings.title | default: 'The Balance-Born Saga - Year 1' }}</h1>
+    <h1 class='si-ef-title'>{{ section.settings.title | default: 'The Balance-Born Saga - Year 1' }}</h1>
 
     <!-- Teaser label -->
-    <p class="si-ef-label">{{ section.settings.label | default: 'TEASER' }}</p>
+    <p class='si-ef-label'>{{ section.settings.label | default: 'TEASER' }}</p>
 
     <!-- Book cover image -->
-    <div class="si-ef-image-wrap">
+    <div class='si-ef-image-wrap'>
       {% if section.settings.image != blank %}
-        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.title | strip_html | escape }}">
+        <img
+          src='{{ section.settings.image | image_url: width: 800 }}'
+          alt='{{ section.settings.title | strip_html | escape }}'
+        >
       {% elsif section.settings.image_asset != blank %}
-        <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.title | strip_html | escape }}">
+        <img
+          src='{{ section.settings.image_asset | asset_url }}'
+          alt='{{ section.settings.title | strip_html | escape }}'
+        >
       {% endif %}
     </div>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Opening hook -->
-    <p class="si-ef-emphasis">
+    <p class='si-ef-emphasis'>
       Four students.<br>
       Four elements.<br>
       One fragile balance.<br>
@@ -200,92 +218,99 @@
       the truth rises with them.
     </p>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Synopsis block 1 -->
-    <p class="si-ef-body">
+    <p class='si-ef-body'>
       Four elements.<br>
       One hidden power.<br>
       A balance the world has forgotten.
     </p>
-    <p class="si-ef-body">
+    <p class='si-ef-body'>
       A group of teenagers arrive at the Government mandated training facility known as Everflow.
     </p>
-    <p class="si-ef-body">
+    <p class='si-ef-body'>
       <strong>Earth. Air. Fire. Water.</strong>
     </p>
-    <p class="si-ef-body">
-      But power is never given without purpose.
+    <p class='si-ef-body'>But power is never given without purpose.</p>
+    <p class='si-ef-body'>
+      As their abilities awaken, so do secrets buried deep within Everflow's walls. The truth about the elements and the
+      balance they were meant to protect—may be far more dangerous than anyone imagined.
     </p>
-    <p class="si-ef-body">
-      As their abilities awaken, so do secrets buried deep within Everflow's walls. The truth about the elements and the balance they were meant to protect—may be far more dangerous than anyone imagined.
-    </p>
-    <p class="si-ef-body">
+    <p class='si-ef-body'>
       Because some forces were never meant to be controlled.<br>
       And some truths were never meant to surface.
     </p>
 
-    <p class="si-ef-emphasis">The elements are rising.</p>
+    <p class='si-ef-emphasis'>The elements are rising.</p>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Synopsis block 2 -->
-    <p class="si-ef-body">
-      At Everflow, they tell you the elements are gifts.
-    </p>
-    <p class="si-ef-body">
+    <p class='si-ef-body'>At Everflow, they tell you the elements are gifts.</p>
+    <p class='si-ef-body'>
       Earth steadies.<br>
       Air lifts.<br>
       Fire ignites.<br>
       Water endures.
     </p>
-    <p class="si-ef-body">
-      But gifts can also be weapons.
-    </p>
-    <p class="si-ef-body">
+    <p class='si-ef-body'>But gifts can also be weapons.</p>
+    <p class='si-ef-body'>
       When four students begin to uncover the truth behind their powers, they realise<br>
       Everflow is hiding more than just secrets—it's hiding the cost of balance.
     </p>
-    <p class="si-ef-emphasis">
+    <p class='si-ef-emphasis'>
       And once the elements awaken…<br>
       there may be no way to stop them.
     </p>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Synopsis block 3 -->
-    <p class="si-ef-body">
+    <p class='si-ef-body'>
       At Everflow, power is not chosen.<br>
       It awakens.<br>
       And when it does, balance is everything.
     </p>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Character profiles -->
-    <div class="si-ef-characters">
-      <div class="si-ef-character si-ef-character-element-fire">
-        <p class="si-ef-character-name">Aurelia — <span>Fire</span></p>
-        <p>Fierce, determined, and impossible to ignore, Aurelia's power burns bright and dangerous. Fire answers her emotions, but controlling it may mean confronting the truth about who she really is.</p>
+    <div class='si-ef-characters'>
+      <div class='si-ef-character si-ef-character-element-fire'>
+        <p class='si-ef-character-name'>Aurelia — <span>Fire</span></p>
+        <p>
+          Fierce, determined, and impossible to ignore, Aurelia's power burns bright and dangerous. Fire answers her
+          emotions, but controlling it may mean confronting the truth about who she really is.
+        </p>
       </div>
-      <div class="si-ef-character si-ef-character-element-earth">
-        <p class="si-ef-character-name">Raith — <span>Earth</span></p>
-        <p>Strong, steady, and built like the foundations of the world itself, Raith believes in structure and loyalty. But when the ground beneath Everflow begins to shift, he must decide what truly deserves his strength.</p>
+      <div class='si-ef-character si-ef-character-element-earth'>
+        <p class='si-ef-character-name'>Raith — <span>Earth</span></p>
+        <p>
+          Strong, steady, and built like the foundations of the world itself, Raith believes in structure and loyalty.
+          But when the ground beneath Everflow begins to shift, he must decide what truly deserves his strength.
+        </p>
       </div>
-      <div class="si-ef-character si-ef-character-element-air">
-        <p class="si-ef-character-name">Sage — <span>Air</span></p>
-        <p>Quick-minded and endlessly curious, Sage moves like the wind—restless and searching. Yet some truths carried on the air were never meant to be heard.</p>
+      <div class='si-ef-character si-ef-character-element-air'>
+        <p class='si-ef-character-name'>Sage — <span>Air</span></p>
+        <p>
+          Quick-minded and endlessly curious, Sage moves like the wind—restless and searching. Yet some truths carried
+          on the air were never meant to be heard.
+        </p>
       </div>
-      <div class="si-ef-character si-ef-character-element-water">
-        <p class="si-ef-character-name">Elias — <span>Water</span></p>
-        <p>Quiet, watchful, and deeply intuitive, Elias feels the currents others miss. Water remembers everything… and some memories refuse to stay buried.</p>
+      <div class='si-ef-character si-ef-character-element-water'>
+        <p class='si-ef-character-name'>Elias — <span>Water</span></p>
+        <p>
+          Quiet, watchful, and deeply intuitive, Elias feels the currents others miss. Water remembers everything… and
+          some memories refuse to stay buried.
+        </p>
       </div>
     </div>
 
-    <div class="si-ef-divider"></div>
+    <div class='si-ef-divider'></div>
 
     <!-- Closing -->
-    <div class="si-ef-closing">
+    <div class='si-ef-closing'>
       <p>Together they were brought to Everflow to learn control.</p>
       <p>But as their powers grow, so do the secrets surrounding them.</p>
       <br>
@@ -293,11 +318,10 @@
       <br>
       <p>They were meant to remain in balance.</p>
       <br>
-      <p class="si-ef-final">And that balance… is beginning to break.</p>
+      <p class='si-ef-final'>And that balance… is beginning to break.</p>
     </div>
-
   </div>
-  <div class="si-ef-accent"></div>
+  <div class='si-ef-accent'></div>
 </div>
 
 {% schema %}

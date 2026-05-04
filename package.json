@@ -1,0 +1,26 @@
+{
+  "name": "shopify-shelf-indulgence",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.liquid\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paololalap/shopify-shelf-indulgence.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Paololalap/shopify-shelf-indulgence/issues"
+  },
+  "homepage": "https://github.com/Paololalap/shopify-shelf-indulgence#readme",
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.10.2",
+    "prettier": "^3.8.3"
+  }
+}

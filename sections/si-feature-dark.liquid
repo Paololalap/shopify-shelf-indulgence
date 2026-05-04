@@ -1,44 +1,169 @@
 <style>
-  .si-fd{background:var(--si-burg-deep);padding:4rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
-  .si-fd-deco{position:absolute;right:-2rem;top:-2rem;width:200px;height:200px;border-radius:50%;border:60px solid rgba(184,154,106,0.07)}
-  .si-fd-deco2{position:absolute;left:-3rem;bottom:-3rem;width:260px;height:260px;border-radius:50%;border:80px solid rgba(184,154,106,0.05)}
-  .si-fd-eyebrow{font-size:calc(0.6rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:var(--si-gold);margin-bottom:1rem;font-weight:400;font-family:var(--si-sans)}
-  .si-fd-title{font-family:var(--si-serif);font-size:calc(2.8rem + 10px);line-height:1.1;font-weight:300;color:#fff;margin-bottom:1.2rem}
-  .si-fd-title em{font-style:italic;color:var(--si-gold-light)}
-  .si-fd-rule{width:40px;height:1px;background:var(--si-gold);margin-bottom:2rem;opacity:0.5}
-  .si-fd-desc{font-size:calc(0.82rem + 10px);line-height:2;color:rgba(255,255,255,0.5);margin-bottom:2rem;font-weight:300;font-family:var(--si-sans)}
-  .si-fd-btn{background:transparent;border:1px solid rgba(184,154,106,0.4);color:var(--si-gold-light);padding:0.8rem 2rem;font-size:calc(0.63rem + 10px);letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;font-family:var(--si-sans);font-weight:300;transition:all 0.2s;text-decoration:none;display:inline-block}
-  .si-fd-btn:hover{background:rgba(184,154,106,0.1);border-color:var(--si-gold-light);color:var(--si-gold-light)}
-  .si-fd-panel{border:1px solid rgba(184,154,106,0.2);padding:2.5rem;text-align:center;position:relative;z-index:1}
-  .si-fd-panel-tag{font-size:calc(0.58rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:rgba(184,154,106,0.5);margin-bottom:1.5rem;font-weight:300;font-family:var(--si-sans)}
-  .si-fd-panel-title{font-family:var(--si-serif);font-size:calc(1.4rem + 10px);font-style:italic;color:#fff;font-weight:300;margin-bottom:0.4rem}
-  .si-fd-panel-sub{font-size:calc(0.75rem + 10px);line-height:1.9;color:rgba(255,255,255,0.38);font-weight:300;margin-bottom:2rem;font-family:var(--si-sans)}
-  .si-fd-panel-divider{width:1px;height:40px;background:rgba(184,154,106,0.2);margin:0 auto 1.2rem}
-  .si-fd-panel-written{font-size:calc(0.58rem + 10px);letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,154,106,0.4);margin-bottom:0.4rem;font-weight:300;font-family:var(--si-sans)}
-  .si-fd-author{font-family:var(--si-serif);font-size:calc(0.9rem + 10px);font-style:italic;color:var(--si-gold-light)}
-  @media screen and (max-width:749px){
-    .si-fd{grid-template-columns:1fr;padding:3rem 1.5rem}
-    .si-fd-title{font-size:calc(2rem + 10px)}
+  .si-fd {
+    background: var(--si-burg-deep);
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .si-fd-deco {
+    position: absolute;
+    right: -2rem;
+    top: -2rem;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 60px solid rgba(184, 154, 106, 0.07);
+  }
+  .si-fd-deco2 {
+    position: absolute;
+    left: -3rem;
+    bottom: -3rem;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 80px solid rgba(184, 154, 106, 0.05);
+  }
+  .si-fd-eyebrow {
+    font-size: calc(0.6rem + 10px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--si-gold);
+    margin-bottom: 1rem;
+    font-weight: 400;
+    font-family: var(--si-sans);
+  }
+  .si-fd-title {
+    font-family: var(--si-serif);
+    font-size: calc(2.8rem + 10px);
+    line-height: 1.1;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 1.2rem;
+  }
+  .si-fd-title em {
+    font-style: italic;
+    color: var(--si-gold-light);
+  }
+  .si-fd-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--si-gold);
+    margin-bottom: 2rem;
+    opacity: 0.5;
+  }
+  .si-fd-desc {
+    font-size: calc(0.82rem + 10px);
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-family: var(--si-sans);
+  }
+  .si-fd-btn {
+    background: transparent;
+    border: 1px solid rgba(184, 154, 106, 0.4);
+    color: var(--si-gold-light);
+    padding: 0.8rem 2rem;
+    font-size: calc(0.63rem + 10px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--si-sans);
+    font-weight: 300;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .si-fd-btn:hover {
+    background: rgba(184, 154, 106, 0.1);
+    border-color: var(--si-gold-light);
+    color: var(--si-gold-light);
+  }
+  .si-fd-panel {
+    border: 1px solid rgba(184, 154, 106, 0.2);
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .si-fd-panel-tag {
+    font-size: calc(0.58rem + 10px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(184, 154, 106, 0.5);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    font-family: var(--si-sans);
+  }
+  .si-fd-panel-title {
+    font-family: var(--si-serif);
+    font-size: calc(1.4rem + 10px);
+    font-style: italic;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+  }
+  .si-fd-panel-sub {
+    font-size: calc(0.75rem + 10px);
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.38);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    font-family: var(--si-sans);
+  }
+  .si-fd-panel-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(184, 154, 106, 0.2);
+    margin: 0 auto 1.2rem;
+  }
+  .si-fd-panel-written {
+    font-size: calc(0.58rem + 10px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(184, 154, 106, 0.4);
+    margin-bottom: 0.4rem;
+    font-weight: 300;
+    font-family: var(--si-sans);
+  }
+  .si-fd-author {
+    font-family: var(--si-serif);
+    font-size: calc(0.9rem + 10px);
+    font-style: italic;
+    color: var(--si-gold-light);
+  }
+  @media screen and (max-width: 749px) {
+    .si-fd {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.5rem;
+    }
+    .si-fd-title {
+      font-size: calc(2rem + 10px);
+    }
   }
 </style>
 
-<div class="si-fd">
-  <div class="si-fd-deco"></div>
-  <div class="si-fd-deco2"></div>
-  <div style="position:relative;z-index:1">
-    <p class="si-fd-eyebrow">{{ section.settings.eyebrow }}</p>
-    <h2 class="si-fd-title">{{ section.settings.title }}</h2>
-    <div class="si-fd-rule"></div>
-    <p class="si-fd-desc">{{ section.settings.description }}</p>
-    <a href="{{ section.settings.btn_link }}" class="si-fd-btn">{{ section.settings.btn_text }}</a>
+<div class='si-fd'>
+  <div class='si-fd-deco'></div>
+  <div class='si-fd-deco2'></div>
+  <div style='position:relative;z-index:1'>
+    <p class='si-fd-eyebrow'>{{ section.settings.eyebrow }}</p>
+    <h2 class='si-fd-title'>{{ section.settings.title }}</h2>
+    <div class='si-fd-rule'></div>
+    <p class='si-fd-desc'>{{ section.settings.description }}</p>
+    <a href='{{ section.settings.btn_link }}' class='si-fd-btn'>{{ section.settings.btn_text }}</a>
   </div>
-  <div class="si-fd-panel">
-    <p class="si-fd-panel-tag">{{ section.settings.panel_tag }}</p>
-    <p class="si-fd-panel-title">{{ section.settings.panel_quote }}</p>
-    <p class="si-fd-panel-sub">{{ section.settings.panel_sub }}</p>
-    <div class="si-fd-panel-divider"></div>
-    <p class="si-fd-panel-written">Written by</p>
-    <p class="si-fd-author">{{ section.settings.author }}</p>
+  <div class='si-fd-panel'>
+    <p class='si-fd-panel-tag'>{{ section.settings.panel_tag }}</p>
+    <p class='si-fd-panel-title'>{{ section.settings.panel_quote }}</p>
+    <p class='si-fd-panel-sub'>{{ section.settings.panel_sub }}</p>
+    <div class='si-fd-panel-divider'></div>
+    <p class='si-fd-panel-written'>Written by</p>
+    <p class='si-fd-author'>{{ section.settings.author }}</p>
   </div>
 </div>
 
@@ -48,12 +173,27 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "New release — available now" },
     { "type": "html", "id": "title", "label": "Title", "default": "Everflow —<br><em>The Balance-Born<br>Saga</em>" },
-    { "type": "text", "id": "description", "label": "Description", "default": "Four students. Four elements. One fragile balance. Everflow was meant to train them. Instead, it might destroy them." },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Four students. Four elements. One fragile balance. Everflow was meant to train them. Instead, it might destroy them."
+    },
     { "type": "text", "id": "btn_text", "label": "Button text", "default": "Read more about Everflow" },
     { "type": "url", "id": "btn_link", "label": "Button link" },
     { "type": "text", "id": "panel_tag", "label": "Panel tag", "default": "The Balance-Born Saga · Year One" },
-    { "type": "html", "id": "panel_quote", "label": "Panel quote", "default": "\"When the elements awaken…<br>the truth rises with them.\"" },
-    { "type": "html", "id": "panel_sub", "label": "Panel subtitle", "default": "Fantasy · Young adult · Series debut<br>Available in store now" },
+    {
+      "type": "html",
+      "id": "panel_quote",
+      "label": "Panel quote",
+      "default": "\"When the elements awaken…<br>the truth rises with them.\""
+    },
+    {
+      "type": "html",
+      "id": "panel_sub",
+      "label": "Panel subtitle",
+      "default": "Fantasy · Young adult · Series debut<br>Available in store now"
+    },
     { "type": "text", "id": "author", "label": "Author", "default": "Jessie Heart" }
   ],
   "presets": [{ "name": "SI Feature Dark" }]

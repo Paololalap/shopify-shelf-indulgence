@@ -1,33 +1,96 @@
 <style>
-  .si-events{padding:3.5rem 2.5rem;border-top:1px solid var(--si-cream-border);background:var(--si-cream)}
-  .si-ev-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start;max-width:960px;margin:0 auto}
-  .si-ev-eyebrow{font-size:calc(0.62rem + 10px);letter-spacing:0.3em;text-transform:uppercase;color:var(--si-gold);margin-bottom:0.8rem;font-weight:400;font-family:var(--si-sans)}
-  .si-ev-heading{font-family:var(--si-serif);font-size:calc(1.6rem + 10px);color:var(--si-burg-deep);font-weight:300;margin-top:0.6rem;line-height:1.3}
-  .si-ev-item{display:grid;grid-template-columns:120px 1fr 20px;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--si-cream-border);gap:1rem;cursor:pointer;transition:background 0.2s;text-decoration:none}
-  .si-ev-item:first-child{border-top:1px solid var(--si-cream-border)}
-  .si-ev-item:last-child{border-bottom:none}
-  .si-ev-item:hover .si-ev-name{color:var(--si-burg)}
-  .si-ev-date{font-size:calc(0.65rem + 10px);letter-spacing:0.12em;text-transform:uppercase;color:var(--si-text-soft);font-weight:300;font-family:var(--si-sans)}
-  .si-ev-name{font-size:calc(0.85rem + 10px);color:var(--si-text-dark);font-weight:300;transition:color 0.2s;font-family:var(--si-sans)}
-  .si-ev-arr{font-size:calc(0.7rem + 10px);color:var(--si-gold);text-align:right}
-  @media screen and (max-width:749px){
-    .si-ev-grid{grid-template-columns:1fr}
-    .si-ev-item{grid-template-columns:100px 1fr 20px}
+  .si-events {
+    padding: 3.5rem 2.5rem;
+    border-top: 1px solid var(--si-cream-border);
+    background: var(--si-cream);
+  }
+  .si-ev-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .si-ev-eyebrow {
+    font-size: calc(0.62rem + 10px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--si-gold);
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    font-family: var(--si-sans);
+  }
+  .si-ev-heading {
+    font-family: var(--si-serif);
+    font-size: calc(1.6rem + 10px);
+    color: var(--si-burg-deep);
+    font-weight: 300;
+    margin-top: 0.6rem;
+    line-height: 1.3;
+  }
+  .si-ev-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 20px;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--si-cream-border);
+    gap: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .si-ev-item:first-child {
+    border-top: 1px solid var(--si-cream-border);
+  }
+  .si-ev-item:last-child {
+    border-bottom: none;
+  }
+  .si-ev-item:hover .si-ev-name {
+    color: var(--si-burg);
+  }
+  .si-ev-date {
+    font-size: calc(0.65rem + 10px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--si-text-soft);
+    font-weight: 300;
+    font-family: var(--si-sans);
+  }
+  .si-ev-name {
+    font-size: calc(0.85rem + 10px);
+    color: var(--si-text-dark);
+    font-weight: 300;
+    transition: color 0.2s;
+    font-family: var(--si-sans);
+  }
+  .si-ev-arr {
+    font-size: calc(0.7rem + 10px);
+    color: var(--si-gold);
+    text-align: right;
+  }
+  @media screen and (max-width: 749px) {
+    .si-ev-grid {
+      grid-template-columns: 1fr;
+    }
+    .si-ev-item {
+      grid-template-columns: 100px 1fr 20px;
+    }
   }
 </style>
 
-<div class="si-events">
-  <div class="si-ev-grid">
+<div class='si-events'>
+  <div class='si-ev-grid'>
     <div>
-      <p class="si-ev-eyebrow">{{ section.settings.eyebrow }}</p>
-      <h2 class="si-ev-heading">{{ section.settings.heading }}</h2>
+      <p class='si-ev-eyebrow'>{{ section.settings.eyebrow }}</p>
+      <h2 class='si-ev-heading'>{{ section.settings.heading }}</h2>
     </div>
     <div>
       {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}" class="si-ev-item" {{ block.shopify_attributes }}>
-          <span class="si-ev-date">{{ block.settings.date }}</span>
-          <span class="si-ev-name">{{ block.settings.name }}</span>
-          <span class="si-ev-arr">→</span>
+        <a href='{{ block.settings.link }}' class='si-ev-item' {{ block.shopify_attributes }}>
+          <span class='si-ev-date'>{{ block.settings.date }}</span>
+          <span class='si-ev-name'>{{ block.settings.name }}</span>
+          <span class='si-ev-arr'>→</span>
         </a>
       {% endfor %}
     </div>
@@ -52,13 +115,18 @@
       ]
     }
   ],
-  "presets": [{
-    "name": "SI Events",
-    "blocks": [
-      { "type": "event", "settings": { "date": "9 Aug 2026", "name": "Indie Bookworm — Chapter 6, Book Lovers Day" } },
-      { "type": "event", "settings": { "date": "29 Aug 2026", "name": "Romance on the Vines" } },
-      { "type": "event", "settings": { "date": "Coming soon", "name": "More events to be announced" } }
-    ]
-  }]
+  "presets": [
+    {
+      "name": "SI Events",
+      "blocks": [
+        {
+          "type": "event",
+          "settings": { "date": "9 Aug 2026", "name": "Indie Bookworm — Chapter 6, Book Lovers Day" }
+        },
+        { "type": "event", "settings": { "date": "29 Aug 2026", "name": "Romance on the Vines" } },
+        { "type": "event", "settings": { "date": "Coming soon", "name": "More events to be announced" } }
+      ]
+    }
+  ]
 }
 {% endschema %}

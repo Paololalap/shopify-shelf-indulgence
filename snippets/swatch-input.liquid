@@ -26,12 +26,12 @@
 {% endcomment %}
 
 <input
-  type="{{ type | default: 'radio' }}"
-  id="{{ id }}"
-  name="{{ name }}"
-  value="{{ value }}"
-  form="{{ product_form_id }}"
-  class="swatch-input__input{% if visually_disabled %} visually-disabled{% endif %}"
+  type='{{ type | default: 'radio' }}'
+  id='{{ id }}'
+  name='{{ name }}'
+  value='{{ value }}'
+  form='{{ product_form_id }}'
+  class='swatch-input__input{% if visually_disabled %} visually-disabled{% endif %}'
   {% if checked %}
     checked
   {% endif %}
@@ -43,9 +43,9 @@
   {% endif %}
 >
 <label
-  for="{{ id }}"
-  title="{{ value }}"
-  class="swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}"
+  for='{{ id }}'
+  title='{{ value }}'
+  class='swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}'
 >
   {% render 'swatch', swatch: swatch, shape: shape %}
   {{ help_text }}

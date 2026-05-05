@@ -112,20 +112,6 @@
       "block_order": ["tile_1", "tile_2", "tile_3", "tile_4"],
       "settings": {}
     },
-    "si_feature": {
-      "type": "si-feature-dark",
-      "settings": {
-        "eyebrow": "New release — available now",
-        "title": "Everflow —<br><em>The Balance-Born<br>Saga<\/em>",
-        "description": "Four students. Four elements. One fragile balance. Everflow was meant to train them. Instead, it might destroy them.",
-        "btn_text": "Read more about Everflow",
-        "btn_link": "",
-        "panel_tag": "The Balance-Born Saga · Year One",
-        "panel_quote": "\"When the elements awaken…<br>the truth rises with them.\"",
-        "panel_sub": "Fantasy · Young adult · Series debut<br>Available in store now",
-        "author": "Jessie Heart"
-      }
-    },
     "si_about": {
       "type": "si-about",
       "settings": {
@@ -173,7 +159,6 @@
     "si_mothers_day",
     "featured_collection",
     "si_collections",
-    "si_feature",
     "si_about",
     "si_events"
   ]

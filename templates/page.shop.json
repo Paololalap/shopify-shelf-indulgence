@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "shop-categories-text",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

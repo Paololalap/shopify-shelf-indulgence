@@ -121,6 +121,10 @@
         "bio": "Always living with one foot in reality and the other in a story. A passionate school teacher for 24 years, wife, and proud mother of four, Jessie's love for storytelling, history, and all things royal has shaped a brand that celebrates imagination, resilience, and the magic that lives in us all."
       }
     },
+    "si_author": {
+      "type": "si-author",
+      "settings": {}
+    },
     "si_events": {
       "type": "si-events",
       "blocks": {
@@ -169,6 +173,7 @@
     "featured_collection",
     "si_collections",
     "si_about",
+    "si_author",
     "si_events",
     "si_modal_promo",
     "si_sticky_badge"

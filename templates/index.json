@@ -154,6 +154,12 @@
     "si_modal_promo": {
       "type": "si-modal-promo",
       "settings": {}
+    },
+    "si_sticky_badge": {
+      "type": "si-sticky-badge",
+      "settings": {
+        "label": "FREE MOTHER’S DAY GIFT ON EVERY PURCHASE"
+      }
     }
   },
   "order": [
@@ -164,6 +170,7 @@
     "si_collections",
     "si_about",
     "si_events",
-    "si_modal_promo"
+    "si_modal_promo",
+    "si_sticky_badge"
   ]
 }

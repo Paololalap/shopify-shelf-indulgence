@@ -25,9 +25,11 @@
     font-family: var(--si-serif);
     font-size: calc(1.6rem + 10px);
     color: var(--si-burg-deep);
-    font-weight: 300;
+    font-weight: 400 !important;
     margin-top: 0.6rem;
     line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .si-ev-item {
     display: grid;
@@ -82,7 +84,6 @@
 <div class='si-events'>
   <div class='si-ev-grid'>
     <div>
-      <p class='si-ev-eyebrow'>{{ section.settings.eyebrow }}</p>
       <h2 class='si-ev-heading'>{{ section.settings.heading }}</h2>
     </div>
     <div>

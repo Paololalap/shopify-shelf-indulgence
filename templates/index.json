@@ -148,9 +148,12 @@
       },
       "block_order": ["ev_1", "ev_2", "ev_3"],
       "settings": {
-        "eyebrow": "On the road",
         "heading": "Find us at events across Australia"
       }
+    },
+    "si_modal_promo": {
+      "type": "si-modal-promo",
+      "settings": {}
     }
   },
   "order": [
@@ -160,6 +163,7 @@
     "featured_collection",
     "si_collections",
     "si_about",
-    "si_events"
+    "si_events",
+    "si_modal_promo"
   ]
 }

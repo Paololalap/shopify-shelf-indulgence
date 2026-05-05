@@ -1,0 +1,122 @@
+{%- style -%}
+  .promo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+  }
+
+  .promo-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .promo-modal__content {
+    position: relative;
+    max-width: 90%;
+    width: 600px;
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    line-height: 0;
+  }
+
+  .promo-modal.is-active .promo-modal__content {
+    transform: scale(1);
+  }
+
+  .promo-modal__image-link {
+    display: block;
+    line-height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .promo-modal__image-link:hover {
+    transform: scale(1.02);
+  }
+
+  .promo-modal__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .promo-modal__content {
+      width: 85%;
+    }
+  }
+{%- endstyle -%}
+
+<div id="PromoModal-{{ section.id }}" class="promo-modal" role="dialog" aria-modal="true">
+  <div class="promo-modal__content">
+    <a href="/collections" class="promo-modal__image-link">
+      <img
+        src="{{ 'free-gift-for-mum.png' | asset_url }}"
+        alt="Free gift for mum promotion"
+        class="promo-modal__image"
+        loading="lazy"
+        width="1200"
+        height="1200"
+      >
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('PromoModal-{{ section.id }}');
+    const content = modal.querySelector('.promo-modal__content');
+    
+    const showModal = () => {
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const hideModal = () => {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    // Show modal on page mount
+    setTimeout(showModal, 1000);
+
+    // Close only if clicking the background overlay
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        hideModal();
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+        hideModal();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Promo Modal",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Promo Modal"
+    }
+  ]
+}
+{% endschema %}

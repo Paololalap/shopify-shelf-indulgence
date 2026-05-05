@@ -1,26 +1,119 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
+    "banner": {
+      "type": "si-shop-banner",
+      "settings": {}
+    },
     "main": {
-      "type": "main-list-collections",
-      "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "columns_mobile": "2"
-      }
+      "type": "si-collections",
+      "blocks": {
+        "hoodies": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Wear Your Story Hoodies",
+            "description": "",
+            "link": "",
+            "alt_bg": false
+          }
+        },
+        "merch": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Bookish Merch",
+            "description": "",
+            "link": "",
+            "alt_bg": true
+          }
+        },
+        "mystery": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Mystery Box",
+            "description": "",
+            "link": "",
+            "alt_bg": false
+          }
+        },
+        "clipped": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Clipped In Stories",
+            "description": "",
+            "link": "",
+            "alt_bg": true
+          }
+        },
+        "keyring": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Carry Your Story - Key Ring",
+            "description": "",
+            "link": "",
+            "alt_bg": false
+          }
+        },
+        "decor": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Shelf Decor",
+            "description": "",
+            "link": "",
+            "alt_bg": true
+          }
+        },
+        "selfcare": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Self Care",
+            "description": "",
+            "link": "",
+            "alt_bg": false
+          }
+        },
+        "wordsearch": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Indulgent Word Searches",
+            "description": "",
+            "link": "",
+            "alt_bg": true
+          }
+        },
+        "jewellery": {
+          "type": "tile",
+          "settings": {
+            "category": "",
+            "title": "Ink and Adorn Jewellery",
+            "description": "",
+            "link": "",
+            "alt_bg": false
+          }
+        }
+      },
+      "block_order": [
+        "hoodies",
+        "merch",
+        "mystery",
+        "clipped",
+        "keyring",
+        "decor",
+        "selfcare",
+        "wordsearch",
+        "jewellery"
+      ],
+      "settings": {}
     }
   },
   "order": [
+    "banner",
     "main"
   ]
 }

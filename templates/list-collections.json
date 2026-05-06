@@ -10,6 +10,7 @@
         "hoodies": {
           "type": "tile",
           "settings": {
+            "collection": "wear-your-story-hoodies",
             "category": "",
             "title": "Wear Your Story Hoodies",
             "description": "",
@@ -20,6 +21,7 @@
         "merch": {
           "type": "tile",
           "settings": {
+            "collection": "bookish-merch",
             "category": "",
             "title": "Bookish Merch",
             "description": "",
@@ -30,6 +32,7 @@
         "mystery": {
           "type": "tile",
           "settings": {
+            "collection": "mystery-box",
             "category": "",
             "title": "Mystery Box",
             "description": "",
@@ -40,6 +43,7 @@
         "clipped": {
           "type": "tile",
           "settings": {
+            "collection": "clipped-in-stories",
             "category": "",
             "title": "Clipped In Stories",
             "description": "",
@@ -50,6 +54,7 @@
         "keyring": {
           "type": "tile",
           "settings": {
+            "collection": "carry-your-story-key-ring",
             "category": "",
             "title": "Carry Your Story - Key Ring",
             "description": "",
@@ -60,6 +65,7 @@
         "decor": {
           "type": "tile",
           "settings": {
+            "collection": "shelf-decor",
             "category": "",
             "title": "Shelf Decor",
             "description": "",
@@ -70,6 +76,7 @@
         "selfcare": {
           "type": "tile",
           "settings": {
+            "collection": "self-care",
             "category": "",
             "title": "Self Care",
             "description": "",
@@ -80,6 +87,7 @@
         "wordsearch": {
           "type": "tile",
           "settings": {
+            "collection": "indulgent-word-searches",
             "category": "",
             "title": "Indulgent Word Searches",
             "description": "",
@@ -90,6 +98,7 @@
         "jewellery": {
           "type": "tile",
           "settings": {
+            "collection": "ink-and-adorn-jewellery",
             "category": "",
             "title": "Ink and Adorn Jewellery",
             "description": "",

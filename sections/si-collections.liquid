@@ -9,7 +9,7 @@
   }
   .si-coll-tile {
     background: var(--si-cream);
-    padding: 2.5rem;
+    padding: 50px 2.5rem;
     position: relative;
     overflow: hidden;
     transition: background 0.3s;
@@ -20,6 +20,9 @@
 
   .si-coll-tile--alt {
     background: var(--si-burg-faint);
+  }
+  .si-coll-tile--disabled {
+    cursor: default;
   }
   .si-coll-tile-num {
     font-family: var(--si-serif);
@@ -50,7 +53,7 @@
     font-size: calc(1.5rem + 10px);
     color: var(--si-burg-deep);
     font-weight: 400;
-    margin-bottom: 0.6rem;
+    margin: 0;
   }
   .si-coll-tile-desc {
     font-size: calc(0.78rem + 10px);
@@ -59,23 +62,6 @@
     font-weight: 300;
     margin-bottom: 1.2rem;
     font-family: var(--si-sans);
-  }
-  .si-coll-link {
-    font-size: calc(0.62rem + 10px);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--si-burg);
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    font-family: var(--si-sans);
-  }
-  .si-coll-link-line {
-    width: 20px;
-    height: 1px;
-    background: var(--si-burg);
-    display: inline-block;
   }
   @media screen and (max-width: 749px) {
     .si-coll-grid {
@@ -86,27 +72,52 @@
 
 <div class='si-coll-grid'>
   {% for block in section.blocks %}
-    <a
-      href='{{ block.settings.link }}'
-      class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %}'
-      {{ block.shopify_attributes }}
-    >
+    {%- liquid
+      assign tile_collection = block.settings.collection
+      assign has_products = false
+      if tile_collection != blank and tile_collection.all_products_count > 0
+        assign has_products = true
+      endif
+
+      if tile_collection != blank
+        assign tile_url = tile_collection.url
+        assign tile_title = block.settings.title | default: tile_collection.title
+      else
+        assign tile_url = block.settings.link
+        assign tile_title = block.settings.title
+      endif
+    -%}
+    
+    {%- if has_products -%}
+      <a
+        href='{{ tile_url }}'
+        class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %}'
+        {{ block.shopify_attributes }}
+      >
+    {%- else -%}
+      <div
+        class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %} si-coll-tile--disabled'
+        {{ block.shopify_attributes }}
+      >
+    {%- endif -%}
 
       <div class='si-coll-tile-inner'>
         {% if block.settings.category != blank %}
           <p class='si-coll-tile-cat'>{{ block.settings.category }}</p>
         {% endif %}
-        {% if block.settings.title != blank %}
-          <p class='si-coll-tile-name'>{{ block.settings.title }}</p>
+        {% if tile_title != blank %}
+          <p class='si-coll-tile-name'>{{ tile_title }}</p>
         {% endif %}
         {% if block.settings.description != blank %}
           <p class='si-coll-tile-desc'>{{ block.settings.description }}</p>
         {% endif %}
-        {% if block.settings.link != blank %}
-          <p class='si-coll-link'><span class='si-coll-link-line'></span> Shop now</p>
-        {% endif %}
       </div>
-    </a>
+
+    {%- if has_products -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
   {% endfor %}
 </div>
 
@@ -119,15 +130,15 @@
       "type": "tile",
       "name": "Collection Tile",
       "settings": [
-        { "type": "text", "id": "category", "label": "Category", "default": "Mystery box" },
-        { "type": "text", "id": "title", "label": "Title", "default": "A Novel Encounter" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "category", "label": "Category" },
+        { "type": "text", "id": "title", "label": "Title override", "info": "Leave blank to use the collection title" },
         {
           "type": "textarea",
           "id": "description",
-          "label": "Description",
-          "default": "A blind date with a book — choose your genre, receive a surprise read plus handpicked bookish goodies."
+          "label": "Description"
         },
-        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "url", "id": "link", "label": "Link (fallback if no collection chosen)" },
         { "type": "checkbox", "id": "alt_bg", "label": "Alternate background", "default": false }
       ]
     }
@@ -140,34 +151,7 @@
           "type": "tile",
           "settings": {
             "category": "Mystery box",
-            "title": "A Novel Encounter",
-            "description": "A blind date with a book — choose your genre, receive a surprise read plus handpicked bookish goodies."
-          }
-        },
-        {
-          "type": "tile",
-          "settings": {
-            "category": "Curated set",
-            "title": "Ink & Indulgence Box",
-            "description": "A celebration of self-gifting — a book, thematic décor, and soothing self-care items, beautifully presented.",
-            "alt_bg": true
-          }
-        },
-        {
-          "type": "tile",
-          "settings": {
-            "category": "Home & décor",
-            "title": "Shelf Décor",
-            "description": "Whimsical, enchanting pieces that make every bookshelf a stunning expression of your unique story.",
-            "alt_bg": true
-          }
-        },
-        {
-          "type": "tile",
-          "settings": {
-            "category": "Accessories",
-            "title": "Readers' Guilty Pleasures",
-            "description": "Bookish apparel, hair clips, key rings, and collectibles for the devoted reader in your life."
+            "title": "A Novel Encounter"
           }
         }
       ]

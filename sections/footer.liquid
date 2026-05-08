@@ -30,7 +30,7 @@
 <footer class='footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'>
   {%- liquid
     assign has_social_icons = true
-    if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_instagram_link_2 == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
       assign has_social_icons = false
     endif
 
@@ -243,7 +243,12 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            <div class='footer__social-wrapper'>
+              {%- if section.settings.social_heading != blank -%}
+                <h2 class='footer-block__heading inline-richtext'>{{ section.settings.social_heading }}</h2>
+              {%- endif -%}
+              {%- render 'social-icons', class: 'footer__list-social' -%}
+            </div>
           {%- endif -%}
         </div>
       </div>
@@ -464,6 +469,12 @@
       "default": true,
       "label": "t:sections.footer.settings.show_social.label",
       "info": "t:sections.footer.settings.show_social.info"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "social_heading",
+      "label": "Social media heading",
+      "default": "Follow us"
     },
     {
       "type": "checkbox",

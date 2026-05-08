@@ -1317,6 +1317,12 @@
       },
       {
         "type": "text",
+        "id": "social_instagram_link_2",
+        "label": "Instagram link 2",
+        "placeholder": "https://instagram.com/shopify"
+      },
+      {
+        "type": "text",
         "id": "social_youtube_link",
         "label": "t:settings_schema.social-media.settings.social_youtube_link.label",
         "placeholder": "t:settings_schema.social-media.settings.social_youtube_link.info"

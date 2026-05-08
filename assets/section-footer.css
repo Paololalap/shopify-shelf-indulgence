@@ -155,6 +155,31 @@
   font-size: calc(var(--font-heading-scale) * 1.6rem);
 }
 
+.footer__social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__social-wrapper .footer-block__heading {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__social-wrapper .list-social {
+    justify-content: flex-start;
+  }
+}
+
+
+@media screen and (max-width: 749px) {
+  .footer__social-wrapper {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+
 @media screen and (min-width: 990px) {
   .footer-block__heading {
     font-size: calc(var(--font-heading-scale) * 1.8rem);

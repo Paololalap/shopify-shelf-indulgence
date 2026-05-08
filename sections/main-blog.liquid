@@ -14,6 +14,12 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if blog.handle == 'where-our-storytelling-begins-the-origins-of-imagination-and-identity' -%}
+    .card__inner .card__content {
+      display: none !important;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- paginate blog.articles by 6 -%}

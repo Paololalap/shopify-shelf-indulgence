@@ -1,0 +1,426 @@
+{% comment %} Bespoke Article Section for Shelf Indulgence {% endcomment %}
+{%- style -%}
+  .si-article {
+    --si-article-max-width: 800px;
+    --si-accent-color: #d4a373; /* Sophisticated gold/sand */
+    --si-text-color: #0f181f;
+    --si-bg-color: #ffffff;
+    
+    background-color: var(--si-bg-color);
+    color: var(--si-text-color);
+    font-family: var(--font-body-family);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* Hero Section */
+  .si-article__hero {
+    position: relative;
+    height: auto; /* Changed from 80vh */
+    padding: 100px 0 60px; /* Added padding instead of fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+
+
+  .si-article__hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(15, 24, 31, 0.4), transparent);
+    z-index: 1;
+  }
+
+  .si-article__hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--si-text-color); /* Changed to text color since image is gone */
+    max-width: 900px;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: siFadeUp 1s ease forwards 0.5s;
+  }
+
+  .si-article__category {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .si-article__title {
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    /* Removed text-transform: lowercase; */
+  }
+
+  .si-article__featured-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+  /* Main Content */
+  .si-article__main {
+    max-width: var(--si-article-max-width);
+    margin: 0 auto;
+    padding: 0 20px 100px;
+  }
+
+  .si-article__intro {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    color: var(--si-text-color);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .si-article__section-heading {
+    font-size: 32px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--si-text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .si-article__paragraph {
+    margin-bottom: 25px;
+    font-size: 18px;
+    opacity: 0.85;
+  }
+
+  .si-article__anecdote {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 12px;
+    margin: 60px 0;
+    border-left: 4px solid var(--si-accent-color);
+    font-style: italic;
+  }
+
+  .si-article__blockquote {
+    margin: 60px 0;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .si-article__quote-text {
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    display: block;
+    font-weight: 300;
+  }
+
+  .si-article__quote-author {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .si-article__questions {
+    margin-top: 100px;
+    padding: 60px;
+    background: #0f181f;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .si-article__questions h3 {
+    color: #fdf9f4 !important;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+
+  .si-article__question-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  .si-article__question-item {
+    margin-bottom: 15px;
+    font-size: 18px;
+    opacity: 0.8;
+  }
+
+  .si-article__signoff {
+    margin-top: 60px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .si-article__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 80px;
+    text-decoration: none;
+    color: var(--si-text-color);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: transform 0.3s ease;
+  }
+
+  .si-article__back-link:hover {
+    transform: translateX(-5px);
+  }
+
+  /* Animations */
+  @keyframes siFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .si-article__hero {
+      height: 60vh;
+    }
+    .si-article__main {
+      padding-bottom: 60px;
+    }
+    .si-article__intro {
+      font-size: 20px;
+    }
+    .si-article__section-heading {
+      font-size: 26px;
+      margin-top: 60px;
+    }
+    .si-article__anecdote {
+      padding: 25px;
+    }
+    .si-article__questions {
+      padding: 40px 20px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="si-article">
+  <header class="si-article__hero">
+    <div class="si-article__hero-content">
+      <h1 class="si-article__title">Where our storytelling begins: The Origins of Imagination and Identity</h1>
+      <img src="{{ 'two-young-children.jpg' | asset_url }}" alt="Two young children" class="si-article__featured-image" loading="eager">
+    </div>
+  </header>
+
+  <main class="si-article__main">
+    <div class="si-article__intro">
+      <p>Before I ever called myself a writer, I was already telling stories.</p>
+      <p>The truth is, we all are.</p>
+    </div>
+
+    <div class="si-article__content">
+      <p class="si-article__paragraph">
+        Storytelling doesn’t begin with a notebook, a keyboard, or even a full sentence. It begins much earlier, in a raised eyebrow, a shaking lip, or a child’s happy clap. Our first expressions are stories. They say, "This matters." They say, "Look at me.”, "This is how I feel."
+      </p>
+      <p class="si-article__paragraph">
+        Long before we understand language, we are already shaping experience into something shareable.
+      </p>
+      <p class="si-article__paragraph">
+        When I think about how storytelling began for me, I realise it didn’t start with books. It started with a connection.
+      </p>
+
+      <h2 class="si-article__section-heading">The Earliest Sparks: Facial Expressions and First Words as Story Seeds</h2>
+      
+      <p class="si-article__paragraph">Our first stories are non-verbal.</p>
+      <p class="si-article__paragraph">
+        A baby reaches out. A toddler frowns. A child laughs so hard they fall over. These are our first ways of expressing stories they are pure emotion. They show need, joy, fear, and interest. They are where feeling and expression begin.
+      </p>
+      <p class="si-article__paragraph">Then come the first words.</p>
+      <p class="si-article__paragraph">“Mum, Dad.” / “No.” / “Mine.” / “Ar-Ball” (that was my sister Erin)</p>
+      <p class="si-article__paragraph">
+        These words aren’t just vocabulary milestones. They are pieces of stories. They are our first attempts to describe the world and our place in it.
+      </p>
+      <p class="si-article__paragraph">
+        Our first words are about power, the power to name, to ask, to protest, and to celebrate. In many ways, they are the first drafts of our narrative voice.
+      </p>
+
+      <div class="si-article__anecdote">
+        <p>
+          I’ve been told my whole life that I never stop talking! Jessie the talker, Jessie the tell-tale, Jessie, enough! When my own children were born, their first words brought me so much joy. I remember their mixed-up words and their efforts to be heard. From “Dad, dad, dad”—yes, I never got a look in, even with four kids—to “smuker-market” and “up-down-side,” these silly words fill your heart. Early communication lays the foundation for complex storytelling skills. When a child says, “Im scared,” they are not just sharing a feeling. They are creating a scene. Something happened. Something mattered. Something needs a response. Language at its most instinctive.
+        </p>
+      </div>
+
+      <h2 class="si-article__section-heading">Imagination Blossoms: Childhood Play and Story Creation</h2>
+
+      <p class="si-article__paragraph">As language develops, imagination stretches its legs.</p>
+      <p class="si-article__paragraph">
+        Childhood play isn’t random. It’s practice for telling stories. Every game is a story in action. Every pretend scenario helps us learn to form worlds.
+      </p>
+      <p class="si-article__paragraph">
+        We play “families.” We play “schools.” We play “adventures.” We assign roles. We invent conflict. We solve problems. We negotiate endings.
+      </p>
+      <p class="si-article__paragraph">Creative play is when storytelling turns into something we do together.</p>
+      <p class="si-article__paragraph">
+        I remember the kinds of games that appeared endless, the ones that grew over days or weeks, adding new layers of made-up stories.
+      </p>
+
+      <div class="si-article__anecdote">
+        <p>
+          Growing up with two sisters and four close family friends, I spent my days outside making up these worlds. No phones, no internet, no scrolling. Just seven girls and plenty of daylight to fill! There was a game called “Danny,” about the popular BMX rider everyone wanted to impress (apologies, Erin).
+        </p>
+      </div>
+
+      <p class="si-article__paragraph">And then there were the solitary moments. Car rides. Window gazing.</p>
+      <p class="si-article__paragraph">
+        I watched the landscape pass by, turning hills into kingdoms, houses into dream homes, and clouds into dragons. The outside world became a moving stage, and I became its storyteller. There is something special about those in-between moments: the quiet backseat, the sound of tyres on the road, the safe feeling of being a child just watching the world.
+      </p>
+      <p class="si-article__paragraph">
+        I pictured myself as the older me, living in a mansion in South Yarra, high up on the top floor. In my dream room, I’d read upside down on my floaty bed, living a privileged life—not sharing a room with my messy little sister, whose plastic bags of Barbies always ended up on my side!
+      </p>
+
+      <p class="si-article__paragraph">
+        Imaginary friends often appear at this stage, too. Mine was a black horse named Whitey! Even if adults sometimes ignore them, these friends show how complex our inner stories are. They have voices, personalities, and feelings. They exist because children are already making up stories in their minds. Imagination in childhood isn’t just a way to escape.
+      </p>
+
+      <h2 class="si-article__section-heading">Believing in Stories: Convincing Others and the Power of Fiction</h2>
+
+      <p class="si-article__paragraph">At some point, we begin to test the limits of our storytelling.</p>
+      <p class="si-article__paragraph">We don’t just imagine. We act out our stories.</p>
+      <p class="si-article__paragraph">
+        We tell detailed stories to our parents. We add drama to playground events. We make the truth feel larger than life. It’s not always to trick anyone, but because the story feels bigger than the facts.
+      </p>
+      <p class="si-article__paragraph">
+        I remember trying to convince adults that what I had imagined was real. That my version of events was entirely plausible. There was power in watching someone lean closer, unsure if I was serious.
+      </p>
+
+      <div class="si-article__anecdote">
+        <p>
+          This is where I must be honest. I’ve always had a flair for exaggeration! My days appeared bigger than real life, and my stories were a bit more dramatic than the truth. But honestly, that’s what people knew and loved about me. Like the time my sister and I came home with a new black-and-white kitten. We said we found him in a box on a roundabout on the way home from school. It sounded so dramatic! How could someone just leave such a sweet little creature? The truth, 33 years later, is that a girl at school was giving them away. We took one home and told Mum she’d be fine with it. Was it a lie, or just a well-crafted story? Only my mum knows for sure!
+        </p>
+      </div>
+
+      <p class="si-article__paragraph">
+        This stage of development reveals an important truth: storytelling builds confidence. When someone listens, we feel validated. When someone believes us, we feel powerful.
+      </p>
+      <p class="si-article__paragraph">
+        But sometimes, dreams and truth blend in a wonderful way. Fiction starts to feel real, and we begin to care deeply about things that aren’t there.
+      </p>
+      <p class="si-article__paragraph">
+        This is the heart of storytelling: the emotional truth that lies beneath the details of fiction.
+      </p>
+
+      <h2 class="si-article__section-heading">Heartfelt Connections: Falling in Love with Fictional Characters</h2>
+
+      <p class="si-article__paragraph">Many of us remember when we first fell in love with a fictional character.</p>
+      <p class="si-article__paragraph">
+        Or perhaps a pop icon who felt larger-than-life. Someone who lived on posters, cassette covers, and book pages. Television characters and literary heroes shaped my generation. For me, Peekay from Bryce Courtenay’s “The Power of One” was more than merely entertainment. He became an emotional anchor. When I was 15, I finished the book and watched the movie adaptation, and then I learned my beloved Nan had passed away. That moment felt meant to be, the story and my loss were deeply connected, and I’ve returned to that narrative many times in my life.
+      </p>
+
+      <div class="si-article__blockquote">
+        <span class="si-article__quote-text">“First with the head, then with the heart.”</span>
+        <span class="si-article__quote-text">“But I was still alive, and in my book, where there's life, there's hope.”</span>
+        <cite class="si-article__quote-author">Bryce Courtenay, The Power of One</cite>
+      </div>
+
+      <p class="si-article__paragraph">
+        These attachments shape personal taste. They reveal what we value. They show us which stories connect with our emotional wiring.
+      </p>
+      <p class="si-article__paragraph">Romance. Adventure. Rebellion. Loyalty. Strength. Softness.</p>
+      <p class="si-article__paragraph">
+        Fandom is a way of joining in the storytelling. When we write fan fiction, debate plotlines, or imagine new endings, we step into the story world and help create it.
+      </p>
+      <p class="si-article__paragraph">And somewhere in that participation, identity begins to form.</p>
+
+      <h2 class="si-article__section-heading">When Do We Truly Begin Living Our Stories?</h2>
+
+      <p class="si-article__paragraph">There is a subtle but important shift.</p>
+      <p class="si-article__paragraph">
+        Storytelling stops being something we consume or invent for fun, and it becomes something we consciously inhabit.
+      </p>
+      <p class="si-article__paragraph">We begin asking questions like: Who am I in this story? Am I the main character? Am I living aligned with the narrative I want?</p>
+      <p class="si-article__paragraph">The tales we create and consume influence who we become.</p>
+      <p class="si-article__paragraph">
+        If we grow up loving brave characters, we may find ourselves striving for courage. If we are drawn to redemption arcs, we may believe deeply in second chances. If we crave heroic journeys, perhaps we are wired for transformation.
+      </p>
+      <p class="si-article__paragraph">
+        I’ve always loved stories about underdogs: the quiet ones, the overlooked ones, the people everyone thinks won’t succeed. There’s something special about seeing a character rise above doubt, hardship, and the pressure of others’ expectations, and find that love and belief were quietly helping them all along. Underdog stories remind me that strength isn’t always loud or perfect. Sometimes, it’s simply getting back up again.
+      </p>
+      <p class="si-article__paragraph">
+        These stories stay with me because they reflect something genuinely human: the wish to be seen, trusted, and believed in, especially when we have trouble believing in ourselves. And when love is part of that journey, not as a rescue but as a firm anchor, it means even more. Understanding story preference, knowing which stories we love, is like looking in a mirror. The themes we’re drawn to often show us what we value most. Storytelling roots matter.
+      </p>
+      <p class="si-article__paragraph">
+        Revisiting the foundation of our narrative journey reconnects us to something essential. It reminds us that storytelling isn’t just for authors or performers. It’s part of being human. It’s built into us, biological, emotional, and instinctive.
+      </p>
+      <p class="si-article__paragraph">
+        We have always been storytellers. From the first time we pointed at something and wanted someone to notice... The first time we created a fantasy world in our backyard… Or the first fictional character who made our hearts ache…
+      </p>
+      <p class="si-article__paragraph">
+        When we allow ourselves to keep telling stories, no matter what form they take, we honour our roots. For some, that means writing novels. For others, it means journaling, it means raising children who are encouraged to imagine boldly.
+      </p>
+      
+      <p class="si-article__paragraph" style="font-weight: 600; margin-top: 40px;">Storytelling is not simply a craft.</p>
+      <p class="si-article__paragraph">It is a connection. It is identity formation. It is creative confidence. It is the thread between who we were and who we are becoming.</p>
+
+      <div class="si-article__questions">
+        <h3>A Question for You</h3>
+        <ul class="si-article__question-list">
+          <li class="si-article__question-item">When did your storytelling journey truly begin?</li>
+          <li class="si-article__question-item">Was it in a soft-spoken secret with a sibling?</li>
+          <li class="si-article__question-item">In a diary with a tiny lock and key?</li>
+          <li class="si-article__question-item">In the backseat of a car, watching the world emerge outside the window?</li>
+        </ul>
+        <p class="si-article__paragraph" style="opacity: 1;">
+          Here’s what I believe: We don’t suddenly become storytellers. We discover that we always were. Maybe the best gift we can give ourselves and the next generation is permission to keep living, shaping, and honouring the stories that made us.
+        </p>
+      </div>
+
+      <div class="si-article__signoff">
+        Jessie xx
+      </div>
+
+      <a href="/blogs" class="si-article__back-link">
+        &larr; Back to all stories
+      </a>
+    </div>
+  </main>
+</div>
+
+{% schema %}
+{
+  "name": "SI Article - Storytelling",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SI Article - Storytelling"
+    }
+  ]
+}
+{% endschema %}

@@ -173,6 +173,7 @@
   .si-cp-card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
   .si-cp-card-img-wrap {
     width: 100%;
@@ -341,25 +342,27 @@
           class="si-cp-card"
           data-available="{{ product.available }}"
         >
-          <div class="si-cp-card-img-wrap">
-            {% if product.featured_image %}
-              <img
-                src="{{ product.featured_image | image_url: width: 680 }}"
-                alt="{{ product.featured_image.alt | default: product.title | escape }}"
-                width="339"
-                height="339"
-                loading="lazy"
-              >
-            {% else %}
-              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;">No image</span>
-              </div>
-            {% endif %}
+          <div class="si-cp-card-top">
+            <div class="si-cp-card-img-wrap">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 680 }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  width="339"
+                  height="339"
+                  loading="lazy"
+                >
+              {% else %}
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;">No image</span>
+                </div>
+              {% endif %}
+            </div>
+            <p class="si-cp-card-name">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </p>
+            <p class="si-cp-card-price">{{ product.price | money }}</p>
           </div>
-          <p class="si-cp-card-name">
-            <a href="{{ product.url }}">{{ product.title }}</a>
-          </p>
-          <p class="si-cp-card-price">{{ product.price | money }}</p>
           {%- if product.available -%}
             <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">

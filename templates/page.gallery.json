@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "si-gallery",
+      "blocks": {
+        "img_01": {
+          "type": "image",
+          "settings": {
+            "image_asset": "smiling-person-taking-a-selfie.avif",
+            "alt": "Smiling person taking a selfie"
+          }
+        },
+        "img_02": {
+          "type": "image",
+          "settings": {
+            "image_asset": "four-women-in-fantasy-costumes.avif",
+            "alt": "Four women in fantasy costumes"
+          }
+        },
+        "img_03": {
+          "type": "image",
+          "settings": {
+            "image_asset": "indie-bookworm-event.avif",
+            "alt": "Indie bookworm event"
+          }
+        },
+        "img_04": {
+          "type": "image",
+          "settings": {
+            "image_asset": "two-people-stand.avif",
+            "alt": "Two people standing"
+          }
+        },
+        "img_05": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-woman-smiles-and-points.avif",
+            "alt": "A woman smiles and points"
+          }
+        },
+        "img_06": {
+          "type": "image",
+          "settings": {
+            "image_asset": "four-smiling-people.avif",
+            "alt": "Four smiling people"
+          }
+        },
+        "img_07": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-convention-booth.avif",
+            "alt": "A convention booth"
+          }
+        }
+      },
+      "block_order": [
+        "img_01",
+        "img_02",
+        "img_03",
+        "img_04",
+        "img_05",
+        "img_06",
+        "img_07"
+      ],
+      "settings": {
+        "title": "Gallery"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

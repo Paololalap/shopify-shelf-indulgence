@@ -1,0 +1,140 @@
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .si-gallery-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .si-gallery-title {
+    font-family: var(--si-serif);
+    font-size: 50px;
+    color: #0f181f;
+    margin-bottom: 60px;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .si-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 314px);
+    gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .si-gallery-item {
+    width: 314px;
+    height: 314px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+    background: var(--si-cream-warm);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .si-gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(15, 24, 31, 0.1);
+  }
+
+  .si-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .si-gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1050px) {
+    .si-gallery-grid {
+      grid-template-columns: repeat(2, 314px);
+    }
+    .si-gallery-container {
+      max-width: 720px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .si-gallery-grid {
+      grid-template-columns: repeat(1, 314px);
+    }
+    .si-gallery-container {
+      max-width: 100%;
+      padding: 60px 20px;
+    }
+    .si-gallery-title {
+      font-size: 38px;
+      margin-bottom: 40px;
+    }
+  }
+</style>
+
+<section class="si-gallery-section">
+  <div class="si-gallery-container">
+    <h1 class="si-gallery-title">{{ section.settings.title }}</h1>
+    <div class="si-gallery-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <div class="si-gallery-item" {{ block.shopify_attributes }}>
+            {% if block.settings.image_asset != blank %}
+              <img 
+                src="{{ block.settings.image_asset | asset_url }}" 
+                alt="{{ block.settings.alt | default: 'Gallery image' }}"
+                loading="lazy"
+                width="314"
+                height="314"
+              >
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SI Gallery Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Gallery"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Image filename (in assets/)"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SI Gallery Grid"
+    }
+  ]
+}
+{% endschema %}

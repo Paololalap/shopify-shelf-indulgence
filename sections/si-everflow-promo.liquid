@@ -1,0 +1,183 @@
+<style>
+  /* ── Everflow Promo Section ───────────────── */
+  .si-everflow-promo {
+    background-color: #fcf9e2;
+    padding: 80px 40px;
+  }
+
+  .si-everflow-promo__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+  }
+
+  /* ── Column 1 – Text (80%) ────────────────── */
+  .si-everflow-promo__text {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    padding-bottom: 20px;
+  }
+
+  .si-everflow-promo__title {
+    font-family: var(--si-serif);
+    font-size: 40px;
+    color: #610a1e;
+    font-weight: 700 !important;
+    margin: 0 0 28px;
+    line-height: 1.2;
+  }
+
+  .si-everflow-promo__body {
+    font-family: var(--si-sans);
+    font-size: 15px;
+    color: #0f181f;
+    font-weight: 400;
+    line-height: 1.85;
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  .si-everflow-promo__btn-col {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    padding-top: 12px;
+  }
+
+  .si-everflow-promo__btn {
+    display: inline-block;
+    background-color: #610a1e;
+    color: #fcf9e2;
+    font-family: var(--si-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .si-everflow-promo__btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  /* ── Column 2 – Image (20%) ───────────────── */
+  .si-everflow-promo__image-col {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .si-everflow-promo__img {
+    width: 360px;
+    height: 375px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ── Responsive ────────────────────────────── */
+  @media screen and (max-width: 980px) {
+    .si-everflow-promo__inner {
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+    .si-everflow-promo__img {
+      width: 300px;
+      height: 312px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .si-everflow-promo {
+      padding: 50px 20px;
+    }
+
+    .si-everflow-promo__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .si-everflow-promo__text {
+      padding-bottom: 0;
+    }
+
+    .si-everflow-promo__title {
+      font-size: 28px;
+    }
+
+    .si-everflow-promo__image-col {
+      order: 2; /* Image comes after text */
+    }
+
+    .si-everflow-promo__btn-col {
+      order: 3; /* Button comes after image */
+      padding-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .si-everflow-promo__img {
+      width: 280px;
+      height: 292px;
+    }
+  }
+</style>
+
+<section class="si-everflow-promo">
+  <div class="si-everflow-promo__inner">
+
+    <!-- ── Text Block ──────────────────────── -->
+    <div class="si-everflow-promo__text">
+      <h2 class="si-everflow-promo__title">Everflow &mdash; The Balance-Born Saga &mdash; Year 1</h2>
+
+      <p class="si-everflow-promo__body">Four students.
+Four elements.
+One fragile balance.
+Everflow was meant to train them.
+Instead, it might destroy them.
+Because when the elements awaken…
+the truth rises with them.</p>
+    </div>
+
+    <!-- ── Image Block ─────────────────────── -->
+    <div class="si-everflow-promo__image-col">
+      <img
+        src="{{ 'coming-soon-jessie-heart.png' | asset_url }}"
+        alt="Everflow - The Balance-Born Saga - Year 1"
+        class="si-everflow-promo__img"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- ── Button Block ────────────────────── -->
+    <div class="si-everflow-promo__btn-col">
+      <a href="/search?view=everflow" class="si-everflow-promo__btn">Read More</a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SI Everflow Promo",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SI Everflow Promo"
+    }
+  ]
+}
+{% endschema %}

@@ -214,6 +214,10 @@
       "type": "si-find-us",
       "settings": {}
     },
+    "si_everflow_promo": {
+      "type": "si-everflow-promo",
+      "settings": {}
+    },
     "si_author": {
       "type": "si-author",
       "settings": {}
@@ -265,6 +269,7 @@
     "si_mothers_day",
     "si_featured_gallery",
     "si_find_us",
+    "si_everflow_promo",
     "si_author",
     "si_events",
     "si_modal_promo",

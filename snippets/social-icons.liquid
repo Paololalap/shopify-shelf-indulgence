@@ -30,16 +30,7 @@
       </a>
     </li>
   {%- endif -%}
-  {%- if settings.social_instagram_link_2 != blank -%}
-    <li class='list-social__item'>
-      <a href='{{ settings.social_instagram_link_2 }}' class='link list-social__link'>
-        <span class='svg-wrapper'>
-          {{- 'icon-instagram.svg' | inline_asset_content -}}
-        </span>
-        <span class='visually-hidden'>{{ 'general.social.links.instagram' | t }}</span>
-      </a>
-    </li>
-  {%- endif -%}
+
   {%- if settings.social_youtube_link != blank -%}
     <li class='list-social__item'>
       <a href='{{ settings.social_youtube_link }}' class='link list-social__link'>

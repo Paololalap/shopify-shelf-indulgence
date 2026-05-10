@@ -1,0 +1,398 @@
+<!-- Chat Widget -->
+<style>
+  /* ── Chat Trigger Button ── */
+  .si-chat-trigger {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #610a1e 0%, #8b1538 100%);
+    color: #fcf9e2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(97, 10, 30, 0.45), 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  .si-chat-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(97, 10, 30, 0.55), 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .si-chat-trigger svg {
+    width: 28px;
+    height: 28px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .si-chat-trigger .si-chat-icon-close {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  .si-chat-trigger.is-open .si-chat-icon-open {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+  .si-chat-trigger.is-open .si-chat-icon-close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* ── Pulse ring animation on the trigger ── */
+  .si-chat-trigger::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(97, 10, 30, 0.3);
+    animation: si-chat-pulse 2s ease-out infinite;
+    pointer-events: none;
+  }
+  .si-chat-trigger.is-open::before {
+    animation: none;
+    opacity: 0;
+  }
+  @keyframes si-chat-pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* ── Chat Popup ── */
+  .si-chat-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 28px;
+    z-index: 9998;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.18), 0 4px 16px rgba(97,10,30,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.35s ease;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  .si-chat-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  /* ── Header ── */
+  .si-chat-header {
+    background: linear-gradient(135deg, #610a1e 0%, #8b1538 50%, #a01d45 100%);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .si-chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(252, 249, 226, 0.15);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid rgba(252, 249, 226, 0.25);
+  }
+  .si-chat-avatar svg {
+    width: 22px;
+    height: 22px;
+    fill: #fcf9e2;
+  }
+  .si-chat-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .si-chat-header-title {
+    color: #fcf9e2;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .si-chat-header-status {
+    color: rgba(252, 249, 226, 0.7);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .si-chat-header-status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    display: inline-block;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+  }
+
+  /* ── Body ── */
+  .si-chat-body {
+    background: #fcf9e2;
+    padding: 22px 18px 18px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── Message Bubble ── */
+  .si-chat-bubble {
+    background: #fff;
+    border-radius: 4px 18px 18px 18px;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #2d1018;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    max-width: 92%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+  }
+  .si-chat-bubble.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .si-chat-bubble .si-chat-wave {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .si-chat-bubble strong {
+    color: #610a1e;
+  }
+
+  /* ── Typing Dots ── */
+  .si-chat-typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 18px;
+    background: #fff;
+    border-radius: 4px 18px 18px 18px;
+    max-width: 75px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .si-chat-typing.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .si-chat-typing span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #a88a8f;
+    display: block;
+    animation: si-typing-bounce 1.4s ease-in-out infinite;
+  }
+  .si-chat-typing span:nth-child(2) { animation-delay: 0.16s; }
+  .si-chat-typing span:nth-child(3) { animation-delay: 0.32s; }
+  @keyframes si-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* ── Messenger CTA ── */
+  .si-chat-footer {
+    background: #fcf9e2;
+    padding: 0 18px 20px;
+  }
+  .si-chat-messenger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 132, 255, 0.35);
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .si-chat-messenger-btn.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+  .si-chat-messenger-btn:hover {
+    background: linear-gradient(135deg, #0095ff 0%, #0077e6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 132, 255, 0.45);
+  }
+  .si-chat-messenger-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ── Mobile adjustments ── */
+  @media screen and (max-width: 480px) {
+    .si-chat-popup {
+      right: 12px;
+      bottom: 90px;
+      width: calc(100vw - 24px);
+    }
+    .si-chat-trigger {
+      right: 16px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+    }
+  }
+</style>
+
+<!-- Chat Trigger Button -->
+<button class="si-chat-trigger" id="si-chat-trigger" aria-label="Open chat" type="button">
+  <!-- Chat icon (open state) -->
+  <svg class="si-chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <!-- Close icon -->
+  <svg class="si-chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
+<!-- Chat Popup -->
+<div class="si-chat-popup" id="si-chat-popup">
+  <!-- Header -->
+  <div class="si-chat-header">
+    <div class="si-chat-avatar">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <div class="si-chat-header-text">
+      <div class="si-chat-header-title">Shelf Indulgence</div>
+      <div class="si-chat-header-status">Online now</div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="si-chat-body" id="si-chat-body">
+    <!-- Typing indicator (shown first, then hidden) -->
+    <div class="si-chat-typing" id="si-chat-typing">
+      <span></span><span></span><span></span>
+    </div>
+    <!-- Message bubble (hidden initially, shown after typing) -->
+    <div class="si-chat-bubble" id="si-chat-bubble">
+      <span class="si-chat-wave">Hi👋</span>
+      Do you need assistance? <strong>Chat with Us!</strong><br><br>
+      You may message us on Messenger
+    </div>
+  </div>
+
+  <!-- Footer with Messenger button -->
+  <div class="si-chat-footer">
+    <a
+      href="https://m.me/jessica.fry.311"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="si-chat-messenger-btn"
+      id="si-chat-messenger-btn"
+    >
+      <!-- Messenger icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.15V22l3.04-1.67c.85.24 1.75.37 2.81.37 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm1.07 13.06l-2.54-2.73L5.5 15.06l5.56-5.92 2.6 2.73 4.97-2.73-5.56 5.92z"/>
+      </svg>
+      Message on Messenger
+    </a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const trigger = document.getElementById('si-chat-trigger');
+    const popup = document.getElementById('si-chat-popup');
+    const typingEl = document.getElementById('si-chat-typing');
+    const bubbleEl = document.getElementById('si-chat-bubble');
+    const messengerBtn = document.getElementById('si-chat-messenger-btn');
+    let isOpen = false;
+    let hasAnimated = false;
+
+    function openChat() {
+      isOpen = true;
+      trigger.classList.add('is-open');
+      popup.classList.add('is-visible');
+      trigger.setAttribute('aria-label', 'Close chat');
+
+      if (!hasAnimated) {
+        hasAnimated = true;
+        runTypingAnimation();
+      }
+    }
+
+    function closeChat() {
+      isOpen = false;
+      trigger.classList.remove('is-open');
+      popup.classList.remove('is-visible');
+      trigger.setAttribute('aria-label', 'Open chat');
+    }
+
+    function runTypingAnimation() {
+      /* Reset elements */
+      typingEl.classList.remove('is-shown');
+      bubbleEl.classList.remove('is-shown');
+      messengerBtn.classList.remove('is-shown');
+
+      /* Step 1: Show typing dots */
+      setTimeout(function() {
+        typingEl.classList.add('is-shown');
+      }, 300);
+
+      /* Step 2: Hide typing, show message bubble */
+      setTimeout(function() {
+        typingEl.classList.remove('is-shown');
+        setTimeout(function() {
+          typingEl.style.display = 'none';
+          bubbleEl.classList.add('is-shown');
+        }, 200);
+      }, 1800);
+
+      /* Step 3: Show messenger button */
+      setTimeout(function() {
+        messengerBtn.classList.add('is-shown');
+      }, 2500);
+    }
+
+    trigger.addEventListener('click', function() {
+      if (isOpen) {
+        closeChat();
+      } else {
+        openChat();
+      }
+    });
+
+    /* Close popup when clicking outside */
+    document.addEventListener('click', function(e) {
+      if (isOpen && !popup.contains(e.target) && !trigger.contains(e.target)) {
+        closeChat();
+      }
+    });
+  })();
+</script>

@@ -210,47 +210,8 @@
         "subheading": "Curated bookish treasures designed to delight and inspire"
       }
     },
-    "si_collections": {
-      "type": "si-collections",
-      "blocks": {
-        "tile_1": {
-          "type": "tile",
-          "settings": {
-            "category": "Mystery box",
-            "title": "A Novel Encounter",
-            "description": "A blind date with a book — choose your genre, receive a surprise read plus handpicked bookish goodies.",
-            "alt_bg": false
-          }
-        },
-        "tile_2": {
-          "type": "tile",
-          "settings": {
-            "category": "Curated set",
-            "title": "Ink & Indulgence Box",
-            "description": "A celebration of self-gifting — a book, thematic décor, and soothing self-care items, beautifully presented.",
-            "alt_bg": true
-          }
-        },
-        "tile_3": {
-          "type": "tile",
-          "settings": {
-            "category": "Home & décor",
-            "title": "Shelf Décor",
-            "description": "Whimsical, enchanting pieces that make every bookshelf a stunning expression of your unique story.",
-            "alt_bg": true
-          }
-        },
-        "tile_4": {
-          "type": "tile",
-          "settings": {
-            "category": "Accessories",
-            "title": "Readers' Guilty Pleasures",
-            "description": "Bookish apparel, hair clips, key rings, and collectibles for the devoted reader in your life.",
-            "alt_bg": false
-          }
-        }
-      },
-      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4"],
+    "si_find_us": {
+      "type": "si-find-us",
       "settings": {}
     },
     "si_author": {
@@ -303,7 +264,7 @@
     "si_marquee",
     "si_mothers_day",
     "si_featured_gallery",
-    "si_collections",
+    "si_find_us",
     "si_author",
     "si_events",
     "si_modal_promo",

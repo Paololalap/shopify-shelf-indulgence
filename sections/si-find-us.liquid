@@ -1,0 +1,356 @@
+<style>
+  /* ── Find-Us Section ────────────────────────── */
+  .si-find-us {
+    background: #610a1e;
+    padding: 80px 40px;
+  }
+
+  .si-find-us__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── Intro text ─────────────────────────────── */
+  .si-find-us__heading {
+    font-family: var(--si-serif);
+    font-size: 40px;
+    color: #fcf9e2 !important;
+    font-weight: 700 !important;
+    margin: 0 0 28px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .si-find-us__lead {
+    font-family: var(--si-sans);
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 0 auto 20px;
+    max-width: 780px;
+  }
+
+  .si-find-us__body {
+    font-family: var(--si-sans);
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 0 auto 18px;
+    max-width: 780px;
+  }
+
+  .si-find-us__body:last-of-type {
+    margin-bottom: 50px;
+  }
+
+  /* ── Two-column grid ────────────────────────── */
+  .si-find-us__columns {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 100px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  /* ── Column tab buttons ─────────────────────── */
+  .si-find-us__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .si-find-us__tab {
+    display: inline-block;
+    background: #fcf9e2;
+    color: #8b0000;
+    font-family: var(--si-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 28px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    margin-bottom: 32px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .si-find-us__tab:hover {
+    opacity: 0.85;
+  }
+
+  /* ── Event items ────────────────────────────── */
+  .si-find-us__event {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .si-find-us__event-date {
+    font-family: var(--si-sans);
+    font-size: 18px;
+    color: #fcf9e2;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+
+  .si-find-us__event-name {
+    font-family: var(--si-serif);
+    font-size: 30px;
+    color: #fcf9e2 !important;
+    font-weight: 400;
+    margin: 0 0 4px;
+    line-height: 1.25;
+  }
+
+  .si-find-us__event-sub {
+    font-family: var(--si-sans);
+    font-size: 18px;
+    color: #fcf9e2;
+    font-weight: 300;
+    margin: 0 0 16px;
+    opacity: 0.85;
+  }
+
+  .si-find-us__event-img {
+    width: 262px;
+    height: 327px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 6px;
+  }
+
+  .si-find-us__event-img--tall {
+    height: 333px;
+  }
+
+  /* ── Blog card ──────────────────────────────── */
+  .si-find-us__blog-wrap {
+    width: 373px;
+  }
+
+  .si-find-us__blog-img {
+    width: 373px;
+    height: 279.75px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+    display: block;
+    border: 1px solid #fcf9e2;
+    box-sizing: border-box;
+  }
+
+  .si-find-us__blog-card {
+    width: 373px;
+    background: #fcf9e2;
+    padding: 28px 24px 68px;
+    border-radius: 0 0 6px 6px;
+    box-sizing: border-box;
+  }
+
+  .si-find-us__blog-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .si-find-us__blog-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .si-find-us__blog-meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .si-find-us__blog-name {
+    font-family: var(--si-sans);
+    font-size: 12px;
+    color: #1a1a2e;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .si-find-us__blog-date {
+    font-family: var(--si-sans);
+    font-size: 12px;
+    color: #444;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .si-find-us__blog-title {
+    font-family: var(--si-serif);
+    font-size: 22px;
+    color: #1a1a2e;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 10px;
+  }
+
+  .si-find-us__blog-excerpt {
+    font-family: var(--si-sans);
+    font-size: 16px;
+    color: #333;
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media screen and (max-width: 749px) {
+    .si-find-us {
+      padding: 50px 20px;
+    }
+
+    .si-find-us__heading {
+      font-size: 30px;
+    }
+
+    .si-find-us__lead,
+    .si-find-us__body {
+      font-size: 16px;
+    }
+
+    .si-find-us__columns {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .si-find-us__event-name {
+      font-size: 24px;
+    }
+
+    .si-find-us__event-img {
+      width: 100%;
+      max-width: 262px;
+      height: auto;
+    }
+
+    .si-find-us__event-img--tall {
+      height: auto;
+    }
+
+    .si-find-us__blog-wrap,
+    .si-find-us__blog-img,
+    .si-find-us__blog-card {
+      width: 100%;
+      max-width: 373px;
+    }
+
+    .si-find-us__blog-img {
+      height: 220px;
+    }
+  }
+</style>
+
+<section class="si-find-us">
+  <div class="si-find-us__inner">
+
+    <!-- ── Intro copy ─────────────────────────── -->
+    <h2 class="si-find-us__heading">find us at...</h2>
+
+    <p class="si-find-us__lead">
+      Shelf Indulgence isn't just an online store — it's a travelling bookish experience.
+    </p>
+
+    <p class="si-find-us__body">
+      You'll find us at reader conventions, book festivals, indie author events, and curated markets across Australia. Bringing mystery shelf-self care boxes, Wear Your Story hoodies, exclusive merch drops, and beautiful reader necessities straight to you.
+    </p>
+
+    <p class="si-find-us__body">
+      We love meeting our beautiful and passionate community in person — talking books, discovering new authors, and helping you find the perfect piece for your shelves.
+    </p>
+
+    <p class="si-find-us__body">
+      Check back often to see where we're headed next… we might be coming to a town near you.
+    </p>
+
+    <!-- ── Two-column layout ──────────────────── -->
+    <div class="si-find-us__columns">
+
+      <!-- ──── Column 1 – Events ──────────────── -->
+      <div class="si-find-us__col">
+        <a href="/pages/events" class="si-find-us__tab">Events</a>
+
+        <!-- Event 1 -->
+        <div class="si-find-us__event">
+          <p class="si-find-us__event-date">AUGUST 9, 2026</p>
+          <h3 class="si-find-us__event-name">Indie Bookworn Event</h3>
+          <p class="si-find-us__event-sub">Chapter 6 &mdash; Book Lovers Day</p>
+          <img
+            src="{{ 'poster-for-the-Indie.avif' | asset_url }}"
+            alt="Indie Bookworn Event poster"
+            class="si-find-us__event-img"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Event 2 -->
+        <div class="si-find-us__event">
+          <p class="si-find-us__event-date">AUGUST 29, 2026</p>
+          <h3 class="si-find-us__event-name">Romance on The Vines</h3>
+          <img
+            src="{{ 'author-smiling-leaning.avif' | asset_url }}"
+            alt="Romance on The Vines"
+            class="si-find-us__event-img si-find-us__event-img--tall"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- ──── Column 2 – Blogs ───────────────── -->
+      <div class="si-find-us__col">
+        <a href="/pages/blog" class="si-find-us__tab">Blogs</a>
+
+        <div class="si-find-us__blog-wrap">
+          <img
+            src="{{ 'two-young-children.jpg' | asset_url }}"
+            alt="Where Our Storytelling Begins"
+            class="si-find-us__blog-img"
+            loading="lazy"
+          >
+          <div class="si-find-us__blog-card">
+            <div class="si-find-us__blog-author">
+              <img
+                src="{{ 'shelf-indulgence.png' | asset_url }}"
+                alt="Jessie Fry"
+                class="si-find-us__blog-avatar"
+              >
+              <div class="si-find-us__blog-meta">
+                <span class="si-find-us__blog-name">Jessie Fry</span>
+                <span class="si-find-us__blog-date">Mar 1</span>
+              </div>
+            </div>
+            <h3 class="si-find-us__blog-title">Where Our Storytelling Begins: The Origins of Imagination and Identity</h3>
+            <p class="si-find-us__blog-excerpt">Where Our Storytelling Begins: The Origins of Imagination and Identity...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SI Find Us",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SI Find Us"
+    }
+  ]
+}
+{% endschema %}

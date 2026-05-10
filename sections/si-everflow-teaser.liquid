@@ -21,7 +21,7 @@
 
   /* ── Main content wrapper ── */
   .si-ef-content {
-    max-width: 780px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 5rem 2rem 6rem;
     text-align: center;
@@ -98,8 +98,6 @@
     margin: 3rem 0;
     text-align: left;
     max-width: 620px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .si-ef-character {
     margin-bottom: 2rem;
@@ -147,6 +145,8 @@
   /* ── Closing ── */
   .si-ef-closing {
     margin-top: 3rem;
+    text-align: left;
+    max-width: 620px;
   }
   .si-ef-closing p {
     font-size: 16px;
@@ -177,6 +177,42 @@
     }
     .si-ef-image-wrap {
       max-width: 300px;
+    }
+  }
+
+  /* ── New Synopsis Row Layout ── */
+  .si-ef-synopsis-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin: 4rem 0;
+    text-align: left;
+  }
+  .si-ef-synopsis-text {
+    flex: 1;
+  }
+  .si-ef-synopsis-image {
+    flex: 0 0 320px;
+  }
+  .si-ef-synopsis-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (max-width: 850px) {
+    .si-ef-synopsis-row {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+    .si-ef-synopsis-image {
+      flex: none;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
     }
   }
 </style>
@@ -220,58 +256,70 @@
 
     <div class='si-ef-divider'></div>
 
-    <!-- Synopsis block 1 -->
-    <p class='si-ef-body'>
-      Four elements.<br>
-      One hidden power.<br>
-      A balance the world has forgotten.
-    </p>
-    <p class='si-ef-body'>
-      A group of teenagers arrive at the Government mandated training facility known as Everflow.
-    </p>
-    <p class='si-ef-body'>
-      <strong>Earth. Air. Fire. Water.</strong>
-    </p>
-    <p class='si-ef-body'>But power is never given without purpose.</p>
-    <p class='si-ef-body'>
-      As their abilities awaken, so do secrets buried deep within Everflow's walls. The truth about the elements and the
-      balance they were meant to protect—may be far more dangerous than anyone imagined.
-    </p>
-    <p class='si-ef-body'>
-      Because some forces were never meant to be controlled.<br>
-      And some truths were never meant to surface.
-    </p>
+    <div class='si-ef-synopsis-row'>
+      <div class='si-ef-synopsis-text'>
+        <!-- Synopsis block 1 -->
+        <p class='si-ef-body'>
+          Four elements.<br>
+          One hidden power.<br>
+          A balance the world has forgotten.
+        </p>
+        <p class='si-ef-body'>
+          A group of teenagers arrive at the Government mandated training facility known as Everflow.
+        </p>
+        <p class='si-ef-body'>
+          <strong>Earth. Air. Fire. Water.</strong>
+        </p>
+        <p class='si-ef-body'>But power is never given without purpose.</p>
+        <p class='si-ef-body'>
+          As their abilities awaken, so do secrets buried deep within Everflow's walls. The truth about the elements and the
+          balance they were meant to protect—may be far more dangerous than anyone imagined.
+        </p>
+        <p class='si-ef-body'>
+          Because some forces were never meant to be controlled.<br>
+          And some truths were never meant to surface.
+        </p>
 
-    <p class='si-ef-emphasis'>The elements are rising.</p>
+        <p class='si-ef-emphasis'>The elements are rising.</p>
 
-    <div class='si-ef-divider'></div>
+        <div class='si-ef-divider'></div>
 
-    <!-- Synopsis block 2 -->
-    <p class='si-ef-body'>At Everflow, they tell you the elements are gifts.</p>
-    <p class='si-ef-body'>
-      Earth steadies.<br>
-      Air lifts.<br>
-      Fire ignites.<br>
-      Water endures.
-    </p>
-    <p class='si-ef-body'>But gifts can also be weapons.</p>
-    <p class='si-ef-body'>
-      When four students begin to uncover the truth behind their powers, they realise<br>
-      Everflow is hiding more than just secrets—it's hiding the cost of balance.
-    </p>
-    <p class='si-ef-emphasis'>
-      And once the elements awaken…<br>
-      there may be no way to stop them.
-    </p>
+        <!-- Synopsis block 2 -->
+        <p class='si-ef-body'>At Everflow, they tell you the elements are gifts.</p>
+        <p class='si-ef-body'>
+          Earth steadies.<br>
+          Air lifts.<br>
+          Fire ignites.<br>
+          Water endures.
+        </p>
+        <p class='si-ef-body'>But gifts can also be weapons.</p>
+        <p class='si-ef-body'>
+          When four students begin to uncover the truth behind their powers, they realise<br>
+          Everflow is hiding more than just secrets—it's hiding the cost of balance.
+        </p>
+        <p class='si-ef-emphasis'>
+          And once the elements awaken…<br>
+          there may be no way to stop them.
+        </p>
 
-    <div class='si-ef-divider'></div>
+        <div class='si-ef-divider'></div>
 
-    <!-- Synopsis block 3 -->
-    <p class='si-ef-body'>
-      At Everflow, power is not chosen.<br>
-      It awakens.<br>
-      And when it does, balance is everything.
-    </p>
+        <!-- Synopsis block 3 -->
+        <p class='si-ef-body'>
+          At Everflow, power is not chosen.<br>
+          It awakens.<br>
+          And when it does, balance is everything.
+        </p>
+      </div>
+
+      <div class='si-ef-synopsis-image'>
+        <img
+          src="{{ 'four-vertical-panels.avif' | asset_url }}"
+          alt='Everflow Elements'
+          loading='lazy'
+        >
+      </div>
+    </div>
 
     <div class='si-ef-divider'></div>
 

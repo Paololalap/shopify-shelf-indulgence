@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "si-event-upcoming"
+    },
+    "gallery": {
+      "type": "si-event-gallery"
+    }
+  },
+  "order": [
+    "main",
+    "gallery"
+  ]
+}

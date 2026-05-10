@@ -1,0 +1,114 @@
+<style>
+  .si-event-gallery {
+    background-color: #610a1e;
+    color: #fdf9f4;
+  }
+  .si-event-gallery-inner {
+    padding: 60px 20px 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: var(--font-body-family);
+  }
+  .si-gallery-h2 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: var(--font-heading-family);
+    color: #ffffff !important;
+  }
+  .si-gallery-subtitle {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 50px;
+    color: rgba(253, 249, 244, 0.8);
+  }
+  
+  /* Pinterest style masonry */
+  .si-pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 60px;
+  }
+  .si-pinterest-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .si-pinterest-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  .si-gallery-paragraphs {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .si-gallery-p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #fdf9f4;
+  }
+
+  @media screen and (max-width: 768px) {
+    .si-pinterest-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .si-gallery-h2 {
+      font-size: 36px;
+    }
+  }
+</style>
+
+<div class="si-event-gallery">
+  <div class="si-event-gallery-inner">
+    <h2 class="si-gallery-h2">Indie Bookworm Event</h2>
+    <div class="si-gallery-subtitle">"There is a particular kind of magic that only gathers where stories and souls meet."</div>
+    
+    <div class="si-pinterest-grid">
+      <!-- Column 1 -->
+      <div class="si-pinterest-col">
+        <img src="{{ 'a-woman-in-blue.avif' | asset_url }}" class="si-pinterest-img" style="height: 384px;" alt="A woman in blue" loading="lazy">
+      </div>
+      <!-- Column 2 -->
+      <div class="si-pinterest-col">
+        <img src="{{ 'a-dimly-lit-shop.avif' | asset_url }}" class="si-pinterest-img" style="height: 117px;" alt="A dimly lit shop" loading="lazy">
+        <img src="{{ 'a-vibrant-market-stall.avif' | asset_url }}" class="si-pinterest-img" style="height: 262px;" alt="A vibrant market stall" loading="lazy">
+      </div>
+      <!-- Column 3 -->
+      <div class="si-pinterest-col">
+        <img src="{{ 'a-woman-browses.avif' | asset_url }}" class="si-pinterest-img" style="height: 190px;" alt="A woman browses" loading="lazy">
+        <img src="{{ 'a-bustling-indoor-craft.avif' | asset_url }}" class="si-pinterest-img" style="height: 189px;" alt="A bustling indoor craft" loading="lazy">
+      </div>
+      <!-- Column 4 -->
+      <div class="si-pinterest-col">
+        <img src="{{ 'a-pink-hoodie.avif' | asset_url }}" class="si-pinterest-img" style="height: 384px;" alt="A pink hoodie" loading="lazy">
+      </div>
+    </div>
+
+    <div class="si-gallery-paragraphs">
+      <p class="si-gallery-p">Within stone walls and winding paths, beneath banners that whispered of dragons and distant realms, I felt it — that ancient, humming current that passes between author and reader. At The Book Booth – Indie Bookworm Event, Chapter 5: Fantasy at Kryal Castle, stories did not merely sit upon tables… they breathed.</p>
+      <p class="si-gallery-p">Readers arrived with open hearts and well-loved tote bags; authors stood behind their tales like quiet guardians of hidden worlds. We spoke not only of plots and pages, but of courage, grief, longing, hope, the very elements that bind us as one.</p>
+      <p class="si-gallery-p">There is something sacred about placing a book into waiting hands. Something timeless about signing your name beneath words once born in solitude. In that moment, the distance between creator and reader dissolves and we are simply keepers of the same flame.</p>
+      <p class="si-gallery-p">Among castle stone and fantasy air, I was reminded: stories are not owned. They are shared. And in sharing them, we belong.</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SI Event Gallery",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SI Event Gallery"
+    }
+  ]
+}
+{% endschema %}

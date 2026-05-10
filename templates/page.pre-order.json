@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "si-pre-order",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

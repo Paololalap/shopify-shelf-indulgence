@@ -31,6 +31,7 @@
     width: 100%;
     height: 218px;
     object-fit: cover;
+    object-position: top;
     border-radius: 14px;
     display: block;
   }
@@ -295,6 +296,22 @@
       <img
         src="{{ collection.image | image_url: width: 800 }}"
         alt="{{ collection.image.alt | default: collection.title | escape }}"
+        width="800"
+        height="218"
+        loading="eager"
+      >
+    {% elsif collection.handle == 'wear-your-story-hoodies' %}
+      <img
+        src="{{ 'four-colorful-hoodies.webp' | asset_url }}"
+        alt="{{ collection.title | escape }}"
+        width="800"
+        height="218"
+        loading="eager"
+      >
+    {% elsif collection.handle == 'bookish-merch' %}
+      <img
+        src="{{ 'an-array-of-colorful-notebooks.webp' | asset_url }}"
+        alt="{{ collection.title | escape }}"
         width="800"
         height="218"
         loading="eager"

@@ -41,32 +41,173 @@
         "btn_link": "shopify:\/\/collections\/all"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "si_featured_gallery": {
+      "type": "si-featured-gallery",
+      "blocks": {
+        "img_01": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-bustling-indoor-craft.avif",
+            "alt": "A bustling indoor craft market"
+          }
+        },
+        "img_02": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-cozy-home-office.avif",
+            "alt": "A cozy home office"
+          }
+        },
+        "img_03": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-dimly-lit-shop.avif",
+            "alt": "A dimly lit shop"
+          }
+        },
+        "img_04": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-pink-box.jpg",
+            "alt": "A pink box"
+          }
+        },
+        "img_05": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-pink-hoodie.avif",
+            "alt": "A pink hoodie"
+          }
+        },
+        "img_06": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-vibrant-market-stall.avif",
+            "alt": "A vibrant market stall"
+          }
+        },
+        "img_07": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-woman-browses.avif",
+            "alt": "A woman browses"
+          }
+        },
+        "img_08": {
+          "type": "image",
+          "settings": {
+            "image_asset": "a-woman-in-blue.avif",
+            "alt": "A woman in blue"
+          }
+        },
+        "img_09": {
+          "type": "image",
+          "settings": {
+            "image_asset": "an-array-of-colorful-notebooks.webp",
+            "alt": "An array of colorful notebooks"
+          }
+        },
+        "img_10": {
+          "type": "image",
+          "settings": {
+            "image_asset": "author-smiling-leaning.avif",
+            "alt": "Author smiling and leaning"
+          }
+        },
+        "img_11": {
+          "type": "image",
+          "settings": {
+            "image_asset": "event-flyer-for-bookish.avif",
+            "alt": "Event flyer for bookish event"
+          }
+        },
+        "img_12": {
+          "type": "image",
+          "settings": {
+            "image_asset": "flyer-for-indie-bookworm-event.avif",
+            "alt": "Flyer for Indie Bookworm event"
+          }
+        },
+        "img_13": {
+          "type": "image",
+          "settings": {
+            "image_asset": "four-colorful-hoodies.webp",
+            "alt": "Four colorful hoodies"
+          }
+        },
+        "img_14": {
+          "type": "image",
+          "settings": {
+            "image_asset": "four-hoodies-displayed.avif",
+            "alt": "Four hoodies displayed"
+          }
+        },
+        "img_15": {
+          "type": "image",
+          "settings": {
+            "image_asset": "invitation-for-sweet-love.avif",
+            "alt": "Invitation for Sweet Love event"
+          }
+        },
+        "img_16": {
+          "type": "image",
+          "settings": {
+            "image_asset": "lost-in-realms-heart-full.jpg",
+            "alt": "Lost in realms heart full"
+          }
+        },
+        "img_17": {
+          "type": "image",
+          "settings": {
+            "image_asset": "pink-and-green-floral.avif",
+            "alt": "Pink and green floral"
+          }
+        },
+        "img_18": {
+          "type": "image",
+          "settings": {
+            "image_asset": "poster-for-the-Indie.avif",
+            "alt": "Poster for the Indie event"
+          }
+        },
+        "img_19": {
+          "type": "image",
+          "settings": {
+            "image_asset": "six-colorful-street.jpg",
+            "alt": "Six colorful street scene"
+          }
+        },
+        "img_20": {
+          "type": "image",
+          "settings": {
+            "image_asset": "three-books-review-set.jpg",
+            "alt": "Three books review set"
+          }
+        },
+        "img_21": {
+          "type": "image",
+          "settings": {
+            "image_asset": "two-hoodies-are-displayed.avif",
+            "alt": "Two hoodies are displayed"
+          }
+        },
+        "img_22": {
+          "type": "image",
+          "settings": {
+            "image_asset": "two-young-children.jpg",
+            "alt": "Two young children"
+          }
+        }
+      },
+      "block_order": [
+        "img_01", "img_02", "img_03", "img_04", "img_05", "img_06",
+        "img_07", "img_08", "img_09", "img_10", "img_11", "img_12",
+        "img_13", "img_14", "img_15", "img_16", "img_17", "img_18",
+        "img_19", "img_20", "img_21", "img_22"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "heading": "FEATURED PRODUCTS GALLERY",
+        "subheading": "Curated bookish treasures designed to delight and inspire"
       }
     },
     "si_collections": {
@@ -161,7 +302,7 @@
     "si_hero",
     "si_marquee",
     "si_mothers_day",
-    "featured_collection",
+    "si_featured_gallery",
     "si_collections",
     "si_author",
     "si_events",

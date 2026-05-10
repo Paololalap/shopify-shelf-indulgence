@@ -1,0 +1,114 @@
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+{{ 'dome-gallery.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .si-gallery-section {
+    padding: 60px 20px 0;
+    background: var(--si-cream);
+    text-align: center;
+  }
+
+  .si-gallery__heading {
+    font-family: var(--si-serif);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--si-burg-deep);
+    margin: 0 0 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .si-gallery__subheading {
+    font-family: var(--si-sans);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--si-burg-deep);
+    margin: 0 0 20px;
+    opacity: 0.85;
+  }
+
+  .si-dome-wrapper {
+    width: 100%;
+    height: 650px;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+
+  @media (max-width: 749px) {
+    .si-gallery-section {
+      padding: 40px 12px 0;
+    }
+
+    .si-gallery__heading {
+      font-size: 28px;
+    }
+
+    .si-gallery__subheading {
+      font-size: 15px;
+    }
+
+    .si-dome-wrapper {
+      height: 450px;
+    }
+  }
+</style>
+
+<section class="si-gallery-section">
+  <h2 class="si-gallery__heading">{{ section.settings.heading }}</h2>
+  <p class="si-gallery__subheading">{{ section.settings.subheading }}</p>
+
+  <div class="si-dome-wrapper" data-dome-gallery>
+    <script type="application/json">
+      [
+        {%- for block in section.blocks -%}
+          { "src": "{{ block.settings.image_asset | asset_url }}", "alt": "{{ block.settings.alt | escape }}" }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    </script>
+  </div>
+</section>
+
+<script src="{{ 'dome-gallery.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "SI Featured Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FEATURED PRODUCTS GALLERY"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Curated bookish treasures designed to delight and inspire"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Image filename (in assets/)"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SI Featured Gallery"
+    }
+  ]
+}
+{% endschema %}

@@ -21,7 +21,7 @@
         "btn_ghost_link": "",
         "card_label": "Coming Soon",
         "card_image_asset": "coming-soon-jessie-heart.png",
-        "card_title": "Everflow — The Balance-Born Saga<br><span style=\"font-size: 0.6em; font-family: var(--si-sans); font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;\">Year 1</span>",
+        "card_title": "The Balance-Born Saga<br><span style=\"font-size: 0.6em; font-family: var(--si-sans); font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;\">Year 1</span>",
         "card_price": "$25",
         "card_btn_text": "See teaser",
         "card_link": "/search?view=everflow"

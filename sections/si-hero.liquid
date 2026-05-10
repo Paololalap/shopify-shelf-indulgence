@@ -115,6 +115,9 @@
     text-align: center;
     padding: 2.5rem;
     border: 1px solid rgba(212, 184, 150, 0.3);
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
   }
   .si-hero-card-image {
     max-width: 220px;
@@ -274,7 +277,7 @@
         <line x1="370" y1="30" x2="30" y2="510" stroke="white" stroke-width="0.3"/>
       </svg>
     </div>
-    <div class='si-hero-card'>
+    <a href='{{ section.settings.card_link | default: "#" }}' class='si-hero-card'>
       <p class='si-hero-card-label'>{{ section.settings.card_label }}</p>
       <p class='si-hero-card-title'>{{ section.settings.card_title }}</p>
       <div class='si-hero-card-columns'>
@@ -311,8 +314,8 @@
           </p>
         </div>
       </div>
-      <a href='{{ section.settings.card_link }}' class='si-hero-card-btn'>{{ section.settings.card_btn_text }}</a>
-    </div>
+      <span class='si-hero-card-btn'>{{ section.settings.card_btn_text }}</span>
+    </a>
   </div>
 </div>
 <div class='si-page-effect'></div>

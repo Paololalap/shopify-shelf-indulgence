@@ -1,5 +1,4 @@
 <style>
-  /* ── Everflow Promo Section ───────────────── */
   .si-everflow-promo {
     background-color: #fcf9e2;
     padding: 80px 40px;
@@ -13,7 +12,6 @@
     align-items: center;
   }
 
-  /* ── Column 1 – Text (80%) ────────────────── */
   .si-everflow-promo__text {
     grid-column: 1;
     grid-row: 1;
@@ -69,7 +67,6 @@
     transform: translateY(-1px);
   }
 
-  /* ── Column 2 – Image (20%) ───────────────── */
   .si-everflow-promo__image-col {
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -86,91 +83,194 @@
     display: block;
   }
 
-  /* ── Everflow Grid Section ─────────────────── */
   .si-everflow-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 550px);
+    background:
+      radial-gradient(circle at top left, rgba(97, 10, 30, 0.08), transparent 32%),
+      linear-gradient(180deg, #fffdf6 0%, #f7f0df 100%);
+    padding: 88px 40px 96px;
+  }
+
+  .si-everflow-grid__inner {
+    max-width: 1240px;
+    margin: 0 auto;
   }
 
   .si-everflow-grid__heading {
-    grid-column: 1 / -1;
-    background-color: #fcf9e2;
-    padding: 40px 40px 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .si-everflow-grid__heading-copy {
+    max-width: 620px;
+  }
+
+  .si-everflow-grid__eyebrow {
+    display: inline-block;
+    margin: 0 0 12px;
+    font-family: var(--si-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(97, 10, 30, 0.72);
   }
 
   .si-everflow-grid__heading h2 {
     font-family: var(--si-serif);
-    font-size: 40px;
+    font-size: clamp(32px, 4vw, 46px);
     color: #610a1e;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 12px;
+    line-height: 1.08;
   }
 
-  .si-everflow-grid__cell {
+  .si-everflow-grid__intro {
+    margin: 0;
+    font-family: var(--si-sans);
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(15, 24, 31, 0.78);
+  }
+
+  .si-everflow-grid__note {
+    margin: 0;
+    padding: 14px 18px;
+    border: 1px solid rgba(97, 10, 30, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.74);
+    font-family: var(--si-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #610a1e;
+    white-space: nowrap;
+  }
+
+  .si-everflow-grid__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .si-everflow-grid__card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    min-height: 100%;
     overflow: hidden;
+    border: 1px solid rgba(97, 10, 30, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 18px 48px rgba(15, 24, 31, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .si-everflow-grid__card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .si-everflow-grid__card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(97, 10, 30, 0.2);
+    box-shadow: 0 24px 56px rgba(15, 24, 31, 0.12);
+  }
+
+  .si-everflow-grid__media {
     position: relative;
+    min-height: 240px;
+    overflow: hidden;
+    background: #eadcc8;
   }
 
-  .si-everflow-grid__cell--text {
-    background-color: #610a1e;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px 60px;
-  }
-
-  .si-everflow-grid__cell--text h3 {
-    font-family: var(--si-serif);
-    font-size: 28px;
-    color: #fcf9e2 !important;
-    font-weight: 700 !important;
-    margin: 0 0 35px;
-    line-height: 1.25;
-  }
-
-  .si-everflow-grid__cell--text p {
-    font-family: var(--si-sans);
-    font-size: 15px;
-    color: #fcf9e2;
-    font-weight: 400;
-    line-height: 1.7;
-    margin: 0 0 70px;
-  }
-
-  .si-everflow-grid__cell--text .si-everflow-grid__cta {
-    font-family: var(--si-sans);
-    font-size: 15px;
-    color: #fcf9e2;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .si-everflow-grid__cell img {
+  .si-everflow-grid__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     display: block;
+    transition: transform 0.35s ease;
   }
 
-  .si-everflow-grid__img--pink-box {
-    object-position: center center !important;
+  .si-everflow-grid__card:hover .si-everflow-grid__media img {
+    transform: scale(1.03);
   }
 
-  /* ── Responsive ────────────────────────────── */
+  .si-everflow-grid__badge {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(252, 249, 226, 0.92);
+    backdrop-filter: blur(8px);
+    font-family: var(--si-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #610a1e;
+  }
+
+  .si-everflow-grid__content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px 22px 22px;
+  }
+
+  .si-everflow-grid__content h3 {
+    font-family: var(--si-serif);
+    font-size: 26px;
+    color: #610a1e !important;
+    font-weight: 700 !important;
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .si-everflow-grid__content p {
+    margin: 0;
+    font-family: var(--si-sans);
+    font-size: 14px;
+    color: rgba(15, 24, 31, 0.82);
+    line-height: 1.75;
+  }
+
+  .si-everflow-grid__meta {
+    margin-top: auto;
+    padding-top: 4px;
+    font-family: var(--si-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(97, 10, 30, 0.75);
+  }
+
   @media screen and (max-width: 980px) {
     .si-everflow-promo__inner {
       grid-template-columns: 1fr 300px;
       gap: 30px;
     }
+
     .si-everflow-promo__img {
       width: 300px;
       height: 312px;
+    }
+
+    .si-everflow-grid__cards {
+      grid-template-columns: 1fr;
+    }
+
+    .si-everflow-grid__card {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     }
   }
 
@@ -195,11 +295,11 @@
     }
 
     .si-everflow-promo__image-col {
-      order: 2; /* Image comes after text */
+      order: 2;
     }
 
     .si-everflow-promo__btn-col {
-      order: 3; /* Button comes after image */
+      order: 3;
       padding-top: 10px;
       margin-left: auto;
       margin-right: auto;
@@ -211,37 +311,49 @@
     }
 
     .si-everflow-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 539px);
+      padding: 72px 24px 80px;
+    }
+
+    .si-everflow-grid__heading {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .si-everflow-grid__note {
+      white-space: normal;
+    }
+
+    .si-everflow-grid__card {
+      grid-template-columns: 1fr;
+    }
+
+    .si-everflow-grid__media {
+      min-height: 220px;
     }
   }
 
   @media screen and (max-width: 480px) {
     .si-everflow-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(8, auto);
+      padding: 56px 16px 64px;
     }
 
-    .si-everflow-grid__cell--text {
-      padding: 32px 20px;
+    .si-everflow-grid__content {
+      padding: 20px 18px 22px;
     }
 
-    .si-everflow-grid__cell img {
-      height: 300px;
+    .si-everflow-grid__content h3 {
+      font-size: 22px;
     }
 
-    /* Swap order on mobile for consistent I-T pattern */
-    .si-everflow-grid > :nth-child(5) { order: 6; }
-    .si-everflow-grid > :nth-child(6) { order: 5; }
-    .si-everflow-grid > :nth-child(7) { order: 8; }
-    .si-everflow-grid > :nth-child(8) { order: 7; }
+    .si-everflow-grid__media {
+      min-height: 200px;
+    }
   }
 </style>
 
 <section class="si-everflow-promo">
   <div class="si-everflow-promo__inner">
-
-    <!-- ── Text Block ──────────────────────── -->
     <div class="si-everflow-promo__text">
       <h2 class="si-everflow-promo__title">Everflow &mdash; The Balance-Born Saga &mdash; Year 1</h2>
 
@@ -250,11 +362,10 @@ Four elements.
 One fragile balance.
 Everflow was meant to train them.
 Instead, it might destroy them.
-Because when the elements awaken…
+Because when the elements awaken...
 the truth rises with them.</p>
     </div>
 
-    <!-- ── Image Block ─────────────────────── -->
     <div class="si-everflow-promo__image-col">
       <img
         src="{{ 'coming-soon-jessie-heart.png' | asset_url }}"
@@ -264,86 +375,61 @@ the truth rises with them.</p>
       >
     </div>
 
-    <!-- ── Button Block ────────────────────── -->
     <div class="si-everflow-promo__btn-col">
       <a href="/search?view=everflow" class="si-everflow-promo__btn">Read More</a>
     </div>
-
   </div>
 </section>
 
-<!-- ── Everflow 4×2 Showcase Grid ────────────── -->
 <section class="si-everflow-grid">
+  <div class="si-everflow-grid__inner">
+    <div class="si-everflow-grid__heading">
+      <div class="si-everflow-grid__heading-copy">
+        <p class="si-everflow-grid__eyebrow">Curated Collection</p>
+        <h2>Our Products</h2>
+        <p class="si-everflow-grid__intro">Bookish apparel, reading essentials, shelf styling, and collectible extras presented in a cleaner storefront layout with stronger product focus.</p>
+      </div>
+      <p class="si-everflow-grid__note">Two signature collections</p>
+    </div>
 
-  <!-- ── Row 1 ──────────────────────────────── -->
+    <div class="si-everflow-grid__cards">
+      <a class="si-everflow-grid__card-link" href="https://shelfindulgence.com.au/collections/wear-your-story-hoodies">
+        <article class="si-everflow-grid__card">
+          <div class="si-everflow-grid__media">
+            <img
+              src="{{ 'lost-in-realms-heart-full.jpg' | asset_url }}"
+              alt="Lost in Realms Heart Full hoodie"
+              loading="lazy"
+            >
+            <span class="si-everflow-grid__badge">Apparel</span>
+          </div>
+          <div class="si-everflow-grid__content">
+            <h3>Wear Your Story</h3>
+            <p>Oversized bookish hoodies with premium puff print detailing and a softer, more elevated presentation for your hero apparel line.</p>
+            <p class="si-everflow-grid__meta">Shop hoodies</p>
+          </div>
+        </article>
+      </a>
 
-  <!-- R1 C1 — Image -->
-  <div class="si-everflow-grid__cell">
-    <img
-      src="{{ 'lost-in-realms-heart-full.jpg' | asset_url }}"
-      alt="Lost in Realms – Heart Full"
-      loading="lazy"
-    >
+      <a class="si-everflow-grid__card-link" href="https://shelfindulgence.com.au/collections/bookish-merch">
+        <article class="si-everflow-grid__card">
+          <div class="si-everflow-grid__media">
+            <img
+              src="{{ 'three-books-review-set.jpg' | asset_url }}"
+              alt="Bookish merch set"
+              loading="lazy"
+            >
+            <span class="si-everflow-grid__badge">Bookish</span>
+          </div>
+          <div class="si-everflow-grid__content">
+            <h3>Bookish Merch</h3>
+            <p>Australian-designed notepads, memo pads, pens, and bookmarks grouped into a polished essentials range for everyday reading rituals.</p>
+            <p class="si-everflow-grid__meta">Shop merch</p>
+          </div>
+        </article>
+      </a>
+    </div>
   </div>
-
-  <!-- R1 C2 — Text -->
-  <div class="si-everflow-grid__cell si-everflow-grid__cell--text">
-    <h3>Wear Your Story&trade; oversized bookish hoodies</h3>
-    <p>Featuring premium puff print detailing for a bold, textured finish, these hoodies blend contemporary design with statement bookish fashion.</p>
-    <p class="si-everflow-grid__cta">Curated Choices</p>
-  </div>
-
-  <!-- R1 C3 — Image -->
-  <div class="si-everflow-grid__cell">
-    <img
-      src="{{ 'three-books-review-set.jpg' | asset_url }}"
-      alt="Three Books Review Set"
-      loading="lazy"
-    >
-  </div>
-
-  <!-- R1 C4 — Text -->
-  <div class="si-everflow-grid__cell si-everflow-grid__cell--text">
-    <h3>The Reader Necessities</h3>
-    <p>Introducing The Reader Necessities &mdash; a new way to indulge in your reading life.<br>Each Pack Includes &ndash; An Australian Designed notepad, memo pad, pen and bookmark.<br>For those that want to blend their love of Reading and Stationary xx</p>
-    <p class="si-everflow-grid__cta">Curated Choices</p>
-  </div>
-
-  <!-- ── Row 2 ──────────────────────────────── -->
-
-  <!-- R2 C1 — Text -->
-  <div class="si-everflow-grid__cell si-everflow-grid__cell--text">
-    <h3>Shelf Decor</h3>
-    <p>Enhance your space with our enchanting shelf d&eacute;cor. Our range includes whimsical items designed to add character and charm, making every bookshelf not just functional but also a stunning expression of your unique style.</p>
-    <p class="si-everflow-grid__cta">Whimsical Touch</p>
-  </div>
-
-  <!-- R2 C2 — Image -->
-  <div class="si-everflow-grid__cell">
-    <img
-      src="{{ 'six-colorful-street.jpg' | asset_url }}"
-      alt="Six Colorful Street"
-      loading="lazy"
-    >
-  </div>
-
-  <!-- R2 C3 — Text -->
-  <div class="si-everflow-grid__cell si-everflow-grid__cell--text">
-    <h3>Readers Guilty Pleasures</h3>
-    <p>Explore our collection of book-themed merchandise, perfect for book lovers. From apparel to collectibles, we offer fun and practical items that celebrate the love of stories, literature, and creativity.</p>
-    <p class="si-everflow-grid__cta">Themed Goods</p>
-  </div>
-
-  <!-- R2 C4 — Image -->
-  <div class="si-everflow-grid__cell">
-    <img
-      src="{{ 'a-pink-box.jpg' | asset_url }}"
-      alt="A Pink Box"
-      class="si-everflow-grid__img--pink-box"
-      loading="lazy"
-    >
-  </div>
-
 </section>
 
 {% schema %}

@@ -31,16 +31,6 @@
       "type": "si-marquee",
       "settings": {}
     },
-    "si_mothers_day": {
-      "type": "si-mothers-day",
-      "settings": {
-        "headline": "\ud83c\udf38 Mother's Day Special: Free Self-Care Gift for Mum with Every Purchase | Limited Quantities Available",
-        "subheading": "Our limited Mother's Day release has arrived.",
-        "body": "Receive a complimentary self-care gift for Mum with every order. A little something for your reading life… and something lovely for hers.",
-        "btn_text": "Shop now",
-        "btn_link": "shopify:\/\/collections\/all"
-      }
-    },
     "si_featured_gallery": {
       "type": "si-featured-gallery",
       "blocks": {
@@ -251,28 +241,15 @@
       "settings": {
         "heading": "Find us at events across Australia"
       }
-    },
-    "si_modal_promo": {
-      "type": "si-modal-promo",
-      "settings": {}
-    },
-    "si_sticky_badge": {
-      "type": "si-sticky-badge",
-      "settings": {
-        "label": "FREE MOTHER’S DAY GIFT ON EVERY PURCHASE"
-      }
     }
   },
   "order": [
     "si_hero",
     "si_marquee",
-    "si_mothers_day",
     "si_featured_gallery",
     "si_find_us",
     "si_everflow_promo",
     "si_author",
-    "si_events",
-    "si_modal_promo",
-    "si_sticky_badge"
+    "si_events"
   ]
 }

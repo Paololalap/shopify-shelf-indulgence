@@ -87,7 +87,7 @@
         assign tile_title = block.settings.title
       endif
     -%}
-    
+
     {%- if has_products -%}
       <a
         href='{{ tile_url }}'
@@ -101,17 +101,17 @@
       >
     {%- endif -%}
 
-      <div class='si-coll-tile-inner'>
-        {% if block.settings.category != blank %}
-          <p class='si-coll-tile-cat'>{{ block.settings.category }}</p>
-        {% endif %}
-        {% if tile_title != blank %}
-          <p class='si-coll-tile-name'>{{ tile_title }}</p>
-        {% endif %}
-        {% if block.settings.description != blank %}
-          <p class='si-coll-tile-desc'>{{ block.settings.description }}</p>
-        {% endif %}
-      </div>
+    <div class='si-coll-tile-inner'>
+      {% if block.settings.category != blank %}
+        <p class='si-coll-tile-cat'>{{ block.settings.category }}</p>
+      {% endif %}
+      {% if tile_title != blank %}
+        <p class='si-coll-tile-name'>{{ tile_title }}</p>
+      {% endif %}
+      {% if block.settings.description != blank %}
+        <p class='si-coll-tile-desc'>{{ block.settings.description }}</p>
+      {% endif %}
+    </div>
 
     {%- if has_products -%}
       </a>

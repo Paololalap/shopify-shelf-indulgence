@@ -53,12 +53,12 @@
   }
 </style>
 
-<section class="si-gallery-section">
-  <h2 class="si-gallery__heading">{{ section.settings.heading }}</h2>
-  <p class="si-gallery__subheading">{{ section.settings.subheading }}</p>
+<section class='si-gallery-section'>
+  <h2 class='si-gallery__heading'>{{ section.settings.heading }}</h2>
+  <p class='si-gallery__subheading'>{{ section.settings.subheading }}</p>
 
-  <div class="si-dome-wrapper" data-dome-gallery>
-    <script type="application/json">
+  <div class='si-dome-wrapper' data-dome-gallery>
+    <script type='application/json'>
       [
         {%- for block in section.blocks -%}
           { "src": "{{ block.settings.image_asset | asset_url }}", "alt": "{{ block.settings.alt | escape }}" }{%- unless forloop.last -%},{%- endunless -%}
@@ -68,7 +68,7 @@
   </div>
 </section>
 
-<script src="{{ 'dome-gallery.js' | asset_url }}" defer></script>
+<script src='{{ 'dome-gallery.js' | asset_url }}' defer></script>
 
 {% schema %}
 {

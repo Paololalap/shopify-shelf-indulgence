@@ -24,7 +24,7 @@
     margin-bottom: 50px;
     color: rgba(253, 249, 244, 0.8);
   }
-  
+
   /* Pinterest style masonry */
   .si-pinterest-grid {
     display: grid;
@@ -43,7 +43,7 @@
     border-radius: 4px;
     display: block;
   }
-  
+
   .si-gallery-paragraphs {
     text-align: left;
     max-width: 800px;
@@ -66,37 +66,90 @@
   }
 </style>
 
-<div class="si-event-gallery">
-  <div class="si-event-gallery-inner">
-    <h2 class="si-gallery-h2">Indie Bookworm Event</h2>
-    <div class="si-gallery-subtitle">"There is a particular kind of magic that only gathers where stories and souls meet."</div>
-    
-    <div class="si-pinterest-grid">
+<div class='si-event-gallery'>
+  <div class='si-event-gallery-inner'>
+    <h2 class='si-gallery-h2'>Indie Bookworm Event</h2>
+    <div class='si-gallery-subtitle'>
+      "There is a particular kind of magic that only gathers where stories and souls meet."
+    </div>
+
+    <div class='si-pinterest-grid'>
       <!-- Column 1 -->
-      <div class="si-pinterest-col">
-        <img src="{{ 'a-woman-in-blue.avif' | asset_url }}" class="si-pinterest-img" style="height: 384px;" alt="A woman in blue" loading="lazy">
+      <div class='si-pinterest-col'>
+        <img
+          src='{{ 'a-woman-in-blue.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 384px;'
+          alt='A woman in blue'
+          loading='lazy'
+        >
       </div>
       <!-- Column 2 -->
-      <div class="si-pinterest-col">
-        <img src="{{ 'a-dimly-lit-shop.avif' | asset_url }}" class="si-pinterest-img" style="height: 117px;" alt="A dimly lit shop" loading="lazy">
-        <img src="{{ 'a-vibrant-market-stall.avif' | asset_url }}" class="si-pinterest-img" style="height: 262px;" alt="A vibrant market stall" loading="lazy">
+      <div class='si-pinterest-col'>
+        <img
+          src='{{ 'a-dimly-lit-shop.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 117px;'
+          alt='A dimly lit shop'
+          loading='lazy'
+        >
+        <img
+          src='{{ 'a-vibrant-market-stall.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 262px;'
+          alt='A vibrant market stall'
+          loading='lazy'
+        >
       </div>
       <!-- Column 3 -->
-      <div class="si-pinterest-col">
-        <img src="{{ 'a-woman-browses.avif' | asset_url }}" class="si-pinterest-img" style="height: 190px;" alt="A woman browses" loading="lazy">
-        <img src="{{ 'a-bustling-indoor-craft.avif' | asset_url }}" class="si-pinterest-img" style="height: 189px;" alt="A bustling indoor craft" loading="lazy">
+      <div class='si-pinterest-col'>
+        <img
+          src='{{ 'a-woman-browses.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 190px;'
+          alt='A woman browses'
+          loading='lazy'
+        >
+        <img
+          src='{{ 'a-bustling-indoor-craft.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 189px;'
+          alt='A bustling indoor craft'
+          loading='lazy'
+        >
       </div>
       <!-- Column 4 -->
-      <div class="si-pinterest-col">
-        <img src="{{ 'a-pink-hoodie.avif' | asset_url }}" class="si-pinterest-img" style="height: 384px;" alt="A pink hoodie" loading="lazy">
+      <div class='si-pinterest-col'>
+        <img
+          src='{{ 'a-pink-hoodie.avif' | asset_url }}'
+          class='si-pinterest-img'
+          style='height: 384px;'
+          alt='A pink hoodie'
+          loading='lazy'
+        >
       </div>
     </div>
 
-    <div class="si-gallery-paragraphs">
-      <p class="si-gallery-p">Within stone walls and winding paths, beneath banners that whispered of dragons and distant realms, I felt it — that ancient, humming current that passes between author and reader. At The Book Booth – Indie Bookworm Event, Chapter 5: Fantasy at Kryal Castle, stories did not merely sit upon tables… they breathed.</p>
-      <p class="si-gallery-p">Readers arrived with open hearts and well-loved tote bags; authors stood behind their tales like quiet guardians of hidden worlds. We spoke not only of plots and pages, but of courage, grief, longing, hope, the very elements that bind us as one.</p>
-      <p class="si-gallery-p">There is something sacred about placing a book into waiting hands. Something timeless about signing your name beneath words once born in solitude. In that moment, the distance between creator and reader dissolves and we are simply keepers of the same flame.</p>
-      <p class="si-gallery-p">Among castle stone and fantasy air, I was reminded: stories are not owned. They are shared. And in sharing them, we belong.</p>
+    <div class='si-gallery-paragraphs'>
+      <p class='si-gallery-p'>
+        Within stone walls and winding paths, beneath banners that whispered of dragons and distant realms, I felt it —
+        that ancient, humming current that passes between author and reader. At The Book Booth – Indie Bookworm Event,
+        Chapter 5: Fantasy at Kryal Castle, stories did not merely sit upon tables… they breathed.
+      </p>
+      <p class='si-gallery-p'>
+        Readers arrived with open hearts and well-loved tote bags; authors stood behind their tales like quiet guardians
+        of hidden worlds. We spoke not only of plots and pages, but of courage, grief, longing, hope, the very elements
+        that bind us as one.
+      </p>
+      <p class='si-gallery-p'>
+        There is something sacred about placing a book into waiting hands. Something timeless about signing your name
+        beneath words once born in solitude. In that moment, the distance between creator and reader dissolves and we
+        are simply keepers of the same flame.
+      </p>
+      <p class='si-gallery-p'>
+        Among castle stone and fantasy air, I was reminded: stories are not owned. They are shared. And in sharing them,
+        we belong.
+      </p>
     </div>
   </div>
 </div>

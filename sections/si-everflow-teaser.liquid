@@ -1,386 +1,2449 @@
 <style>
-  .si-everflow-teaser {
-    background: #fdf8e2;
-    color: #610a1e;
-    font-family: var(--si-sans, 'Helvetica Neue', Arial, sans-serif);
+  /* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+  :root {
+    --void: #fcf9e2;
+    --deep: #fdf8e2;
+    --burg: #6b1a2a;
+    --burg-lt: #8b2e42;
+    --burg-glow: #a03050;
+    --cream: #610a1e;
+    --cream-dk: #3a0612;
+    --parch: #f5eed8;
+    --gold: #c4964e;
+    --gold-lt: #ddb870;
+    --gold-pale: #f2e4c0;
+    --muted: #7a6870;
+    --muted-lt: #a89098;
+
+    /* four elements */
+    --water: #2a6a9a;
+    --water-lt: #5aaad4;
+    --water-glow: rgba(42, 106, 154, 0.4);
+    --fire: #c44a18;
+    --fire-lt: #f07a30;
+    --fire-glow: rgba(196, 74, 24, 0.4);
+    --earth: #4a7a34;
+    --earth-lt: #7aaa5a;
+    --earth-glow: rgba(74, 122, 52, 0.38);
+    --air: #8aa0c0;
+    --air-lt: #c0d4ec;
+    --air-glow: rgba(138, 160, 192, 0.35);
+  }
+
+  /* grain overlay on whole page */
+
+  /* ═══════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════ */
+
+  /* ═══════════════════════════════════════
+   HERO — FULL-SCREEN CINEMATIC
+═══════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 100px 40px 80px;
+  }
+
+  /* layered atmospheric background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 100% 70% at 50% 0%, rgba(107, 26, 42, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 20% 100%, rgba(42, 106, 154, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(196, 74, 24, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 10% 40%, rgba(74, 122, 52, 0.14) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 30% at 90% 30%, rgba(138, 160, 192, 0.12) 0%, transparent 45%), transparent;
+  }
+
+  /* animated star-field particles */
+  .stars {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    background: var(--gold-pale);
+    border-radius: 50%;
+    animation: starPulse ease-in-out infinite;
+  }
+  @keyframes starPulse {
+    0%,
+    100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(1.6);
+    }
+  }
+
+  /* flowing element streams */
+  .element-stream {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* WATER stream — left side */
+  .stream-water {
+    left: -30px;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    opacity: 0.22;
+  }
+  /* FIRE stream — right side */
+  .stream-fire {
+    right: -20px;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    opacity: 0.18;
+  }
+  /* EARTH — bottom left scattered leaves */
+  .stream-earth {
+    left: 5%;
+    bottom: 0;
+    width: 160px;
+    height: 40%;
+    opacity: 0.16;
+  }
+  /* AIR — top right mist */
+  .stream-air {
+    right: 5%;
+    top: 0;
+    width: 180px;
+    height: 40%;
+    opacity: 0.14;
+  }
+
+  /* floating rune particles */
+  .rune-particle {
+    position: absolute;
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    pointer-events: none;
+    z-index: 3;
+    animation: runeFloat ease-in-out infinite;
+  }
+  @keyframes runeFloat {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateY(0) rotate(0deg);
+    }
+    20% {
+      opacity: 0.3;
+    }
+    80% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-120px) rotate(15deg);
+    }
+  }
+
+  /* animated water waves at very bottom of hero */
+  .hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  /* ─── hero text ─── */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-overline {
+    font-family: 'Cinzel', serif;
+    font-size: 9.92px;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    margin-top: 0 !important;
+    animation: fadeUp 0.9s ease both 0.05s;
+  }
+  .hero-overline::before,
+  .hero-overline::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .hero-overline::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .hero-saga {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.48px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(97, 10, 30, 0.65);
+    font-weight: 300;
+    margin-top: 0 !important;
+    animation: fadeUp 0.9s ease both 0.12s;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(64px, 10vw, 152px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 0.95;
+    margin-bottom: 0;
+    animation: fadeUp 1s ease both 0.22s;
+    position: relative;
+    margin-top: 0;
+  }
+
+  /* glowing text effect — each letter layers */
+  .hero-title .t-e {
+    color: #5aaad4;
+    text-shadow:
+      0 0 40px rgba(90, 170, 212, 0.6),
+      0 0 80px rgba(90, 170, 212, 0.2);
+  }
+  .hero-title .t-v {
+    color: #f07a30;
+    text-shadow:
+      0 0 40px rgba(240, 122, 48, 0.6),
+      0 0 80px rgba(240, 122, 48, 0.2);
+  }
+  .hero-title .t-r {
+    color: var(--burg);
+    text-shadow: none;
+  }
+  .hero-title .t-f {
+    color: #7aaa5a;
+    text-shadow:
+      0 0 40px rgba(122, 170, 90, 0.6),
+      0 0 80px rgba(122, 170, 90, 0.2);
+  }
+  .hero-title .t-l {
+    color: #c0d4ec;
+    text-shadow:
+      0 0 40px rgba(192, 212, 236, 0.6),
+      0 0 80px rgba(192, 212, 236, 0.2);
+  }
+  .hero-title .t-o {
+    color: var(--burg);
+    text-shadow: none;
+  }
+  .hero-title .t-w {
+    color: #5aaad4;
+    text-shadow: 0 0 35px rgba(90, 170, 212, 0.5);
+  }
+
+  .hero-tagline {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(16px, 2vw, 21.6px);
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.65);
+    max-width: 560px;
+    margin: 0 auto 18px;
+    line-height: 1.75;
+    margin-top: 0 !important;
+    animation: fadeUp 1s ease both 0.36s;
+  }
+  .hero-tagline span {
+    color: var(--gold);
+  }
+
+  .hero-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease both 0.46s;
+  }
+  .hero-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.65);
+    letter-spacing: 0.02em;
+    margin: 0 !important;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease both 0.58s;
+  }
+
+  /* element badges row */
+  .element-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 52px;
+    animation: fadeUp 1s ease both 0.72s;
+  }
+  .elem-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid;
+    padding: 7px 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 9.6px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .eb-water {
+    border-color: rgba(90, 170, 212, 0.4);
+    color: var(--water-lt);
+  }
+  .eb-water:hover {
+    background: rgba(42, 106, 154, 0.18);
+    border-color: var(--water-lt);
+  }
+  .eb-fire {
+    border-color: rgba(240, 122, 48, 0.4);
+    color: var(--fire-lt);
+  }
+  .eb-fire:hover {
+    background: rgba(196, 74, 24, 0.18);
+    border-color: var(--fire-lt);
+  }
+  .eb-earth {
+    border-color: rgba(122, 170, 90, 0.4);
+    color: var(--earth-lt);
+  }
+  .eb-earth:hover {
+    background: rgba(74, 122, 52, 0.18);
+    border-color: var(--earth-lt);
+  }
+  .eb-air {
+    border-color: rgba(192, 212, 236, 0.4);
+    color: var(--air-lt);
+  }
+  .eb-air:hover {
+    background: rgba(138, 160, 192, 0.18);
+    border-color: var(--air-lt);
+  }
+  .eb-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .eb-dot-water {
+    background: var(--water-lt);
+    box-shadow: 0 0 8px var(--water-lt);
+  }
+  .eb-dot-fire {
+    background: var(--fire-lt);
+    box-shadow: 0 0 8px var(--fire-lt);
+  }
+  .eb-dot-earth {
+    background: var(--earth-lt);
+    box-shadow: 0 0 8px var(--earth-lt);
+  }
+  .eb-dot-air {
+    background: var(--air-lt);
+    box-shadow: 0 0 8px var(--air-lt);
+  }
+
+  /* scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 1s ease both 1.2s;
+  }
+  .scroll-cue span {
+    font-size: 8.96px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(97, 10, 30, 0.5);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollDrop 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollDrop {
+    0% {
+      opacity: 0.2;
+      transform: scaleY(0.6) translateY(-10px);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scaleY(1) translateY(0);
+    }
+    100% {
+      opacity: 0.2;
+      transform: scaleY(0.6) translateY(10px);
+    }
+  }
+
+  /* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+  .btn-primary {
+    display: inline-block;
+    background: var(--burg);
+    color: var(--void);
+    padding: 15px 38px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.2px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.28s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--burg-lt);
+    transform: translateX(-100%);
+    transition: transform 0.32s ease;
+  }
+  .btn-primary:hover::before {
+    transform: translateX(0);
+  }
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-ghost-light {
+    display: inline-block;
+    background: var(--burg);
+    color: var(--void);
+    padding: 14px 38px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.2px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(250, 246, 237, 0.3);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-ghost-light:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--void);
+    padding: 15px 38px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.2px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .btn-gold:hover {
+    background: var(--gold-lt);
+  }
+
+  /* ═══════════════════════════════════════
+   ELEMENTS SECTION — 4 QUADRANTS
+═══════════════════════════════════════ */
+  .elements-section {
+    position: relative;
     padding: 0;
+    background: var(--deep);
     overflow: hidden;
   }
 
-  /* ── Top gradient accent ── */
-  .si-ef-accent {
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      var(--si-burg-deep, #610a1e),
-      var(--si-gold, #d4b896),
-      var(--si-burg-deep, #610a1e)
-    );
-    opacity: 0.45;
-  }
-
-  /* ── Main content wrapper ── */
-  .si-ef-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 5rem 2rem 6rem;
+  .elements-header {
     text-align: center;
+    padding: 100px 40px 70px;
+    position: relative;
+    z-index: 2;
   }
-
-  /* ── Title ── */
-  .si-ef-title {
-    font-family: var(--si-serif, 'Playfair Display', Georgia, serif);
-    font-size: 56px;
-    line-height: 1.12;
-    color: #610a1e;
-    text-transform: capitalize;
-    font-weight: 400;
-    margin: 0 0 1rem;
-    letter-spacing: 0.01em;
-  }
-
-  /* ── Teaser label ── */
-  .si-ef-label {
-    font-size: 30px;
+  .sec-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9.6px;
+    letter-spacing: 0.36em;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
-    color: rgba(97, 10, 30, 0.5);
-    margin: 0 0 2.5rem;
-    font-weight: 300;
-  }
-
-  /* ── Book cover image ── */
-  .si-ef-image-wrap {
-    margin: 0 auto 3rem;
-    max-width: 400px;
-  }
-  .si-ef-image-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 2px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  }
-
-  /* ── Divider ── */
-  .si-ef-divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--si-gold, #d4b896), transparent);
-    margin: 2.5rem auto;
-  }
-
-  /* ── Body text paragraphs ── */
-  .si-ef-body {
-    font-size: 16px;
-    line-height: 1.9;
-    color: #000;
-    margin: 0 0 1.5rem;
-    font-weight: 300;
-  }
-  .si-ef-body strong {
-    color: #000;
-    font-weight: 500;
-  }
-
-  /* ── Italic / emphasis blocks ── */
-  .si-ef-emphasis {
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.9;
-    color: #000;
-    margin: 1.5rem 0;
-    font-weight: 300;
-  }
-
-  /* ── Character profiles ── */
-  .si-ef-characters {
-    margin: 3rem 0;
-    text-align: left;
-    max-width: 620px;
-  }
-  .si-ef-character {
-    margin-bottom: 2rem;
-    padding-left: 1.2rem;
-    border-left: 2px solid rgba(212, 184, 150, 0.3);
-  }
-  .si-ef-character-name {
-    font-family: var(--si-serif, 'Playfair Display', Georgia, serif);
-    font-size: 22px;
-    color: #000;
-    margin: 0 0 0.4rem;
-    font-weight: 400;
-  }
-  .si-ef-character-name span {
-    color: #000;
-    font-style: italic;
-  }
-  /* Element colors removed as per request for all black text */
-  /* .si-ef-character-element-fire .si-ef-character-name span { color: #e8834a; }
-  .si-ef-character-element-earth .si-ef-character-name span { color: #8faa6b; }
-  .si-ef-character-element-air .si-ef-character-name span { color: #b0c4de; }
-  .si-ef-character-element-water .si-ef-character-name span { color: #5b9bd5; } */
-
-  .si-ef-character-element-fire {
-    border-left-color: rgba(232, 131, 74, 0.4);
-  }
-  .si-ef-character-element-earth {
-    border-left-color: rgba(143, 170, 107, 0.4);
-  }
-  .si-ef-character-element-air {
-    border-left-color: rgba(176, 196, 222, 0.4);
-  }
-  .si-ef-character-element-water {
-    border-left-color: rgba(91, 155, 213, 0.4);
-  }
-
-  .si-ef-character p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #000;
-    margin: 0;
-    font-weight: 300;
-  }
-
-  /* ── Closing ── */
-  .si-ef-closing {
-    margin-top: 3rem;
-    text-align: left;
-    max-width: 620px;
-  }
-  .si-ef-closing p {
-    font-size: 16px;
-    line-height: 1.9;
-    color: #000;
-    margin: 0 0 0.5rem;
-    font-weight: 300;
-  }
-  .si-ef-closing .si-ef-final {
-    font-family: var(--si-serif, 'Playfair Display', Georgia, serif);
-    font-size: 22px;
-    font-style: italic;
-    color: #000;
-    margin-top: 1.5rem;
-    letter-spacing: 0.02em;
-  }
-
-  /* ── Responsive ── */
-  @media screen and (max-width: 749px) {
-    .si-ef-title {
-      font-size: 36px;
-    }
-    .si-ef-label {
-      font-size: 22px;
-    }
-    .si-ef-content {
-      padding: 3rem 1.5rem 4rem;
-    }
-    .si-ef-image-wrap {
-      max-width: 300px;
-    }
-  }
-
-  /* ── New Synopsis Row Layout ── */
-  .si-ef-synopsis-row {
+    color: var(--gold);
     display: flex;
     align-items: center;
-    gap: 3rem;
-    margin: 4rem 0;
-    text-align: left;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
   }
-  .si-ef-synopsis-text {
-    flex: 1;
+  .sec-eyebrow::before,
+  .sec-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
   }
-  .si-ef-synopsis-image {
-    flex: 0 0 320px;
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(35.2px, 4.5vw, 57.6px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--burg);
+    margin: 0;
   }
-  .si-ef-synopsis-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+  .sec-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .sec-sub {
+    font-family: 'EB Garamond', serif;
+    font-size: 16.8px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.7);
+    margin-top: 0;
+    line-height: 1.7;
   }
 
-  @media screen and (max-width: 850px) {
-    .si-ef-synopsis-row {
-      flex-direction: column;
-      text-align: center;
-      gap: 2rem;
+  /* 2×2 element grid */
+  .element-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .elem-panel {
+    position: relative;
+    padding: 70px 60px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    cursor: pointer;
+    transition: min-height 0.3s;
+  }
+
+  /* per-element background atmospheres */
+  .ep-water {
+    background: linear-gradient(145deg, #eaf4f9 0%, #d8ebf5 50%, #c4e1f0 100%);
+  }
+  .ep-fire {
+    background: linear-gradient(145deg, #fbeee8 0%, #f7dfd4 50%, #f3d0bc 100%);
+  }
+  .ep-earth {
+    background: linear-gradient(145deg, #edf4eb 0%, #e0ebd9 50%, #d3e2c8 100%);
+  }
+  .ep-air {
+    background: linear-gradient(145deg, #eef1f6 0%, #e1e7f0 50%, #d4dde8 100%);
+  }
+
+  /* animated glow behind each panel */
+  .ep-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  .elem-panel:hover .ep-glow {
+    opacity: 0.65;
+  }
+
+  .ep-water .ep-glow {
+    background: radial-gradient(ellipse at 40% 60%, rgba(42, 106, 154, 0.7) 0%, transparent 70%);
+  }
+  .ep-fire .ep-glow {
+    background: radial-gradient(ellipse at 60% 60%, rgba(196, 74, 24, 0.7) 0%, transparent 70%);
+  }
+  .ep-earth .ep-glow {
+    background: radial-gradient(ellipse at 40% 60%, rgba(74, 122, 52, 0.7) 0%, transparent 70%);
+  }
+  .ep-air .ep-glow {
+    background: radial-gradient(ellipse at 60% 40%, rgba(138, 160, 192, 0.6) 0%, transparent 70%);
+  }
+
+  /* large element SVG icon top of panel */
+  .elem-icon-wrap {
+    position: absolute;
+    top: 36px;
+    right: 40px;
+    opacity: 0.18;
+    transition:
+      opacity 0.4s,
+      transform 0.4s;
+  }
+  .elem-panel:hover .elem-icon-wrap {
+    opacity: 0.38;
+    transform: scale(1.06) rotate(3deg);
+  }
+
+  /* small animated element particles */
+  .elem-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* content */
+  .elem-content {
+    position: relative;
+    z-index: 5;
+  }
+  .elem-rune {
+    font-family: 'Cinzel', serif;
+    font-size: 9.28px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ep-water .elem-rune {
+    color: var(--water-lt);
+  }
+  .ep-fire .elem-rune {
+    color: var(--fire-lt);
+  }
+  .ep-earth .elem-rune {
+    color: var(--earth-lt);
+  }
+  .ep-air .elem-rune {
+    color: var(--air-lt);
+  }
+
+  .elem-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(25.6px, 3vw, 38.4px);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    margin-top: 0 !important;
+    transition: letter-spacing 0.3s;
+  }
+  .elem-panel:hover .elem-name {
+    letter-spacing: 0.12em;
+  }
+  .ep-water .elem-name {
+    color: #7ac8e8;
+  }
+  .ep-fire .elem-name {
+    color: #f09060;
+  }
+  .ep-earth .elem-name {
+    color: #9acd78;
+  }
+  .ep-air .elem-name {
+    color: #c0d8f0;
+  }
+
+  .elem-char {
+    font-family: 'EB Garamond', serif;
+    font-size: 14.4px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.65);
+    margin-bottom: 14px;
+    margin-top: 0 !important;
+  }
+  .elem-desc {
+    font-size: 13.76px;
+    color: rgba(97, 10, 30, 0.7);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 340px;
+    transition: color 0.3s;
+  }
+  .elem-panel:hover .elem-desc {
+    color: rgba(97, 10, 30, 0.9);
+  }
+
+  /* line between panels — glowing spine */
+  .element-grid::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.25;
+    z-index: 10;
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+  .element-grid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.25;
+    z-index: 10;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  /* gold circle at grid centre intersection */
+  .elem-center-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: none;
+  }
+  .elem-center-mark::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(196, 150, 78, 0.4);
+    border-radius: 50%;
+  }
+  .elem-center-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow:
+      0 0 12px var(--gold),
+      0 0 24px rgba(196, 150, 78, 0.5);
+    animation: centerPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes centerPulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 12px var(--gold);
     }
-    .si-ef-synopsis-image {
-      flex: none;
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
+    50% {
+      transform: scale(1.3);
+      box-shadow:
+        0 0 20px var(--gold),
+        0 0 40px rgba(196, 150, 78, 0.4);
     }
+  }
+
+  /* ═══════════════════════════════════════
+   SYNOPSIS / BOOK REVEAL SECTION
+═══════════════════════════════════════ */
+  .synopsis-section {
+    padding: 120px 80px;
+    background: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 90px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* atmospheric background */
+  .synopsis-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(107, 26, 42, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 15% 30%, rgba(42, 106, 154, 0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 40% at 10% 80%, rgba(74, 122, 52, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* 3D rotating book */
+  .book-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .book-3d {
+    width: 230px;
+    transform: perspective(1200px) rotateY(-22deg) rotateX(2deg);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    position: relative;
+  }
+  .book-3d:hover {
+    transform: perspective(1200px) rotateY(-10deg) rotateX(1deg) translateY(-8px);
+  }
+  .book-face {
+    width: 230px;
+    height: 344px;
+    border-radius: 2px 5px 5px 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      8px 12px 40px rgba(0, 0, 0, 0.7),
+      -6px 0 0 rgba(0, 0, 0, 0.4),
+      inset -2px 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* book cover — deep ocean + element swirls */
+  .book-cover-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #1a2a40 0%, #1d3350 40%, #1a2838 100%);
+  }
+  .book-cover-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 18px;
+  }
+
+  /* spine shadow on left edge of book */
+  .book-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    background: linear-gradient(to right, #040c18, #0d1e38);
+    z-index: 2;
+  }
+
+  /* top & bottom foil bands */
+  .book-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--gold-lt), var(--gold));
+    opacity: 0.7;
+  }
+  .book-band-top {
+    top: 20px;
+  }
+  .book-band-bot {
+    bottom: 20px;
+  }
+
+  /* glow aura around book */
+  .book-glow {
+    position: absolute;
+    inset: -30px;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(42, 106, 154, 0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 30% 80%, rgba(196, 74, 24, 0.14) 0%, transparent 55%);
+    z-index: -1;
+    pointer-events: none;
+    animation: bookAura 4s ease-in-out infinite;
+  }
+  @keyframes bookAura {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* synopsis text side */
+  .syn-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9.28px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .syn-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .syn-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(35.2px, 4vw, 51.2px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.08;
+    margin-bottom: 8px;
+    color: var(--burg);
+    margin-top: 0 !important;
+  }
+  .syn-series {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17.6px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.65);
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+    margin-top: 0 !important;
+  }
+  .syn-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 36px;
+    border-left: 2px solid rgba(196, 150, 78, 0.3);
+    padding-left: 24px;
+  }
+  .syn-line {
+    font-family: 'EB Garamond', serif;
+    font-size: 17.92px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.8);
+    line-height: 1.75;
+    padding: 3px 0;
+    margin-top: 0 !important;
+  }
+  .syn-line b {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 500;
+  }
+  .syn-divider {
+    height: 1px;
+    width: 40px;
+    background: rgba(196, 150, 78, 0.3);
+    margin: 10px 0;
+  }
+  .syn-body {
+    font-size: 14.88px;
+    color: rgba(97, 10, 30, 0.7);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 36px;
+    margin-top: 0 !important;
+  }
+  .syn-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .syn-tag {
+    border: 1px solid rgba(196, 150, 78, 0.3);
+    color: var(--gold);
+    font-size: 9.6px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+  }
+  .syn-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ═══════════════════════════════════════
+   CHARACTERS / STUDENTS SECTION
+═══════════════════════════════════════ */
+  .characters-section {
+    padding: 110px 80px;
+    background: var(--void);
+    position: relative;
+    overflow: hidden;
+  }
+  .characters-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(107, 26, 42, 0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .char-header {
+    text-align: center;
+    margin-bottom: 72px;
+    position: relative;
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+
+  .char-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .char-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .char-portrait {
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* per-character atmospheric portrait */
+  .cp-water-student {
+    background: linear-gradient(165deg, #d8ebf5 0%, #c4e1f0 40%, #b0d7eb 100%);
+  }
+  .cp-fire-student {
+    background: linear-gradient(165deg, #f7dfd4 0%, #f3d0bc 40%, #eebd9f 100%);
+  }
+  .cp-earth-student {
+    background: linear-gradient(165deg, #e0ebd9 0%, #d3e2c8 40%, #c5d8b5 100%);
+  }
+  .cp-air-student {
+    background: linear-gradient(165deg, #e1e7f0 0%, #d4dde8 40%, #c7d3df 100%);
+  }
+
+  /* glowing element aura inside portrait */
+  .char-aura {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    transition: opacity 0.4s;
+  }
+  .char-card:hover .char-aura {
+    opacity: 0.85;
+  }
+  .ca-water {
+    background: radial-gradient(ellipse 70% 80% at 50% 70%, rgba(42, 106, 154, 0.7) 0%, transparent 65%);
+  }
+  .ca-fire {
+    background: radial-gradient(ellipse 70% 80% at 50% 70%, rgba(196, 74, 24, 0.7) 0%, transparent 65%);
+  }
+  .ca-earth {
+    background: radial-gradient(ellipse 70% 80% at 50% 70%, rgba(74, 122, 52, 0.7) 0%, transparent 65%);
+  }
+  .ca-air {
+    background: radial-gradient(ellipse 70% 80% at 50% 70%, rgba(138, 160, 192, 0.6) 0%, transparent 65%);
+  }
+
+  /* silhouette figure */
+  .char-figure {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0;
+    z-index: 2;
+  }
+  .char-figure svg {
+    width: 65%;
+  }
+
+  /* floating element glyph in portrait */
+  .char-glyph {
+    position: absolute;
+    top: 20px;
+    right: 18px;
+    font-size: 35.2px;
+    opacity: 0.18;
+    z-index: 3;
+    transition:
+      opacity 0.4s,
+      transform 0.4s;
+    animation: glyphSway ease-in-out infinite;
+  }
+  .char-card:hover .char-glyph {
+    opacity: 0.42;
+    transform: scale(1.15);
+  }
+  @keyframes glyphSway {
+    0%,
+    100% {
+      transform: rotate(-3deg) translateY(0);
+    }
+    50% {
+      transform: rotate(3deg) translateY(-6px);
+    }
+  }
+
+  /* overlay with name at bottom */
+  .char-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(252, 249, 226, 0.95) 0%, rgba(252, 249, 226, 0) 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px 20px;
+    z-index: 4;
+  }
+  .char-element-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 8.64px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ct-water {
+    color: var(--water-lt);
+  }
+  .ct-fire {
+    color: var(--fire-lt);
+  }
+  .ct-earth {
+    color: var(--earth-lt);
+  }
+  .ct-air {
+    color: var(--air-lt);
+  }
+
+  .char-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21.6px;
+    font-weight: 500;
+    color: var(--burg);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+  .char-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 13.12px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.65);
+  }
+
+  /* hover expand info */
+  .char-expand {
+    background: rgba(252, 249, 226, 0.98);
+    border-top: 1px solid rgba(196, 150, 78, 0.15);
+    padding: 18px 20px;
+    transform: translateY(100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 5;
+  }
+  .char-card:hover .char-expand {
+    transform: translateY(0);
+  }
+  .char-expand p {
+    font-size: 12.8px;
+    color: rgba(97, 10, 30, 0.7);
+    line-height: 1.65;
+    font-weight: 300;
+    font-style: italic;
+    font-family: 'EB Garamond', serif;
+  }
+
+  /* ═══════════════════════════════════════
+   TEASER / QUOTE SECTION
+═══════════════════════════════════════ */
+  .teaser-section {
+    padding: 120px 80px;
+    background: transparent;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* giant watermark rune */
+  .teaser-section::before {
+    content: '⚖';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 640px;
+    line-height: 1;
+    color: rgba(196, 150, 78, 0.025);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .teaser-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .teaser-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9.6px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .teaser-eyebrow::before,
+  .teaser-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .teaser-eyebrow::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .teaser-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(25.6px, 3.5vw, 44.8px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(97, 10, 30, 1);
+    max-width: 800px;
+    margin: 0 auto 50px;
+    position: relative;
+  }
+  .teaser-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 96px;
+    line-height: 1;
+    color: rgba(196, 150, 78, 0.15);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .teaser-quote .highlight-water {
+    color: var(--water-lt);
+  }
+  .teaser-quote .highlight-fire {
+    color: var(--fire-lt);
+  }
+  .teaser-quote .highlight-earth {
+    color: var(--earth-lt);
+  }
+  .teaser-quote .highlight-air {
+    color: var(--air-lt);
+  }
+
+  /* 4 element icon row */
+  .elem-icon-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: 50px 0;
+  }
+  .ei-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+  }
+  .ei-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .ei-circle::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px solid;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  .ei-item:hover .ei-circle::before {
+    opacity: 0.9;
+  }
+
+  .ei-water {
+    border-color: rgba(90, 170, 212, 0.4);
+  }
+  .ei-water::before {
+    border-color: var(--water-lt) !important;
+  }
+  .ei-water:hover {
+    background: rgba(42, 106, 154, 0.15);
+    border-color: var(--water-lt);
+    box-shadow: 0 0 24px rgba(42, 106, 154, 0.3);
+  }
+  .ei-fire {
+    border-color: rgba(240, 122, 48, 0.4);
+  }
+  .ei-fire::before {
+    border-color: var(--fire-lt) !important;
+  }
+  .ei-fire:hover {
+    background: rgba(196, 74, 24, 0.15);
+    border-color: var(--fire-lt);
+    box-shadow: 0 0 24px rgba(196, 74, 24, 0.3);
+  }
+  .ei-earth {
+    border-color: rgba(122, 170, 90, 0.4);
+  }
+  .ei-earth::before {
+    border-color: var(--earth-lt) !important;
+  }
+  .ei-earth:hover {
+    background: rgba(74, 122, 52, 0.15);
+    border-color: var(--earth-lt);
+    box-shadow: 0 0 24px rgba(74, 122, 52, 0.3);
+  }
+  .ei-air {
+    border-color: rgba(192, 212, 236, 0.4);
+  }
+  .ei-air::before {
+    border-color: var(--air-lt) !important;
+  }
+  .ei-air:hover {
+    background: rgba(138, 160, 192, 0.15);
+    border-color: var(--air-lt);
+    box-shadow: 0 0 24px rgba(138, 160, 192, 0.25);
+  }
+
+  .ei-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8.96px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(97, 10, 30, 0.6);
+  }
+
+  /* ═══════════════════════════════════════
+   ABOUT JESSIE STRIP
+═══════════════════════════════════════ */
+  .author-section {
+    padding: 110px 90px;
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .author-section::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    background: radial-gradient(ellipse at 80% 50%, rgba(107, 26, 42, 0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .author-frame {
+    position: relative;
+  }
+  .author-frame::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: -18px;
+    right: 18px;
+    bottom: 18px;
+    border: 1px solid rgba(196, 150, 78, 0.25);
+  }
+  .author-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #1a0820, #0d0415);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .author-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(107, 26, 42, 0.05) 0%, transparent 65%);
+  }
+
+  .auth-tag {
+    display: inline-block;
+    border: 1px solid rgba(196, 150, 78, 0.3);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 9.28px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 22px;
+  }
+  .auth-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--burg);
+    margin-bottom: 8px;
+    margin-top: 0 !important;
+  }
+  .auth-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .auth-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.6);
+    margin-bottom: 28px;
+    margin-top: 0 !important;
+  }
+  .auth-quote {
+    border-left: 2px solid rgba(196, 150, 78, 0.35);
+    padding-left: 22px;
+    margin-bottom: 26px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17.28px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.7);
+    line-height: 1.7;
+    margin-top: 0 !important;
+  }
+  .auth-body {
+    font-size: 14.4px;
+    color: rgba(97, 10, 30, 0.65);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 32px;
+    margin-top: 0 !important;
+  }
+
+  /* ═══════════════════════════════════════
+   NEWSLETTER
+═══════════════════════════════════════ */
+  .nl-section {
+    padding: 90px;
+    background: var(--burg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .nl-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 33px,
+      rgba(255, 255, 255, 0.04) 33px,
+      rgba(255, 255, 255, 0.04) 34px
+    );
+    pointer-events: none;
+  }
+  .nl-section::after {
+    content: '⚖';
+    position: absolute;
+    font-size: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .nl-over {
+    color: rgba(252, 249, 226, 0.8) !important;
+    font-family: 'Cinzel', serif;
+    font-size: 9.6px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .nl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28.8px, 3.5vw, 48px);
+    font-weight: 400;
+    color: var(--void) !important;
+    margin-bottom: 14px;
+    margin-top: 0 !important;
+    position: relative;
+  }
+  .nl-title em {
+    font-style: italic;
+  }
+  .nl-desc {
+    color: rgba(250, 246, 237, 0.6);
+    font-size: 14.72px;
+    font-weight: 300;
+    max-width: 440px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+    position: relative;
+  }
+  .nl-form {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .nl-input {
+    flex: 1;
+    padding: 15px 20px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13.44px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--void);
+    outline: none;
+  }
+  .nl-input::placeholder {
+    color: rgba(250, 246, 237, 0.3);
+  }
+  .nl-btn {
+    padding: 15px 26px;
+    background: var(--gold);
+    color: var(--void);
+    font-family: 'Jost', sans-serif;
+    font-size: 10.72px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nl-btn:hover {
+    background: var(--gold-lt);
+  }
+
+  /* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes waterFlow {
+    0%,
+    100% {
+      d: path('M0,50 Q50,20 100,50 Q150,80 200,50 L200,100 L0,100 Z');
+    }
+    50% {
+      d: path('M0,50 Q50,80 100,50 Q150,20 200,50 L200,100 L0,100 Z');
+    }
+  }
+  @keyframes fireFlicker {
+    0%,
+    100% {
+      transform: scaleY(1) scaleX(1);
+      opacity: 0.8;
+    }
+    33% {
+      transform: scaleY(1.1) scaleX(0.95);
+      opacity: 1;
+    }
+    66% {
+      transform: scaleY(0.92) scaleX(1.04);
+      opacity: 0.7;
+    }
+  }
+  @keyframes leafSway {
+    0%,
+    100% {
+      transform: rotate(-5deg) translateY(0);
+    }
+    50% {
+      transform: rotate(5deg) translateY(-10px);
+    }
+  }
+  @keyframes mistDrift {
+    0% {
+      transform: translateX(0) translateY(0);
+      opacity: 0.15;
+    }
+    50% {
+      transform: translateX(20px) translateY(-15px);
+      opacity: 0.25;
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+      opacity: 0.15;
+    }
+  }
+
+  /* scroll-reveal helper */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .si-everflow-page-wrapper,
+  .si-everflow-page-wrapper *,
+  .si-everflow-page-wrapper *::before,
+  .si-everflow-page-wrapper *::after {
+    box-sizing: border-box;
+  }
+  .si-everflow-page-wrapper {
+    font-family: 'Jost', sans-serif;
+    background: var(--void);
+    color: var(--cream);
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 0px;
   }
 </style>
 
-<div class='si-everflow-teaser'>
-  <div class='si-ef-accent'></div>
-  <div class='si-ef-content'>
-    <!-- Title -->
-    <h1 class='si-ef-title'>{{ section.settings.title | default: 'The Balance-Born Saga - Year 1' }}</h1>
+<div class='si-everflow-page-wrapper'>
+  <section class='hero'>
+    <div class='hero-bg'></div>
 
-    <!-- Teaser label -->
-    <p class='si-ef-label'>{{ section.settings.label | default: 'TEASER' }}</p>
+    <!-- starfield -->
+    <div class='stars' id='stars'></div>
 
-    <!-- Book cover image -->
-    <div class='si-ef-image-wrap'>
-      {% if section.settings.image != blank %}
-        <img
-          src='{{ section.settings.image | image_url: width: 800 }}'
-          alt='{{ section.settings.title | strip_html | escape }}'
-        >
-      {% elsif section.settings.image_asset != blank %}
-        <img
-          src='{{ section.settings.image_asset | asset_url }}'
-          alt='{{ section.settings.title | strip_html | escape }}'
-        >
-      {% endif %}
+    <!-- element streams (SVG animations) -->
+    <!-- WATER — flowing waves left side -->
+    <div class='element-stream stream-water'>
+      <svg viewBox='0 0 220 800' preserveAspectRatio='none' style='width:100%;height:100%;'>
+        <defs>
+          <linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#2a6a9a" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#5aaad4" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#2a6a9a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M110,0 Q80,100 110,200 Q140,300 110,400 Q80,500 110,600 Q140,700 110,800" stroke="url(#wg)" stroke-width="1.5" fill="none">
+          <animate attributeName="d" dur="6s" repeatCount="indefinite"
+            values="M110,0 Q80,100 110,200 Q140,300 110,400 Q80,500 110,600 Q140,700 110,800;
+                    M110,0 Q140,100 110,200 Q80,300 110,400 Q140,500 110,600 Q80,700 110,800;
+                    M110,0 Q80,100 110,200 Q140,300 110,400 Q80,500 110,600 Q140,700 110,800"/>
+        </path>
+        <path d="M80,0 Q50,150 80,300 Q110,450 80,600 Q50,750 80,800" stroke="url(#wg)" stroke-width="0.8" fill="none" opacity="0.5">
+          <animate attributeName="d" dur="9s" repeatCount="indefinite"
+            values="M80,0 Q50,150 80,300 Q110,450 80,600 Q50,750 80,800;
+                    M80,0 Q110,150 80,300 Q50,450 80,600 Q110,750 80,800;
+                    M80,0 Q50,150 80,300 Q110,450 80,600 Q50,750 80,800"/>
+        </path>
+      </svg>
     </div>
 
-    <div class='si-ef-divider'></div>
+    <!-- FIRE — flickering right side -->
+    <div class='element-stream stream-fire'>
+      <svg viewBox='0 0 200 800' preserveAspectRatio='none' style='width:100%;height:100%;'>
+        <defs>
+          <linearGradient id="fg" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#c44a18" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#f07a30" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#ffd060" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="700" rx="40" ry="80" fill="url(#fg)">
+          <animate attributeName="rx" dur="1.8s" repeatCount="indefinite" values="40;36;42;38;40"/>
+          <animate attributeName="cy" dur="1.8s" repeatCount="indefinite" values="700;680;700;720;700"/>
+        </ellipse>
+        <ellipse cx="100" cy="550" rx="28" ry="60" fill="url(#fg)" opacity="0.6">
+          <animate attributeName="rx" dur="2.3s" repeatCount="indefinite" values="28;24;30;26;28" begin="-0.5s"/>
+          <animate attributeName="cy" dur="2.3s" repeatCount="indefinite" values="550;535;550;565;550" begin="-0.5s"/>
+        </ellipse>
+        <ellipse cx="100" cy="400" rx="20" ry="45" fill="url(#fg)" opacity="0.4">
+          <animate attributeName="rx" dur="1.6s" repeatCount="indefinite" values="20;16;22;18;20" begin="-1s"/>
+        </ellipse>
+      </svg>
+    </div>
 
-    <!-- Opening hook -->
-    <p class='si-ef-emphasis'>
-      Four students.<br>
-      Four elements.<br>
-      One fragile balance.<br>
-      Everflow was meant to train them.<br>
-      Instead, it might destroy them.<br>
-      Because when the elements awaken…<br>
-      the truth rises with them.
+    <!-- rune / particle floaters (JS-spawned) -->
+    <div id='runes'></div>
+
+    <!-- hero wave at bottom -->
+    <div class='hero-wave'>
+      <svg
+        viewBox='0 0 1440 80'
+        preserveAspectRatio='none'
+        style='width:100%;height:80px;'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path opacity="0.15" d="M0,40 Q180,10 360,40 Q540,70 720,40 Q900,10 1080,40 Q1260,70 1440,40 L1440,80 L0,80 Z" fill="#5aaad4"/>
+        <path opacity="0.08" d="M0,50 Q240,20 480,50 Q720,80 960,50 Q1200,20 1440,50 L1440,80 L0,80 Z" fill="#c44a18"/>
+      </svg>
+    </div>
+
+    <!-- HERO TEXT -->
+    <div class='hero-content'>
+      <div class='hero-overline'>The Balance-Born Saga</div>
+      <p class='hero-saga'>Coming Soon · Year One</p>
+
+      <h1 class='hero-title'>
+        <span class='t-e'>E</span><span class='t-v'>v</span><span class='t-r'>e</span><span class='t-r'>r</span
+        ><span class='t-f'>f</span><span class='t-l'>l</span><span class='t-o'>o</span><span class='t-w'>w</span>
+      </h1>
+
+      <p class='hero-tagline'>Four students. <span>Four elements.</span> One fragile balance.</p>
+
+      <div class='hero-lines'>
+        <p class='hero-line'>Everflow was meant to train them.</p>
+        <p class='hero-line'>Instead, it might destroy them.</p>
+        <p class='hero-line'>Because when the elements awaken… the truth rises with them.</p>
+      </div>
+
+      <div class='hero-ctas'>
+        <a href='#synopsis' class='btn-gold'>Read the Teaser</a>
+        <a href='#' class='btn-ghost-light'>Notify Me on Release</a>
+      </div>
+
+      <!-- element badges -->
+      <div class='element-badges'>
+        <div class='elem-badge eb-water'>
+          <div class='eb-dot eb-dot-water'></div>
+          Water
+        </div>
+        <div class='elem-badge eb-fire'>
+          <div class='eb-dot eb-dot-fire'></div>
+          Fire
+        </div>
+        <div class='elem-badge eb-earth'>
+          <div class='eb-dot eb-dot-earth'></div>
+          Earth
+        </div>
+        <div class='elem-badge eb-air'>
+          <div class='eb-dot eb-dot-air'></div>
+          Air
+        </div>
+      </div>
+    </div>
+
+    <div class='scroll-cue'>
+      <div class='scroll-line'></div>
+    </div>
+  </section>
+
+  <section class='elements-section'>
+    <div class='elements-header reveal'>
+      <div class='sec-eyebrow'>The Four Pillars</div>
+      <h2 class='sec-title'>The <em>Elements</em> of Everflow</h2>
+      <p class='sec-sub'>
+        Each student bound to a force older than memory. Each carrying a secret the academy never warned them about.
+      </p>
+    </div>
+
+    <div class='element-grid'>
+      <!-- WATER -->
+      <div class='elem-panel ep-water reveal'>
+        <div class='ep-glow'></div>
+
+        <!-- large background icon -->
+        <div class='elem-icon-wrap'>
+          <svg width='160' height='160' viewBox='0 0 160 160' fill='none'>
+            <circle cx="80" cy="80" r="75" stroke="#2a6a9a" stroke-width="0.5" opacity="0.5"/>
+            <circle cx="80" cy="80" r="55" stroke="#5aaad4" stroke-width="0.4" opacity="0.3"/>
+            <path d="M80 20 Q100 50 80 80 Q60 110 80 140" stroke="#5aaad4" stroke-width="1.5" fill="none">
+              <animate attributeName="d" dur="5s" repeatCount="indefinite"
+                values="M80 20 Q100 50 80 80 Q60 110 80 140;M80 20 Q60 50 80 80 Q100 110 80 140;M80 20 Q100 50 80 80 Q60 110 80 140"/>
+            </path>
+            <path d="M20 80 Q50 60 80 80 Q110 100 140 80" stroke="#5aaad4" stroke-width="1" fill="none" opacity="0.6">
+              <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                values="M20 80 Q50 60 80 80 Q110 100 140 80;M20 80 Q50 100 80 80 Q110 60 140 80;M20 80 Q50 60 80 80 Q110 100 140 80"/>
+            </path>
+            <!-- droplet -->
+            <path d="M80 40 Q90 60 80 72 Q70 60 80 40 Z" fill="#5aaad4" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- animated water particles -->
+        <div class='elem-particles'>
+          <svg width='100%' height='100%' style='position:absolute;inset:0'>
+            <circle cx="30%" cy="20%" r="2" fill="#5aaad4" opacity="0.2">
+              <animate attributeName="cy" dur="4s" repeatCount="indefinite" values="20%;15%;20%;25%;20%"/>
+              <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0.2;0.5;0.2;0.4;0.2"/>
+            </circle>
+            <circle cx="70%" cy="35%" r="1.5" fill="#5aaad4" opacity="0.15">
+              <animate attributeName="cy" dur="6s" repeatCount="indefinite" values="35%;28%;35%;42%;35%" begin="-2s"/>
+            </circle>
+            <circle cx="20%" cy="60%" r="1" fill="#2a6a9a" opacity="0.25">
+              <animate attributeName="cy" dur="5s" repeatCount="indefinite" values="60%;55%;60%;65%;60%" begin="-1s"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class='elem-content'>
+          <div class='elem-rune'>
+            <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
+              <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="0.8"/><path d="M6 2 Q8 5 6 8 Q4 5 6 2" fill="currentColor" opacity="0.6"/>
+            </svg>
+            Element I
+          </div>
+          <h3 class='elem-name'>Water</h3>
+          <p class='elem-char'>"To flow is not to be weak — it is to be inevitable."</p>
+          <p class='elem-desc'>
+            The Water student learns to read the tides of emotion — their own and others'. Fluid, adaptive, dangerously
+            perceptive. The element that erodes mountains without ever raising its voice.
+          </p>
+        </div>
+      </div>
+
+      <!-- FIRE -->
+      <div class='elem-panel ep-fire reveal'>
+        <div class='ep-glow'></div>
+
+        <div class='elem-icon-wrap'>
+          <svg width='160' height='160' viewBox='0 0 160 160' fill='none'>
+            <circle cx="80" cy="80" r="75" stroke="#c44a18" stroke-width="0.5" opacity="0.5"/>
+            <path d="M80 130 Q60 110 65 90 Q55 95 60 75 Q70 85 68 65 Q78 80 75 60 Q88 75 82 55 Q96 70 92 90 Q100 82 98 100 Q105 110 80 130 Z" fill="#c44a18" opacity="0.3">
+              <animate attributeName="d" dur="2.2s" repeatCount="indefinite"
+                values="M80 130 Q60 110 65 90 Q55 95 60 75 Q70 85 68 65 Q78 80 75 60 Q88 75 82 55 Q96 70 92 90 Q100 82 98 100 Q105 110 80 130 Z;
+                        M80 130 Q58 108 64 88 Q52 93 58 73 Q68 83 66 63 Q76 78 73 58 Q87 73 81 53 Q97 68 93 88 Q102 80 99 98 Q106 108 80 130 Z;
+                        M80 130 Q60 110 65 90 Q55 95 60 75 Q70 85 68 65 Q78 80 75 60 Q88 75 82 55 Q96 70 92 90 Q100 82 98 100 Q105 110 80 130 Z"/>
+            </path>
+            <circle cx="80" cy="80" r="55" stroke="#f07a30" stroke-width="0.4" opacity="0.25"/>
+          </svg>
+        </div>
+
+        <div class='elem-particles'>
+          <svg width='100%' height='100%' style='position:absolute;inset:0'>
+            <circle cx="50%" cy="30%" r="2" fill="#f07a30" opacity="0.18">
+              <animate attributeName="cy" dur="2.5s" repeatCount="indefinite" values="30%;22%;30%" />
+              <animate attributeName="opacity" dur="2.5s" repeatCount="indefinite" values="0.18;0.5;0.18"/>
+            </circle>
+            <circle cx="65%" cy="45%" r="1.5" fill="#ffd060" opacity="0.12">
+              <animate attributeName="cy" dur="3s" repeatCount="indefinite" values="45%;35%;45%" begin="-1s"/>
+            </circle>
+            <circle cx="35%" cy="50%" r="1" fill="#c44a18" opacity="0.22">
+              <animate attributeName="cy" dur="2s" repeatCount="indefinite" values="50%;42%;50%" begin="-0.5s"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class='elem-content'>
+          <div class='elem-rune'>
+            <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
+              <polygon points="6,1 11,11 1,11" stroke="currentColor" stroke-width="0.8" fill="none"/>
+            </svg>
+            Element II
+          </div>
+          <h3 class='elem-name'>Fire</h3>
+          <p class='elem-char'>"Destruction and creation share the same breath."</p>
+          <p class='elem-desc'>
+            The Fire student burns with passion that cannot be contained — and sometimes, cannot be controlled. Creation
+            and ruin are two sides of the same flame. Everflow must teach them which to wield.
+          </p>
+        </div>
+      </div>
+
+      <!-- EARTH -->
+      <div class='elem-panel ep-earth reveal'>
+        <div class='ep-glow'></div>
+
+        <div class='elem-icon-wrap'>
+          <svg width='160' height='160' viewBox='0 0 160 160' fill='none'>
+            <circle cx="80" cy="80" r="75" stroke="#4a7a34" stroke-width="0.5" opacity="0.5"/>
+            <circle cx="80" cy="80" r="55" stroke="#7aaa5a" stroke-width="0.4" opacity="0.3"/>
+            <!-- hexagon -->
+            <path d="M80 30 L110 47 L110 81 L80 98 L50 81 L50 47 Z" stroke="#7aaa5a" stroke-width="1" fill="none" opacity="0.5"/>
+            <!-- leaf shapes -->
+            <path d="M80 55 Q95 70 80 100 Q65 70 80 55 Z" fill="#4a7a34" opacity="0.35">
+              <animateTransform attributeName="transform" type="rotate" dur="8s" repeatCount="indefinite" values="0 80 80;3 80 80;0 80 80;-3 80 80;0 80 80"/>
+            </path>
+            <path d="M55 75 Q70 65 95 80 Q70 90 55 75 Z" fill="#7aaa5a" opacity="0.25">
+              <animateTransform attributeName="transform" type="rotate" dur="10s" repeatCount="indefinite" values="0 80 80;-2 80 80;0 80 80;2 80 80;0 80 80" begin="-3s"/>
+            </path>
+          </svg>
+        </div>
+
+        <div class='elem-particles'>
+          <svg width='100%' height='100%' style='position:absolute;inset:0'>
+            <circle cx="40%" cy="25%" r="2" fill="#7aaa5a" opacity="0.15">
+              <animate attributeName="cy" dur="7s" repeatCount="indefinite" values="25%;18%;25%;32%;25%"/>
+              <animate attributeName="opacity" dur="7s" repeatCount="indefinite" values="0.15;0.35;0.15;0.28;0.15"/>
+            </circle>
+            <circle cx="75%" cy="40%" r="1.5" fill="#4a7a34" opacity="0.18" >
+              <animate attributeName="cy" dur="9s" repeatCount="indefinite" values="40%;33%;40%;47%;40%" begin="-3s"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class='elem-content'>
+          <div class='elem-rune'>
+            <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
+              <rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="0.8" fill="none" transform="rotate(45 6 6)"/>
+            </svg>
+            Element III
+          </div>
+          <h3 class='elem-name'>Earth</h3>
+          <p class='elem-char'>"Roots go deeper than memory. So does truth."</p>
+          <p class='elem-desc'>
+            The Earth student carries the weight of history — of things buried and forgotten. Steadfast, stubborn, and
+            ancient in their instincts. What grows from them cannot easily be uprooted.
+          </p>
+        </div>
+      </div>
+
+      <!-- AIR -->
+      <div class='elem-panel ep-air reveal'>
+        <div class='ep-glow'></div>
+
+        <div class='elem-icon-wrap'>
+          <svg width='160' height='160' viewBox='0 0 160 160' fill='none'>
+            <circle cx="80" cy="80" r="75" stroke="#8aa0c0" stroke-width="0.5" opacity="0.4"/>
+            <!-- wind spirals -->
+            <path d="M40 80 Q60 50 80 80 Q100 110 120 80 Q140 50 130 40" stroke="#c0d4ec" stroke-width="1.2" fill="none" opacity="0.5">
+              <animate attributeName="d" dur="5s" repeatCount="indefinite"
+                values="M40 80 Q60 50 80 80 Q100 110 120 80 Q140 50 130 40;
+                        M40 80 Q60 110 80 80 Q100 50 120 80 Q140 110 130 120;
+                        M40 80 Q60 50 80 80 Q100 110 120 80 Q140 50 130 40"/>
+            </path>
+            <path d="M30 90 Q55 60 80 90 Q105 120 130 90" stroke="#8aa0c0" stroke-width="0.8" fill="none" opacity="0.35">
+              <animate attributeName="d" dur="7s" repeatCount="indefinite"
+                values="M30 90 Q55 60 80 90 Q105 120 130 90;
+                        M30 90 Q55 120 80 90 Q105 60 130 90;
+                        M30 90 Q55 60 80 90 Q105 120 130 90" begin="-2s"/>
+            </path>
+            <circle cx="80" cy="80" r="55" stroke="#c0d4ec" stroke-width="0.4" opacity="0.2"/>
+          </svg>
+        </div>
+
+        <div class='elem-particles'>
+          <svg width='100%' height='100%' style='position:absolute;inset:0'>
+            <circle cx="60%" cy="20%" r="1.5" fill="#c0d4ec" opacity="0.15">
+              <animate attributeName="cx" dur="5s" repeatCount="indefinite" values="60%;70%;60%;50%;60%"/>
+              <animate attributeName="cy" dur="5s" repeatCount="indefinite" values="20%;15%;20%;25%;20%"/>
+            </circle>
+            <circle cx="30%" cy="40%" r="1" fill="#8aa0c0" opacity="0.2">
+              <animate attributeName="cx" dur="8s" repeatCount="indefinite" values="30%;42%;30%;18%;30%" begin="-3s"/>
+            </circle>
+            <circle cx="80%" cy="55%" r="2" fill="#c0d4ec" opacity="0.1">
+              <animate attributeName="cx" dur="6s" repeatCount="indefinite" values="80%;90%;80%;70%;80%" begin="-1s"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class='elem-content'>
+          <div class='elem-rune'>
+            <svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
+              <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="0.8" fill="none"/><circle cx="6" cy="6" r="2" fill="currentColor" opacity="0.4"/>
+            </svg>
+            Element IV
+          </div>
+          <h3 class='elem-name'>Air</h3>
+          <p class='elem-char'>"You cannot hold the wind. You can only learn to move with it."</p>
+          <p class='elem-desc'>
+            The Air student exists between moments — quick, invisible, impossible to catch. They carry secrets the way
+            the wind carries seed: without intention, and without mercy.
+          </p>
+        </div>
+      </div>
+
+      <!-- centre intersection mark -->
+      <div
+        class='elem-center-mark'
+        style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;'
+      >
+        <div class='elem-center-dot'></div>
+      </div>
+    </div>
+    <!-- /element-grid -->
+  </section>
+
+  <section class='synopsis-section' id='synopsis'>
+    <!-- BOOK LEFT -->
+    <div class='book-showcase reveal'>
+      <div class='book-glow'></div>
+      <div class='book-3d'>
+        <div class='book-face'>
+          <div class='book-cover-bg'></div>
+          <div class='book-spine'></div>
+          <div class='book-band book-band-top'></div>
+          <div class='book-band book-band-bot'></div>
+
+          <div class='book-cover-art'>
+            <!-- element symbol ring -->
+            <svg width='130' height='130' viewBox='0 0 130 130' fill='none' style='margin-bottom:10px;'>
+              <!-- outer ring -->
+              <circle cx="65" cy="65" r="62" stroke="#c4964e" stroke-width="0.6" opacity="0.4"/>
+              <circle cx="65" cy="65" r="50" stroke="#c4964e" stroke-width="0.4" opacity="0.2"/>
+
+              <!-- cardinal element glyphs -->
+              <!-- water (top) -->
+              <path d="M65 10 Q72 22 65 30 Q58 22 65 10 Z" fill="#5aaad4" opacity="0.7"/>
+              <!-- fire (right) -->
+              <path d="M120 65 Q108 72 100 65 Q108 58 120 65 Z" fill="#f07a30" opacity="0.7"/>
+              <!-- earth (bottom) -->
+              <rect x="58" y="95" width="14" height="14" fill="#7aaa5a" opacity="0.6" transform="rotate(45 65 102)"/>
+              <!-- air (left) -->
+              <circle cx="10" cy="65" r="6" stroke="#c0d4ec" stroke-width="1" fill="none" opacity="0.7"/>
+
+              <!-- connecting lines -->
+              <line x1="65" y1="30" x2="65" y2="55" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
+              <line x1="100" y1="65" x2="80" y2="65" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
+              <line x1="65" y1="95" x2="65" y2="75" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
+              <line x1="16" y1="65" x2="50" y2="65" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
+
+              <!-- centre circle -->
+              <circle cx="65" cy="65" r="10" stroke="#c4964e" stroke-width="0.8" fill="#07030a"/>
+              <circle cx="65" cy="65" r="4" fill="#c4964e" opacity="0.8">
+                <animate attributeName="r" dur="2.5s" repeatCount="indefinite" values="4;5.5;4"/>
+                <animate attributeName="opacity" dur="2.5s" repeatCount="indefinite" values="0.8;1;0.8"/>
+              </circle>
+            </svg>
+
+            <!-- title on cover -->
+            <div style='text-align:center;'>
+              <p style="font-family:'Cinzel',serif;font-size:20.8px;font-weight:600;letter-spacing:0.1em;color:rgba(200,220,255,0.9);line-height:1.1;margin-bottom:6px;">
+                EVERFLOW
+              </p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:11.52px;font-style:italic;color:rgba(196,150,78,0.7);letter-spacing:0.08em;">
+                The Balance-Born Saga
+              </p>
+              <p style="font-size:8.8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(196,150,78,0.5);margin-top:4px;font-family:'Cinzel',serif;">
+                Year One
+              </p>
+            </div>
+
+            <!-- author at bottom -->
+            <div style='margin-top:auto;padding-top:16px;text-align:center;border-top:1px solid rgba(196,150,78,0.2);width:100%;'>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(250,246,237,0.4);letter-spacing:0.06em;">
+                Jessie Heart
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYNOPSIS TEXT RIGHT -->
+    <div class='reveal'>
+      <div class='syn-eyebrow'>The Story</div>
+      <h2 class='syn-title'>Everflow</h2>
+      <p class='syn-series'>The Balance-Born Saga · Year One</p>
+
+      <div class='syn-lines'>
+        <p class='syn-line'>Four students. <b>Four elements.</b> One fragile balance.</p>
+        <div class='syn-divider'></div>
+        <p class='syn-line'>Everflow was meant to train them. Instead, it might <b>destroy them</b>.</p>
+        <div class='syn-divider'></div>
+        <p class='syn-line'>Because when the elements awaken… <b>the truth rises with them.</b></p>
+      </div>
+
+      <p class='syn-body'>
+        When four unlikely students are selected to attend Everflow — the most prestigious elemental academy in the
+        realm — each believes they know what they're signing up for. Rigorous training. Ancient knowledge. A future
+        shaped by mastery.
+      </p>
+      <p class='syn-body'>
+        But Everflow keeps secrets. And some secrets have been buried long enough to grow teeth. As the balance between
+        elements begins to fracture, each student must confront not just their power, but the truth of why they were
+        really chosen.
+      </p>
+
+      <div class='syn-tags'>
+        <div class='syn-tag'>Fantasy</div>
+        <div class='syn-tag'>YA Fiction</div>
+        <div class='syn-tag'>Coming Soon</div>
+        <div class='syn-tag'>Series — Year One</div>
+      </div>
+
+      <div class='syn-ctas'>
+        <a href='#' class='btn-primary'><span>Notify Me on Release</span></a>
+        <a href='#' class='btn-ghost-light'>Back to Shop</a>
+      </div>
+    </div>
+  </section>
+
+  <section class='characters-section'>
+    <div class='char-header reveal'>
+      <div class='sec-eyebrow'>The Balance-Born</div>
+      <h2 class='sec-title'>Meet the <em>Four Students</em></h2>
+      <p class='sec-sub' style='max-width:560px;margin:0 auto 0 !important;'>
+        Chosen by forces they don't yet understand. Bound by elements older than the academy itself.
+      </p>
+    </div>
+
+    <div class='char-grid'>
+      <!-- WATER STUDENT -->
+      <div class='char-card reveal'>
+        <div class='char-portrait cp-water-student'>
+          <div class='char-aura ca-water'></div>
+          <div class='char-glyph' style='animation-duration:5s;'>💧</div>
+          <!-- silhouette -->
+          <div class='char-figure'>
+            <svg viewBox='0 0 100 200' fill='none'>
+              <!-- flowing cloak silhouette -->
+              <ellipse cx="50" cy="42" rx="18" ry="20" fill="rgba(90,170,212,0.25)"/>
+              <path d="M20 80 Q10 140 15 200 L85 200 Q90 140 80 80 Q70 90 50 85 Q30 90 20 80 Z" fill="rgba(42,106,154,0.3)"/>
+              <path d="M20 80 Q5 130 0 200" stroke="#5aaad4" stroke-width="0.5" fill="none" opacity="0.3"/>
+              <path d="M80 80 Q95 130 100 200" stroke="#5aaad4" stroke-width="0.5" fill="none" opacity="0.3"/>
+              <!-- flowing element lines around figure -->
+              <path d="M5 100 Q25 90 30 110 Q35 130 15 140" stroke="#5aaad4" stroke-width="0.8" fill="none" opacity="0.4">
+                <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                  values="M5 100 Q25 90 30 110 Q35 130 15 140;M5 100 Q22 95 28 115 Q33 135 13 145;M5 100 Q25 90 30 110 Q35 130 15 140"/>
+              </path>
+            </svg>
+          </div>
+          <div class='char-overlay'>
+            <p class='char-element-tag ct-water'>💧 Water Element</p>
+            <h3 class='char-name'>The Still River</h3>
+            <p class='char-role'>Patient. Perceptive. Unbreakable.</p>
+          </div>
+          <div class='char-expand'>
+            <p>
+              "She reads the current of a room before she reads a person. Everflow thought they were getting a healer.
+              They were wrong."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIRE STUDENT -->
+      <div class='char-card reveal'>
+        <div class='char-portrait cp-fire-student'>
+          <div class='char-aura ca-fire'></div>
+          <div class='char-glyph' style='animation-duration:3.5s;animation-delay:-1s;'>🔥</div>
+          <div class='char-figure'>
+            <svg viewBox='0 0 100 200' fill='none'>
+              <ellipse cx="50" cy="42" rx="18" ry="20" fill="rgba(240,122,48,0.25)"/>
+              <path d="M20 80 Q10 140 15 200 L85 200 Q90 140 80 80 Q70 90 50 85 Q30 90 20 80 Z" fill="rgba(196,74,24,0.3)"/>
+              <!-- fire sparks -->
+              <circle cx="25" cy="95" r="2" fill="#f07a30" opacity="0.4">
+                <animate attributeName="cy" dur="2s" repeatCount="indefinite" values="95;85;95"/>
+                <animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="0.4;0.8;0.4"/>
+              </circle>
+              <circle cx="75" cy="100" r="1.5" fill="#ffd060" opacity="0.3">
+                <animate attributeName="cy" dur="2.8s" repeatCount="indefinite" values="100;88;100" begin="-0.7s"/>
+              </circle>
+              <path d="M15 110 Q8 100 12 90 Q18 100 15 110 Z" fill="#f07a30" opacity="0.25">
+                <animate attributeName="d" dur="1.8s" repeatCount="indefinite"
+                  values="M15 110 Q8 100 12 90 Q18 100 15 110 Z;M15 110 Q6 99 11 88 Q18 98 15 110 Z;M15 110 Q8 100 12 90 Q18 100 15 110 Z"/>
+              </path>
+            </svg>
+          </div>
+          <div class='char-overlay'>
+            <p class='char-element-tag ct-fire'>🔥 Fire Element</p>
+            <h3 class='char-name'>The Burning Will</h3>
+            <p class='char-role'>Fierce. Relentless. Unpredictable.</p>
+          </div>
+          <div class='char-expand'>
+            <p>"He was born ready to fight. Everflow didn't light the fire — it just handed him the world to burn."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EARTH STUDENT -->
+      <div class='char-card reveal'>
+        <div class='char-portrait cp-earth-student'>
+          <div class='char-aura ca-earth'></div>
+          <div class='char-glyph' style='animation-duration:8s;animation-delay:-3s;'>🌿</div>
+          <div class='char-figure'>
+            <svg viewBox='0 0 100 200' fill='none'>
+              <ellipse cx="50" cy="42" rx="18" ry="20" fill="rgba(122,170,90,0.25)"/>
+              <path d="M20 80 Q10 140 15 200 L85 200 Q90 140 80 80 Q70 90 50 85 Q30 90 20 80 Z" fill="rgba(74,122,52,0.3)"/>
+              <!-- vine tendrils -->
+              <path d="M8 150 Q18 130 22 110" stroke="#7aaa5a" stroke-width="0.8" fill="none" opacity="0.35">
+                <animateTransform attributeName="transform" type="rotate" dur="10s" repeatCount="indefinite" values="0 15 130;3 15 130;0 15 130;-3 15 130;0 15 130"/>
+              </path>
+              <path d="M92 140 Q82 120 78 100" stroke="#4a7a34" stroke-width="0.8" fill="none" opacity="0.3">
+                <animateTransform attributeName="transform" type="rotate" dur="12s" repeatCount="indefinite" values="0 85 120;-3 85 120;0 85 120;3 85 120;0 85 120" begin="-4s"/>
+              </path>
+              <ellipse cx="14" cy="148" rx="5" ry="3" fill="#7aaa5a" opacity="0.22" transform="rotate(-30 14 148)"/>
+            </svg>
+          </div>
+          <div class='char-overlay'>
+            <p class='char-element-tag ct-earth'>🌿 Earth Element</p>
+            <h3 class='char-name'>The Ancient Root</h3>
+            <p class='char-role'>Steady. Grounded. Deeply knowing.</p>
+          </div>
+          <div class='char-expand'>
+            <p>
+              "She's been listening to the land her whole life. Everflow's secrets couldn't stay buried once she
+              arrived."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AIR STUDENT -->
+      <div class='char-card reveal'>
+        <div class='char-portrait cp-air-student'>
+          <div class='char-aura ca-air'></div>
+          <div class='char-glyph' style='animation-duration:4.5s;animation-delay:-2s;'>🌬️</div>
+          <div class='char-figure'>
+            <svg viewBox='0 0 100 200' fill='none'>
+              <ellipse cx="50" cy="42" rx="18" ry="20" fill="rgba(192,212,236,0.2)"/>
+              <path d="M20 80 Q10 140 15 200 L85 200 Q90 140 80 80 Q70 90 50 85 Q30 90 20 80 Z" fill="rgba(138,160,192,0.2)"/>
+              <!-- wind wisps -->
+              <path d="M5 95 Q20 88 30 95 Q40 102 55 92" stroke="#c0d4ec" stroke-width="0.7" fill="none" opacity="0.3">
+                <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                  values="M5 95 Q20 88 30 95 Q40 102 55 92;M5 95 Q20 102 30 95 Q40 88 55 98;M5 95 Q20 88 30 95 Q40 102 55 92"/>
+              </path>
+              <path d="M2 115 Q22 105 38 115 Q54 125 70 110" stroke="#8aa0c0" stroke-width="0.6" fill="none" opacity="0.22">
+                <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                  values="M2 115 Q22 105 38 115 Q54 125 70 110;M2 115 Q22 125 38 115 Q54 105 70 120;M2 115 Q22 105 38 115 Q54 125 70 110" begin="-2s"/>
+              </path>
+            </svg>
+          </div>
+          <div class='char-overlay'>
+            <p class='char-element-tag ct-air'>🌬️ Air Element</p>
+            <h3 class='char-name'>The Quiet Storm</h3>
+            <p class='char-role'>Swift. Invisible. Always one step ahead.</p>
+          </div>
+          <div class='char-expand'>
+            <p>
+              "No one noticed him in the first three months. By month four, he already knew everyone's secrets. That was
+              the plan."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /char-grid -->
+  </section>
+
+  <section class='teaser-section'>
+    <div class='teaser-content reveal'>
+      <div class='teaser-eyebrow'>From the Pages of Everflow</div>
+
+      <blockquote class='teaser-quote'>
+        "The <span class='highlight-water'>water</span> remembers every shore it has ever touched. The
+        <span class='highlight-fire'>fire</span> remembers nothing but the next thing to burn. The
+        <span class='highlight-earth'>earth</span> forgets nothing, and forgives even less. And the
+        <span class='highlight-air'>air</span>… the air tells everyone else's secrets while keeping its own."
+      </blockquote>
+
+      <!-- 4 animated element icons -->
+      <div class='elem-icon-row'>
+        <div class='ei-item'>
+          <div class='ei-circle ei-water'>
+            <svg width='30' height='30' viewBox='0 0 30 30' fill='none'>
+              <path d="M15 4 Q20 12 15 18 Q10 12 15 4 Z" fill="#5aaad4" opacity="0.7">
+                <animate attributeName="d" dur="3s" repeatCount="indefinite"
+                  values="M15 4 Q20 12 15 18 Q10 12 15 4 Z;M15 4 Q22 13 15 20 Q8 13 15 4 Z;M15 4 Q20 12 15 18 Q10 12 15 4 Z"/>
+              </path>
+            </svg>
+          </div>
+          <span class='ei-label'>Water</span>
+        </div>
+        <div class='ei-item'>
+          <div class='ei-circle ei-fire'>
+            <svg width='30' height='30' viewBox='0 0 30 30' fill='none'>
+              <path d="M15 24 Q8 18 10 12 Q12 16 13 10 Q16 14 14 7 Q20 12 18 18 Q21 14 22 20 Q24 24 15 24 Z" fill="#f07a30" opacity="0.7">
+                <animate attributeName="d" dur="1.8s" repeatCount="indefinite"
+                  values="M15 24 Q8 18 10 12 Q12 16 13 10 Q16 14 14 7 Q20 12 18 18 Q21 14 22 20 Q24 24 15 24 Z;
+                          M15 24 Q7 17 9 11 Q11 16 12 9 Q16 14 13 6 Q21 11 19 17 Q22 13 23 19 Q25 24 15 24 Z;
+                          M15 24 Q8 18 10 12 Q12 16 13 10 Q16 14 14 7 Q20 12 18 18 Q21 14 22 20 Q24 24 15 24 Z"/>
+              </path>
+            </svg>
+          </div>
+          <span class='ei-label'>Fire</span>
+        </div>
+        <div class='ei-item'>
+          <div class='ei-circle ei-earth'>
+            <svg width='30' height='30' viewBox='0 0 30 30' fill='none'>
+              <rect x="10" y="10" width="10" height="10" fill="#7aaa5a" opacity="0.65" transform="rotate(45 15 15)"/>
+            </svg>
+          </div>
+          <span class='ei-label'>Earth</span>
+        </div>
+        <div class='ei-item'>
+          <div class='ei-circle ei-air'>
+            <svg width='30' height='30' viewBox='0 0 30 30' fill='none'>
+              <path d="M5 15 Q10 10 15 15 Q20 20 25 15" stroke="#c0d4ec" stroke-width="1.5" fill="none">
+                <animate attributeName="d" dur="3s" repeatCount="indefinite"
+                  values="M5 15 Q10 10 15 15 Q20 20 25 15;M5 15 Q10 20 15 15 Q20 10 25 15;M5 15 Q10 10 15 15 Q20 20 25 15"/>
+              </path>
+              <path d="M5 19 Q10 14 15 19 Q20 24 25 19" stroke="#8aa0c0" stroke-width="0.8" fill="none" opacity="0.5">
+                <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                  values="M5 19 Q10 14 15 19 Q20 24 25 19;M5 19 Q10 24 15 19 Q20 14 25 19;M5 19 Q10 14 15 19 Q20 24 25 19" begin="-1s"/>
+              </path>
+            </svg>
+          </div>
+          <span class='ei-label'>Air</span>
+        </div>
+      </div>
+
+      <div style='display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:20px;'>
+        <a href='#' class='btn-gold'>Notify Me on Release</a>
+        <a href='/collections' class='btn-ghost-light'>Browse the Shop</a>
+      </div>
+    </div>
+  </section>
+
+  <section class='author-section'>
+    <div class='author-frame reveal'>
+      <div class='author-img'>
+        <span style='position:relative;z-index:1;font-size:72px;opacity:0.5;'>📖</span>
+      </div>
+    </div>
+    <div class='reveal'>
+      <div class='auth-tag'>The Mind Behind the Stories</div>
+      <h2 class='auth-title'>Meet <em>Jessie Heart</em></h2>
+      <p class='auth-role'>Author · Teacher · Storyteller</p>
+      <blockquote class='auth-quote'>
+        "As a child, she would gaze out car windows, weaving fantastical tales from the world rushing by. That love for
+        storytelling never left her."
+      </blockquote>
+      <p class='auth-body'>
+        Having been a passionate school teacher for 24 years, wife, and proud mother of four beautiful children, Jessie
+        continues to inspire others through her words and creativity. A devoted lover of books, history, and all things
+        royal, she finds joy in crafting stories and getting lost in new worlds.
+      </p>
+      <p class='auth-body'>
+        Everflow is her debut novel — a world built in stolen moments, between lesson plans and bedtime stories, where
+        four students learn what it truly means to carry an element within them.
+      </p>
+      <a href='/pages/pre-order' class='btn-primary' style='margin-top:8px;'><span>See Pre-order →</span></a>
+    </div>
+  </section>
+
+  <section class='nl-section'>
+    <span class='nl-over'>Stay in the Story</span>
+    <h2 class='nl-title'>Be First to Enter <em>Everflow</em></h2>
+    <p class='nl-desc'>
+      Join the Shelf Indulgence community and receive release updates, exclusive excerpts, and bookish news straight to
+      your inbox.
     </p>
-
-    <div class='si-ef-divider'></div>
-
-    <div class='si-ef-synopsis-row'>
-      <div class='si-ef-synopsis-text'>
-        <!-- Synopsis block 1 -->
-        <p class='si-ef-body'>
-          Four elements.<br>
-          One hidden power.<br>
-          A balance the world has forgotten.
-        </p>
-        <p class='si-ef-body'>
-          A group of teenagers arrive at the Government mandated training facility known as Everflow.
-        </p>
-        <p class='si-ef-body'>
-          <strong>Earth. Air. Fire. Water.</strong>
-        </p>
-        <p class='si-ef-body'>But power is never given without purpose.</p>
-        <p class='si-ef-body'>
-          As their abilities awaken, so do secrets buried deep within Everflow's walls. The truth about the elements and the
-          balance they were meant to protect—may be far more dangerous than anyone imagined.
-        </p>
-        <p class='si-ef-body'>
-          Because some forces were never meant to be controlled.<br>
-          And some truths were never meant to surface.
-        </p>
-
-        <p class='si-ef-emphasis'>The elements are rising.</p>
-
-        <div class='si-ef-divider'></div>
-
-        <!-- Synopsis block 2 -->
-        <p class='si-ef-body'>At Everflow, they tell you the elements are gifts.</p>
-        <p class='si-ef-body'>
-          Earth steadies.<br>
-          Air lifts.<br>
-          Fire ignites.<br>
-          Water endures.
-        </p>
-        <p class='si-ef-body'>But gifts can also be weapons.</p>
-        <p class='si-ef-body'>
-          When four students begin to uncover the truth behind their powers, they realise<br>
-          Everflow is hiding more than just secrets—it's hiding the cost of balance.
-        </p>
-        <p class='si-ef-emphasis'>
-          And once the elements awaken…<br>
-          there may be no way to stop them.
-        </p>
-
-        <div class='si-ef-divider'></div>
-
-        <!-- Synopsis block 3 -->
-        <p class='si-ef-body'>
-          At Everflow, power is not chosen.<br>
-          It awakens.<br>
-          And when it does, balance is everything.
-        </p>
-      </div>
-
-      <div class='si-ef-synopsis-image'>
-        <img
-          src="{{ 'four-vertical-panels.avif' | asset_url }}"
-          alt='Everflow Elements'
-          loading='lazy'
-        >
-      </div>
+    <div class='nl-form'>
+      <input type='email' class='nl-input' placeholder='your@email.com'>
+      <button class='nl-btn'>Notify Me</button>
     </div>
-
-    <div class='si-ef-divider'></div>
-
-    <!-- Character profiles -->
-    <div class='si-ef-characters'>
-      <div class='si-ef-character si-ef-character-element-fire'>
-        <p class='si-ef-character-name'>Aurelia — <span>Fire</span></p>
-        <p>
-          Fierce, determined, and impossible to ignore, Aurelia's power burns bright and dangerous. Fire answers her
-          emotions, but controlling it may mean confronting the truth about who she really is.
-        </p>
-      </div>
-      <div class='si-ef-character si-ef-character-element-earth'>
-        <p class='si-ef-character-name'>Raith — <span>Earth</span></p>
-        <p>
-          Strong, steady, and built like the foundations of the world itself, Raith believes in structure and loyalty.
-          But when the ground beneath Everflow begins to shift, he must decide what truly deserves his strength.
-        </p>
-      </div>
-      <div class='si-ef-character si-ef-character-element-air'>
-        <p class='si-ef-character-name'>Sage — <span>Air</span></p>
-        <p>
-          Quick-minded and endlessly curious, Sage moves like the wind—restless and searching. Yet some truths carried
-          on the air were never meant to be heard.
-        </p>
-      </div>
-      <div class='si-ef-character si-ef-character-element-water'>
-        <p class='si-ef-character-name'>Elias — <span>Water</span></p>
-        <p>
-          Quiet, watchful, and deeply intuitive, Elias feels the currents others miss. Water remembers everything… and
-          some memories refuse to stay buried.
-        </p>
-      </div>
-    </div>
-
-    <div class='si-ef-divider'></div>
-
-    <!-- Closing -->
-    <div class='si-ef-closing'>
-      <p>Together they were brought to Everflow to learn control.</p>
-      <p>But as their powers grow, so do the secrets surrounding them.</p>
-      <br>
-      <p>Because the elements were never meant to be ruled.</p>
-      <br>
-      <p>They were meant to remain in balance.</p>
-      <br>
-      <p class='si-ef-final'>And that balance… is beginning to break.</p>
-    </div>
-  </div>
-  <div class='si-ef-accent'></div>
+  </section>
 </div>
+
+<script>
+  /* ── Starfield ── */
+  const starContainer = document.getElementById('stars');
+  for (let i = 0; i < 90; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.2 + 0.4;
+    s.style.cssText = `
+    width:${size}px; height:${size}px;
+    left:${Math.random() * 100}%;
+    top:${Math.random() * 100}%;
+    animation-duration:${2.5 + Math.random() * 5}s;
+    animation-delay:${-Math.random() * 6}s;
+  `;
+    starContainer.appendChild(s);
+  }
+
+  /* ── Rune / symbol particles ── */
+  const runeSymbols = ['⟨', '⟩', '∿', '≈', '∴', '✦', '◈', '⌬', '⊕', '⊗', '✧', '∞'];
+  const runeContainer = document.getElementById('runes');
+  function spawnRune() {
+    const el = document.createElement('div');
+    el.className = 'rune-particle';
+    el.textContent = runeSymbols[Math.floor(Math.random() * runeSymbols.length)];
+    const size = 0.6 + Math.random() * 0.7;
+    const dur = 8 + Math.random() * 12;
+    const del = Math.random() * 4;
+    el.style.cssText = `
+    font-size:${size}rem;
+    left:${10 + Math.random() * 80}%;
+    bottom:${15 + Math.random() * 50}%;
+    animation-duration:${dur}s;
+    animation-delay:${del}s;
+    opacity:0;
+  `;
+    runeContainer.appendChild(el);
+    setTimeout(() => elNaNpxove(), (dur + del + 1) * 1000);
+  }
+  setInterval(spawnRune, 2200);
+  spawnRune();
+  spawnRune();
+  spawnRune();
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>
 
 {% schema %}
 {
-  "name": "SI Everflow Teaser",
-  "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "The Balance-Born Saga - Year 1" },
-    { "type": "text", "id": "label", "label": "Teaser label", "default": "TEASER" },
-    { "type": "image_picker", "id": "image", "label": "Book cover image" },
-    { "type": "text", "id": "image_asset", "label": "Image asset filename", "default": "coming-soon-jessie-heart.png" }
-  ],
-  "presets": [{ "name": "SI Everflow Teaser" }]
+  "name": "SI Everflow Page",
+  "settings": [],
+  "presets": [{ "name": "SI Everflow Page" }]
 }
 {% endschema %}

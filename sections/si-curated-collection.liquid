@@ -81,7 +81,10 @@
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.84);
     box-shadow: 0 18px 48px rgba(15, 24, 31, 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
   }
 
   .si-everflow-grid__card-link {
@@ -223,50 +226,59 @@
   }
 </style>
 
-<section class="si-everflow-grid">
-  <div class="si-everflow-grid__inner">
-    <div class="si-everflow-grid__heading">
-      <div class="si-everflow-grid__heading-copy">
-        <p class="si-everflow-grid__eyebrow">Curated Collection</p>
+<section class='si-everflow-grid'>
+  <div class='si-everflow-grid__inner'>
+    <div class='si-everflow-grid__heading'>
+      <div class='si-everflow-grid__heading-copy'>
+        <p class='si-everflow-grid__eyebrow'>Curated Collection</p>
         <h2>Our Products</h2>
-        <p class="si-everflow-grid__intro">Bookish apparel, reading essentials, shelf styling, and collectible extras presented in a cleaner storefront layout with stronger product focus.</p>
+        <p class='si-everflow-grid__intro'>
+          Bookish apparel, reading essentials, shelf styling, and collectible extras presented in a cleaner storefront
+          layout with stronger product focus.
+        </p>
       </div>
-      <p class="si-everflow-grid__note">Two signature collections</p>
+      <p class='si-everflow-grid__note'>Two signature collections</p>
     </div>
 
-    <div class="si-everflow-grid__cards">
-      <a class="si-everflow-grid__card-link" href="https://shelfindulgence.com.au/collections/wear-your-story-hoodies">
-        <article class="si-everflow-grid__card">
-          <div class="si-everflow-grid__media">
+    <div class='si-everflow-grid__cards'>
+      <a class='si-everflow-grid__card-link' href='https://shelfindulgence.com.au/collections/wear-your-story-hoodies'>
+        <article class='si-everflow-grid__card'>
+          <div class='si-everflow-grid__media'>
             <img
-              src="{{ 'lost-in-realms-heart-full.jpg' | asset_url }}"
-              alt="Lost in Realms Heart Full hoodie"
-              loading="lazy"
+              src='{{ 'lost-in-realms-heart-full.jpg' | asset_url }}'
+              alt='Lost in Realms Heart Full hoodie'
+              loading='lazy'
             >
-            <span class="si-everflow-grid__badge">Apparel</span>
+            <span class='si-everflow-grid__badge'>Apparel</span>
           </div>
-          <div class="si-everflow-grid__content">
+          <div class='si-everflow-grid__content'>
             <h3>Wear Your Story</h3>
-            <p>Oversized bookish hoodies with premium puff print detailing and a softer, more elevated presentation for your hero apparel line.</p>
-            <p class="si-everflow-grid__meta">Shop hoodies</p>
+            <p>
+              Oversized bookish hoodies with premium puff print detailing and a softer, more elevated presentation for
+              your hero apparel line.
+            </p>
+            <p class='si-everflow-grid__meta'>Shop hoodies</p>
           </div>
         </article>
       </a>
 
-      <a class="si-everflow-grid__card-link" href="https://shelfindulgence.com.au/collections/bookish-merch">
-        <article class="si-everflow-grid__card">
-          <div class="si-everflow-grid__media">
+      <a class='si-everflow-grid__card-link' href='https://shelfindulgence.com.au/collections/bookish-merch'>
+        <article class='si-everflow-grid__card'>
+          <div class='si-everflow-grid__media'>
             <img
-              src="{{ 'three-books-review-set.jpg' | asset_url }}"
-              alt="Bookish merch set"
-              loading="lazy"
+              src='{{ 'three-books-review-set.jpg' | asset_url }}'
+              alt='Bookish merch set'
+              loading='lazy'
             >
-            <span class="si-everflow-grid__badge">Bookish</span>
+            <span class='si-everflow-grid__badge'>Bookish</span>
           </div>
-          <div class="si-everflow-grid__content">
+          <div class='si-everflow-grid__content'>
             <h3>Bookish Merch</h3>
-            <p>Australian-designed notepads, memo pads, pens, and bookmarks grouped into a polished essentials range for everyday reading rituals.</p>
-            <p class="si-everflow-grid__meta">Shop merch</p>
+            <p>
+              Australian-designed notepads, memo pads, pens, and bookmarks grouped into a polished essentials range for
+              everyday reading rituals.
+            </p>
+            <p class='si-everflow-grid__meta'>Shop merch</p>
           </div>
         </article>
       </a>

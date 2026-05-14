@@ -59,7 +59,9 @@
     border-radius: 9999px;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
   }
 
   .si-everflow-promo__btn:hover {
@@ -130,35 +132,31 @@
       width: 280px;
       height: 292px;
     }
-
   }
 </style>
 
-<section class="si-everflow-promo">
-  <div class="si-everflow-promo__inner">
-    <div class="si-everflow-promo__text">
-      <h2 class="si-everflow-promo__title">Everflow &mdash; The Balance-Born Saga &mdash; Year 1</h2>
+<section class='si-everflow-promo'>
+  <div class='si-everflow-promo__inner'>
+    <div class='si-everflow-promo__text'>
+      <h2 class='si-everflow-promo__title'>Everflow &mdash; The Balance-Born Saga &mdash; Year 1</h2>
 
-      <p class="si-everflow-promo__body">Four students.
-Four elements.
-One fragile balance.
-Everflow was meant to train them.
-Instead, it might destroy them.
-Because when the elements awaken...
-the truth rises with them.</p>
+      <p class='si-everflow-promo__body'>
+        Four students. Four elements. One fragile balance. Everflow was meant to train them. Instead, it might destroy
+        them. Because when the elements awaken... the truth rises with them.
+      </p>
     </div>
 
-    <div class="si-everflow-promo__image-col">
+    <div class='si-everflow-promo__image-col'>
       <img
-        src="{{ 'coming-soon-jessie-heart.png' | asset_url }}"
-        alt="Everflow - The Balance-Born Saga - Year 1"
-        class="si-everflow-promo__img"
-        loading="lazy"
+        src='{{ 'coming-soon-jessie-heart.png' | asset_url }}'
+        alt='Everflow - The Balance-Born Saga - Year 1'
+        class='si-everflow-promo__img'
+        loading='lazy'
       >
     </div>
 
-    <div class="si-everflow-promo__btn-col">
-      <a href="/search?view=everflow" class="si-everflow-promo__btn">Read More</a>
+    <div class='si-everflow-promo__btn-col'>
+      <a href='/search?view=everflow' class='si-everflow-promo__btn'>Read More</a>
     </div>
   </div>
 </section>

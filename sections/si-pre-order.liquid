@@ -1,298 +1,318 @@
 {%- style -%}
-.si-pre-order {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
-@media screen and (max-width: 767px) {
-  .si-pre-order__col-2 img:first-child {
-    margin-top: -70px;
-  }
-  .si-pre-order__image-btm {
-    margin-top: -30px !important;
-  }
-}
-
-@media screen and (min-width: 768px) {
   .si-pre-order {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-  }
-  .si-pre-order__col-1 {
-    grid-column: 1;
-  }
-  .si-pre-order__col-2 {
-    grid-column: 2;
-    grid-row: 1 / 3;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .si-pre-order__col-2 img:first-child {
+      margin-top: -70px;
+    }
+    .si-pre-order__image-btm {
+      margin-top: -30px !important;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .si-pre-order {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .si-pre-order__col-1 {
+      grid-column: 1;
+    }
+    .si-pre-order__col-2 {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .si-pre-order__image-btm {
+      grid-column: 1;
+    }
+  }
+
+  .si-pre-order__col-1 h1 {
+    font-size: 45px;
+    color: #8b0000; /* dark red */
+    margin: 0 0 10px 0;
+    font-weight: bold !important;
+  }
+
+  .si-pre-order__col-1 h2 {
+    font-size: 22px;
+    color: #000000;
+    margin: 0 0 20px 0;
+    font-weight: 500 !important;
+  }
+
+  .si-pre-order__col-1 p {
+    font-size: 15px;
+    color: #0f181f;
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+  }
+
+  .si-pre-order__col-1 .genre-heading {
+    font-size: 15px;
+    color: #610a1e;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+  }
+
+  .si-pre-order__col-1 ul {
+    font-size: 15px;
+    color: #0f181f;
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+  }
+
+  .si-pre-order__col-1 ul li {
+    margin-bottom: 5px;
+  }
+
+  .si-pre-order__form {
+    margin-top: 30px;
+    background: #fdf9f4;
+    padding: 0;
+    border-radius: 8px;
+  }
+
+  .si-pre-order__form-label {
+    display: block;
+    font-size: 14px;
+    color: #0f181f;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .si-pre-order__radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .si-pre-order__radio-option {
+    display: flex;
     align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #0f181f;
+    cursor: pointer;
   }
+
+  .si-pre-order__checkout-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .si-pre-order__checkout-btn:hover {
+    background-color: #333;
+  }
+
   .si-pre-order__image-btm {
-    grid-column: 1;
+    margin-top: 30px;
+    width: 100%;
+    max-height: 253px;
+    object-fit: cover;
+    border-radius: 8px;
   }
-}
 
-.si-pre-order__col-1 h1 {
-  font-size: 45px;
-  color: #8b0000; /* dark red */
-  margin: 0 0 10px 0;
-  font-weight: bold !important;
-}
+  .si-pre-order__col-2 img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
 
-.si-pre-order__col-1 h2 {
-  font-size: 22px;
-  color: #000000;
-  margin: 0 0 20px 0;
-  font-weight: 500 !important;
-}
+  .si-pre-order__col-2 img:nth-child(2) {
+    margin-top: -90px;
+  }
 
-.si-pre-order__col-1 p {
-  font-size: 15px;
-  color: #0f181f;
-  margin: 0 0 15px 0;
-  line-height: 1.6;
-}
+  /* Modal Styles */
+  .si-pre-order__modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
 
-.si-pre-order__col-1 .genre-heading {
-  font-size: 15px;
-  color: #610a1e;
-  font-weight: bold;
-  margin: 20px 0 10px 0;
-}
+  .si-pre-order__modal.is-active {
+    display: flex;
+  }
 
-.si-pre-order__col-1 ul {
-  font-size: 15px;
-  color: #0f181f;
-  margin: 0 0 20px 0;
-  padding-left: 20px;
-}
+  .si-pre-order__modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+  }
 
-.si-pre-order__col-1 ul li {
-  margin-bottom: 5px;
-}
+  .si-pre-order__modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+  }
 
-.si-pre-order__form {
-  margin-top: 30px;
-  background: #fdf9f4;
-  padding: 0;
-  border-radius: 8px;
-}
+  .si-pre-order__modal-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #000;
+  }
 
-.si-pre-order__form-label {
-  display: block;
-  font-size: 14px;
-  color: #0f181f;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
+  .si-pre-order__variant-group {
+    margin-bottom: 20px;
+  }
 
-.si-pre-order__radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
-}
+  .si-pre-order__variant-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
 
-.si-pre-order__radio-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  color: #0f181f;
-  cursor: pointer;
-}
+  .si-pre-order__variant-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-.si-pre-order__checkout-btn {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
+  .si-pre-order__modal-submit {
+    background-color: #8b0000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+  }
 
-.si-pre-order__checkout-btn:hover {
-  background-color: #333;
-}
-
-.si-pre-order__image-btm {
-  margin-top: 30px;
-  width: 100%;
-  max-height: 253px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.si-pre-order__col-2 img {
-  width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.si-pre-order__col-2 img:nth-child(2) {
-  margin-top: -90px;
-}
-
-/* Modal Styles */
-.si-pre-order__modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  align-items: center;
-  justify-content: center;
-}
-
-.si-pre-order__modal.is-active {
-  display: flex;
-}
-
-.si-pre-order__modal-content {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  position: relative;
-}
-
-.si-pre-order__modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-  line-height: 1;
-}
-
-.si-pre-order__modal-title {
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #000;
-}
-
-.si-pre-order__variant-group {
-  margin-bottom: 20px;
-}
-
-.si-pre-order__variant-label {
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.si-pre-order__variant-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.si-pre-order__modal-submit {
-  background-color: #8b0000;
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 4px;
-}
-
-.si-pre-order__modal-submit:hover {
-  background-color: #610a1e;
-}
+  .si-pre-order__modal-submit:hover {
+    background-color: #610a1e;
+  }
 {%- endstyle -%}
 
-<div class="si-pre-order">
-  <div class="si-pre-order__col-1">
+<div class='si-pre-order'>
+  <div class='si-pre-order__col-1'>
     <h1>COMING SOON</h1>
     <h2>Wear Your Story™ Oversized Bookish Hoodies</h2>
-    
-    <p>Elevate your reading wardrobe with our Wear Your Story™ oversized bookish hoodies, designed for modern readers who want comfort without compromising style. Featuring premium puff print detailing for a bold, textured finish, these hoodies blend contemporary design with statement bookish fashion.</p>
-    
-    <p>Made from the highest quality fabric, each hoodie is intentionally oversized for total reading comfort. The generous hood size, extended sleeve length, and adjustable toggle tie help keep the cold out , creating the perfect cocoon for long reading sessions, cozy nights in, and immersive story escapes.</p>
-    
-    <p>Whether you’re a romance lover, fantasy reader, or devoted dark romance fan, there’s a genre to match your shelves.</p>
-    
-    <div class="genre-heading">Available in four reader-favourite genres:</div>
+
+    <p>
+      Elevate your reading wardrobe with our Wear Your Story™ oversized bookish hoodies, designed for modern readers who
+      want comfort without compromising style. Featuring premium puff print detailing for a bold, textured finish, these
+      hoodies blend contemporary design with statement bookish fashion.
+    </p>
+
+    <p>
+      Made from the highest quality fabric, each hoodie is intentionally oversized for total reading comfort. The
+      generous hood size, extended sleeve length, and adjustable toggle tie help keep the cold out , creating the
+      perfect cocoon for long reading sessions, cozy nights in, and immersive story escapes.
+    </p>
+
+    <p>
+      Whether you’re a romance lover, fantasy reader, or devoted dark romance fan, there’s a genre to match your
+      shelves.
+    </p>
+
+    <div class='genre-heading'>Available in four reader-favourite genres:</div>
     <ul>
       <li>Romance Hoodie</li>
       <li>Young Adult Hoodie</li>
       <li>Fantasy Hoodie</li>
       <li>Dark Romance Hoodie</li>
     </ul>
-    
-    <p>Perfect for elevating your everyday bookish style, book lovers, and those who love comfort as much as our favourite book characters! Our premium oversized hoodies are designed in Australia for readers who truly wear their story. Because your story doesn’t stop at the page.</p>
-    
-    <div class="si-pre-order__form">
-      <span class="si-pre-order__form-label">Select an item (AU$)*</span>
-      <div class="si-pre-order__radio-group">
-        <label class="si-pre-order__radio-option">
-          <input type="radio" name="pre_order_item" value="1" checked>
+
+    <p>
+      Perfect for elevating your everyday bookish style, book lovers, and those who love comfort as much as our
+      favourite book characters! Our premium oversized hoodies are designed in Australia for readers who truly wear
+      their story. Because your story doesn’t stop at the page.
+    </p>
+
+    <div class='si-pre-order__form'>
+      <span class='si-pre-order__form-label'>Select an item (AU$)*</span>
+      <div class='si-pre-order__radio-group'>
+        <label class='si-pre-order__radio-option'>
+          <input type='radio' name='pre_order_item' value='1' checked>
           Heart Full - Romance - Colour Pink - AU$125
         </label>
-        <label class="si-pre-order__radio-option">
-          <input type="radio" name="pre_order_item" value="2">
+        <label class='si-pre-order__radio-option'>
+          <input type='radio' name='pre_order_item' value='2'>
           Raised On Stories - Young Adult - Colour Baby Blue - AU$125
         </label>
-        <label class="si-pre-order__radio-option">
-          <input type="radio" name="pre_order_item" value="3">
+        <label class='si-pre-order__radio-option'>
+          <input type='radio' name='pre_order_item' value='3'>
           Soft Heart, Dark Desires - Dark Romance - Colour Titanium Grey - AU$125
         </label>
-        <label class="si-pre-order__radio-option">
-          <input type="radio" name="pre_order_item" value="4">
+        <label class='si-pre-order__radio-option'>
+          <input type='radio' name='pre_order_item' value='4'>
           Lost in Realms - Fantasy - Deep Purple - AU$125
         </label>
       </div>
-      <button type="button" class="si-pre-order__checkout-btn" id="preOrderCheckoutBtn">Go to checkout</button>
+      <button type='button' class='si-pre-order__checkout-btn' id='preOrderCheckoutBtn'>Go to checkout</button>
     </div>
   </div>
-  
-  <div class="si-pre-order__col-2">
-    <img src="{{ 'two-hoodies-are-displayed.avif' | asset_url }}" alt="Two Hoodies Displayed" style="height: 503px;">
-    <img src="{{ 'four-hoodies-displayed.avif' | asset_url }}" alt="Four Hoodies Displayed" style="height: 510px;">
+
+  <div class='si-pre-order__col-2'>
+    <img src='{{ 'two-hoodies-are-displayed.avif' | asset_url }}' alt='Two Hoodies Displayed' style='height: 503px;'>
+    <img src='{{ 'four-hoodies-displayed.avif' | asset_url }}' alt='Four Hoodies Displayed' style='height: 510px;'>
   </div>
 
-  <img src="{{ 'a-cozy-home-office.avif' | asset_url }}" alt="Cozy Home Office" class="si-pre-order__image-btm" style="height: 253px;">
+  <img
+    src='{{ 'a-cozy-home-office.avif' | asset_url }}'
+    alt='Cozy Home Office'
+    class='si-pre-order__image-btm'
+    style='height: 253px;'
+  >
 </div>
 
 <!-- Modal -->
-<div class="si-pre-order__modal" id="preOrderModal">
-  <div class="si-pre-order__modal-content">
-    <span class="si-pre-order__modal-close" id="preOrderModalClose">&times;</span>
-    <h3 class="si-pre-order__modal-title" id="modalProductTitle">Product Title</h3>
-    
-    <form action="/cart/add" method="post" id="preOrderForm">
+<div class='si-pre-order__modal' id='preOrderModal'>
+  <div class='si-pre-order__modal-content'>
+    <span class='si-pre-order__modal-close' id='preOrderModalClose'>&times;</span>
+    <h3 class='si-pre-order__modal-title' id='modalProductTitle'>Product Title</h3>
+
+    <form action='/cart/add' method='post' id='preOrderForm'>
       <!-- Hidden input to redirect straight to checkout -->
-      <input type="hidden" name="return_to" value="/checkout" />
-      
-      <div class="si-pre-order__variant-group">
-        <label class="si-pre-order__variant-label">Select Size:</label>
-        <select name="id" class="si-pre-order__variant-select" id="modalVariantSelect">
+      <input type='hidden' name='return_to' value='/checkout'>
+
+      <div class='si-pre-order__variant-group'>
+        <label class='si-pre-order__variant-label'>Select Size:</label>
+        <select name='id' class='si-pre-order__variant-select' id='modalVariantSelect'>
           <!-- Options populated via JS -->
         </select>
       </div>
-      
-      <button type="submit" class="si-pre-order__modal-submit">Checkout Now</button>
+
+      <button type='submit' class='si-pre-order__modal-submit'>Checkout Now</button>
     </form>
   </div>
 </div>
@@ -323,14 +343,14 @@
     checkoutBtn.addEventListener('click', function() {
       const selectedRadio = document.querySelector('input[name="pre_order_item"]:checked');
       if (!selectedRadio) return;
-      
+
       const val = selectedRadio.value;
       const product = productsData[val] || staticData[val];
-      
+
       if (product) {
         titleEl.textContent = product.title;
         selectEl.innerHTML = '';
-        
+
         if (product.variants && product.variants.length > 0) {
           product.variants.forEach(variant => {
             const option = document.createElement('option');
@@ -347,7 +367,7 @@
             selectEl.appendChild(option);
           });
         }
-        
+
         modal.classList.add('is-active');
       }
     });

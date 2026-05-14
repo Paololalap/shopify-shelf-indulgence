@@ -81,7 +81,9 @@
     font-weight: 400;
     color: var(--si-text-dark);
     cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
     letter-spacing: 0.03em;
     user-select: none;
   }
@@ -106,7 +108,7 @@
     border: 1px solid var(--si-cream-border);
     border-radius: 10px;
     padding: 16px;
-    box-shadow: 0 8px 24px rgba(30,10,16,0.08);
+    box-shadow: 0 8px 24px rgba(30, 10, 16, 0.08);
     z-index: 50;
   }
   .si-cp-filter-dropdown.open .si-cp-filter-panel {
@@ -153,7 +155,7 @@
   .si-cp-filter-option:last-child {
     margin-bottom: 0;
   }
-  .si-cp-filter-option input[type="checkbox"] {
+  .si-cp-filter-option input[type='checkbox'] {
     width: 16px;
     height: 16px;
     accent-color: var(--si-burg);
@@ -287,126 +289,134 @@
 </style>
 
 {%- comment -%} ========== HERO ========== {%- endcomment -%}
-<div class="si-cp-hero">
-  <div class="si-cp-hero-title">
+<div class='si-cp-hero'>
+  <div class='si-cp-hero-title'>
     <h1>{{ collection.title | escape }}</h1>
   </div>
-  <div class="si-cp-hero-img">
+  <div class='si-cp-hero-img'>
     {% if collection.image %}
       <img
-        src="{{ collection.image | image_url: width: 800 }}"
-        alt="{{ collection.image.alt | default: collection.title | escape }}"
-        width="800"
-        height="218"
-        loading="eager"
+        src='{{ collection.image | image_url: width: 800 }}'
+        alt='{{ collection.image.alt | default: collection.title | escape }}'
+        width='800'
+        height='218'
+        loading='eager'
       >
     {% elsif collection.handle == 'wear-your-story-hoodies' %}
       <img
-        src="{{ 'four-colorful-hoodies.webp' | asset_url }}"
-        alt="{{ collection.title | escape }}"
-        width="800"
-        height="218"
-        loading="eager"
+        src='{{ 'four-colorful-hoodies.webp' | asset_url }}'
+        alt='{{ collection.title | escape }}'
+        width='800'
+        height='218'
+        loading='eager'
       >
     {% elsif collection.handle == 'bookish-merch' %}
       <img
-        src="{{ 'an-array-of-colorful-notebooks.webp' | asset_url }}"
-        alt="{{ collection.title | escape }}"
-        width="800"
-        height="218"
-        loading="eager"
+        src='{{ 'an-array-of-colorful-notebooks.webp' | asset_url }}'
+        alt='{{ collection.title | escape }}'
+        width='800'
+        height='218'
+        loading='eager'
       >
     {% else %}
-      <div style="width:100%;height:218px;border-radius:14px;background:var(--si-cream-warm);display:flex;align-items:center;justify-content:center;">
-        <span style="font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;">No image</span>
+      <div style='width:100%;height:218px;border-radius:14px;background:var(--si-cream-warm);display:flex;align-items:center;justify-content:center;'>
+        <span style='font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;'>No image</span>
       </div>
     {% endif %}
   </div>
 </div>
 
- {%- comment -%} ========== FILTER ========== {%- endcomment -%}
-<div class="si-cp-filter-bar">
-  <div class="si-cp-filter-left">
-    <span class="si-cp-filter-label">Filter:</span>
-    <div class="si-cp-filter-dropdown" id="si-availability-filter">
-      <button type="button" class="si-cp-filter-btn" aria-expanded="false" aria-controls="si-avail-panel">
+{%- comment -%} ========== FILTER ========== {%- endcomment -%}
+<div class='si-cp-filter-bar'>
+  <div class='si-cp-filter-left'>
+    <span class='si-cp-filter-label'>Filter:</span>
+    <div class='si-cp-filter-dropdown' id='si-availability-filter'>
+      <button type='button' class='si-cp-filter-btn' aria-expanded='false' aria-controls='si-avail-panel'>
         Availability
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 12 12'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+        >
+          <path d="M2.5 4.5L6 8l3.5-3.5"/>
+        </svg>
       </button>
-      <div class="si-cp-filter-panel" id="si-avail-panel">
-        <div class="si-cp-filter-header">
-          <span class="si-cp-filter-count" id="si-filter-count">0 selected</span>
-          <button type="button" class="si-cp-filter-reset" id="si-filter-reset">Reset</button>
+      <div class='si-cp-filter-panel' id='si-avail-panel'>
+        <div class='si-cp-filter-header'>
+          <span class='si-cp-filter-count' id='si-filter-count'>0 selected</span>
+          <button type='button' class='si-cp-filter-reset' id='si-filter-reset'>Reset</button>
         </div>
-        <label class="si-cp-filter-option">
-          <input type="checkbox" value="in_stock" class="si-avail-check"> In stock
+        <label class='si-cp-filter-option'>
+          <input type='checkbox' value='in_stock' class='si-avail-check'> In stock
         </label>
-        <label class="si-cp-filter-option">
-          <input type="checkbox" value="out_of_stock" class="si-avail-check"> Out of stock
+        <label class='si-cp-filter-option'>
+          <input type='checkbox' value='out_of_stock' class='si-avail-check'> Out of stock
         </label>
       </div>
     </div>
   </div>
-  <span class="si-cp-product-count">{{ collection.products_count }} products</span>
+  <span class='si-cp-product-count'>{{ collection.products_count }} products</span>
 </div>
 
 {%- comment -%} ========== PRODUCT GRID ========== {%- endcomment -%}
 {%- paginate collection.products by section.settings.products_per_page -%}
   {% if collection.products.size > 0 %}
-    <div class="si-cp-grid" id="si-cp-product-grid">
+    <div class='si-cp-grid' id='si-cp-product-grid'>
       {%- for product in collection.products -%}
         <div
-          class="si-cp-card"
-          data-available="{{ product.available }}"
+          class='si-cp-card'
+          data-available='{{ product.available }}'
         >
-          <div class="si-cp-card-top">
-            <div class="si-cp-card-img-wrap">
+          <div class='si-cp-card-top'>
+            <div class='si-cp-card-img-wrap'>
               {% if product.featured_image %}
                 <img
-                  src="{{ product.featured_image | image_url: width: 680 }}"
-                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
-                  width="339"
-                  height="339"
-                  loading="lazy"
+                  src='{{ product.featured_image | image_url: width: 680 }}'
+                  alt='{{ product.featured_image.alt | default: product.title | escape }}'
+                  width='339'
+                  height='339'
+                  loading='lazy'
                 >
               {% else %}
-                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-                  <span style="font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;">No image</span>
+                <div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;'>
+                  <span style='font-family:var(--si-sans);color:var(--si-text-soft);font-size:13px;'>No image</span>
                 </div>
               {% endif %}
             </div>
-            <p class="si-cp-card-name">
-              <a href="{{ product.url }}">{{ product.title }}</a>
+            <p class='si-cp-card-name'>
+              <a href='{{ product.url }}'>{{ product.title }}</a>
             </p>
-            <p class="si-cp-card-price">{{ product.price | money }}</p>
+            <p class='si-cp-card-price'>{{ product.price | money }}</p>
           </div>
           {%- if product.available -%}
-            <form method="post" action="/cart/add">
-              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-              <input type="hidden" name="quantity" value="1">
-              <button type="submit" class="si-cp-card-btn">Add to Cart</button>
+            <form method='post' action='/cart/add'>
+              <input type='hidden' name='id' value='{{ product.selected_or_first_available_variant.id }}'>
+              <input type='hidden' name='quantity' value='1'>
+              <button type='submit' class='si-cp-card-btn'>Add to Cart</button>
             </form>
           {%- else -%}
-            <button type="button" class="si-cp-card-btn" disabled>Sold Out</button>
+            <button type='button' class='si-cp-card-btn' disabled>Sold Out</button>
           {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
 
     {%- if paginate.pages > 1 -%}
-      <div style="max-width:1430px;margin:0 auto;padding:0 1.5rem 3rem;">
+      <div style='max-width:1430px;margin:0 auto;padding:0 1.5rem 3rem;'>
         {% render 'pagination', paginate: paginate %}
       </div>
     {%- endif -%}
   {% else %}
-    <div class="si-cp-empty">
+    <div class='si-cp-empty'>
       <p>No products found in this collection.</p>
     </div>
   {% endif %}
 {%- endpaginate -%}
 
 <script>
-  (function() {
+  (function () {
     /* Toggle dropdown */
     const dropdown = document.getElementById('si-availability-filter');
     const btn = dropdown.querySelector('.si-cp-filter-btn');
@@ -415,13 +425,13 @@
     const resetBtn = document.getElementById('si-filter-reset');
     const cards = document.querySelectorAll('.si-cp-card[data-available]');
 
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
       const isOpen = dropdown.classList.toggle('open');
       btn.setAttribute('aria-expanded', isOpen);
     });
 
     /* Close on outside click */
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
@@ -429,19 +439,21 @@
     });
 
     function applyFilter() {
-      const selected = Array.from(checks).filter(c => c.checked);
+      const selected = Array.from(checks).filter((c) => c.checked);
       const count = selected.length;
       countEl.textContent = count + ' selected';
 
       if (count === 0) {
-        cards.forEach(function(c) { c.style.display = ''; });
+        cards.forEach(function (c) {
+          c.style.display = '';
+        });
         return;
       }
 
-      const showIn = selected.some(c => c.value === 'in_stock');
-      const showOut = selected.some(c => c.value === 'out_of_stock');
+      const showIn = selected.some((c) => c.value === 'in_stock');
+      const showOut = selected.some((c) => c.value === 'out_of_stock');
 
-      cards.forEach(function(card) {
+      cards.forEach(function (card) {
         const avail = card.getAttribute('data-available') === 'true';
         if ((showIn && avail) || (showOut && !avail)) {
           card.style.display = '';
@@ -451,12 +463,14 @@
       });
     }
 
-    checks.forEach(function(c) {
+    checks.forEach(function (c) {
       c.addEventListener('change', applyFilter);
     });
 
-    resetBtn.addEventListener('click', function() {
-      checks.forEach(function(c) { c.checked = false; });
+    resetBtn.addEventListener('click', function () {
+      checks.forEach(function (c) {
+        c.checked = false;
+      });
       applyFilter();
     });
   })();

@@ -77,20 +77,20 @@
   }
 </style>
 
-<section class="si-gallery-section">
-  <div class="si-gallery-container">
-    <h1 class="si-gallery-title">{{ section.settings.title }}</h1>
-    <div class="si-gallery-grid">
+<section class='si-gallery-section'>
+  <div class='si-gallery-container'>
+    <h1 class='si-gallery-title'>{{ section.settings.title }}</h1>
+    <div class='si-gallery-grid'>
       {% for block in section.blocks %}
         {% if block.type == 'image' %}
-          <div class="si-gallery-item" {{ block.shopify_attributes }}>
+          <div class='si-gallery-item' {{ block.shopify_attributes }}>
             {% if block.settings.image_asset != blank %}
-              <img 
-                src="{{ block.settings.image_asset | asset_url }}" 
-                alt="{{ block.settings.alt | default: 'Gallery image' }}"
-                loading="lazy"
-                width="314"
-                height="314"
+              <img
+                src='{{ block.settings.image_asset | asset_url }}'
+                alt='{{ block.settings.alt | default: 'Gallery image' }}'
+                loading='lazy'
+                width='314'
+                height='314'
               >
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}

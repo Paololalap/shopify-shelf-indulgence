@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: center;
     max-width: 960px;
     margin: 0 auto;
   }
@@ -26,14 +26,14 @@
     font-size: calc(1.6rem + 10px);
     color: var(--si-burg-deep);
     font-weight: 400 !important;
-    margin-top: 0.6rem;
+    margin-top: 0;
     line-height: 1.3;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
   .si-ev-item {
     display: grid;
-    grid-template-columns: 120px 1fr 20px;
+    grid-template-columns: 180px 1fr 20px;
     align-items: center;
     padding: 1.1rem 0;
     border-bottom: 1px solid var(--si-cream-border);
@@ -41,9 +41,6 @@
     cursor: pointer;
     transition: background 0.2s;
     text-decoration: none;
-  }
-  .si-ev-item:first-child {
-    border-top: 1px solid var(--si-cream-border);
   }
   .si-ev-item:last-child {
     border-bottom: none;

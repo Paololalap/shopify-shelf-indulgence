@@ -215,25 +215,44 @@
           "type": "event",
           "settings": {
             "date": "9 Aug 2026",
-            "name": "Indie Bookworm — Chapter 6, Book Lovers Day"
+            "name": "Indie Bookworm — Chapter 6, Book Lovers Day",
+            "link": "/pages/events"
           }
         },
         "ev_2": {
           "type": "event",
           "settings": {
             "date": "29 Aug 2026",
-            "name": "Romance on the Vines"
+            "name": "Romance on the Vines",
+            "link": "/pages/events"
           }
         },
         "ev_3": {
           "type": "event",
           "settings": {
+            "date": "7 Nov 2026",
+            "name": "Sweet Love Book Fair",
+            "link": "/pages/events"
+          }
+        },
+        "ev_4": {
+          "type": "event",
+          "settings": {
+            "date": "22 Nov 2026",
+            "name": "Bookish Amour",
+            "link": "/pages/events"
+          }
+        },
+        "ev_5": {
+          "type": "event",
+          "settings": {
             "date": "Coming soon",
-            "name": "More events to be announced"
+            "name": "More events to be announced",
+            "link": "/pages/events"
           }
         }
       },
-      "block_order": ["ev_1", "ev_2", "ev_3"],
+      "block_order": ["ev_1", "ev_2", "ev_3", "ev_4", "ev_5"],
       "settings": {
         "heading": "Find us at events across Australia"
       }

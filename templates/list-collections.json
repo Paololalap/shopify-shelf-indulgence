@@ -40,28 +40,6 @@
             "alt_bg": false
           }
         },
-        "clipped": {
-          "type": "tile",
-          "settings": {
-            "collection": "clipped-in-stories",
-            "category": "",
-            "title": "Clipped In Stories",
-            "description": "",
-            "link": "",
-            "alt_bg": true
-          }
-        },
-        "keyring": {
-          "type": "tile",
-          "settings": {
-            "collection": "carry-your-story-key-ring",
-            "category": "",
-            "title": "Carry Your Story - Key Ring",
-            "description": "",
-            "link": "",
-            "alt_bg": false
-          }
-        },
         "decor": {
           "type": "tile",
           "settings": {
@@ -111,8 +89,6 @@
         "hoodies",
         "merch",
         "mystery",
-        "clipped",
-        "keyring",
         "decor",
         "selfcare",
         "wordsearch",

@@ -71,60 +71,139 @@
 </style>
 
 <div class='si-coll-grid'>
-  {% for block in section.blocks %}
-    {%- liquid
-      assign tile_collection = block.settings.collection
-      assign has_products = false
-      if tile_collection != blank and tile_collection.all_products_count > 0
-        assign has_products = true
-      endif
+  {%- if section.settings.dynamic_collections -%}
+    {%- assign excluded_handles = section.settings.excluded_handles | split: ',' -%}
+    {%- assign rendered_index = 0 -%}
+    {%- for tile_collection in collections -%}
+      {%- liquid
+        assign handle_stripped = tile_collection.handle | strip
+        assign should_exclude = false
+        for excl in excluded_handles
+          assign excl_stripped = excl | strip
+          if excl_stripped == handle_stripped
+            assign should_exclude = true
+          endif
+        endfor
+      -%}
+      {%- if should_exclude -%}
+        {%- continue -%}
+      {%- endif -%}
 
-      if tile_collection != blank
+      {%- liquid
+        assign has_products = false
+        if tile_collection.all_products_count > 0
+          assign has_products = true
+        endif
+
         assign tile_url = tile_collection.url
-        assign tile_title = block.settings.title | default: tile_collection.title
-      else
-        assign tile_url = block.settings.link
-        assign tile_title = block.settings.title
-      endif
-    -%}
+        assign tile_title = tile_collection.title
+        assign tile_desc = tile_collection.description
 
-    {%- if has_products -%}
-      <a
-        href='{{ tile_url }}'
-        class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %}'
-        {{ block.shopify_attributes }}
-      >
-    {%- else -%}
-      <div
-        class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %} si-coll-tile--disabled'
-        {{ block.shopify_attributes }}
-      >
-    {%- endif -%}
+        assign alt_bg = false
+        assign remainder = rendered_index | modulo: 2
+        if remainder == 1
+          assign alt_bg = true
+        endif
 
-    <div class='si-coll-tile-inner'>
-      {% if block.settings.category != blank %}
-        <p class='si-coll-tile-cat'>{{ block.settings.category }}</p>
-      {% endif %}
-      {% if tile_title != blank %}
-        <p class='si-coll-tile-name'>{{ tile_title }}</p>
-      {% endif %}
-      {% if block.settings.description != blank %}
-        <p class='si-coll-tile-desc'>{{ block.settings.description }}</p>
-      {% endif %}
-    </div>
+        assign rendered_index = rendered_index | plus: 1
+      -%}
 
-    {%- if has_products -%}
-      </a>
-    {%- else -%}
+      {%- if has_products -%}
+        <a
+          href='{{ tile_url }}'
+          class='si-coll-tile{% if alt_bg %} si-coll-tile--alt{% endif %}'
+        >
+      {%- else -%}
+        <div
+          class='si-coll-tile{% if alt_bg %} si-coll-tile--alt{% endif %} si-coll-tile--disabled'
+        >
+      {%- endif -%}
+
+      <div class='si-coll-tile-inner'>
+        {% if tile_title != blank %}
+          <p class='si-coll-tile-name'>{{ tile_title }}</p>
+        {% endif %}
+        {% if tile_desc != blank %}
+          <div class='si-coll-tile-desc'>{{ tile_desc }}</div>
+        {% endif %}
       </div>
-    {%- endif -%}
-  {% endfor %}
+
+      {%- if has_products -%}
+        </a>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {% for block in section.blocks %}
+      {%- liquid
+        assign tile_collection = block.settings.collection
+        assign has_products = false
+        if tile_collection != blank and tile_collection.all_products_count > 0
+          assign has_products = true
+        endif
+
+        if tile_collection != blank
+          assign tile_url = tile_collection.url
+          assign tile_title = block.settings.title | default: tile_collection.title
+        else
+          assign tile_url = block.settings.link
+          assign tile_title = block.settings.title
+        endif
+      -%}
+
+      {%- if has_products -%}
+        <a
+          href='{{ tile_url }}'
+          class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %}'
+          {{ block.shopify_attributes }}
+        >
+      {%- else -%}
+        <div
+          class='si-coll-tile{% if block.settings.alt_bg %} si-coll-tile--alt{% endif %} si-coll-tile--disabled'
+          {{ block.shopify_attributes }}
+        >
+      {%- endif -%}
+
+      <div class='si-coll-tile-inner'>
+        {% if block.settings.category != blank %}
+          <p class='si-coll-tile-cat'>{{ block.settings.category }}</p>
+        {% endif %}
+        {% if tile_title != blank %}
+          <p class='si-coll-tile-name'>{{ tile_title }}</p>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <p class='si-coll-tile-desc'>{{ block.settings.description }}</p>
+        {% endif %}
+      </div>
+
+      {%- if has_products -%}
+        </a>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
 </div>
 
 {% schema %}
 {
   "name": "SI Collections",
-  "settings": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "dynamic_collections",
+      "label": "Display all collections dynamically",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "excluded_handles",
+      "label": "Excluded collection handles",
+      "info": "Comma-separated list of collection handles to exclude",
+      "default": "frontpage, all, clipped-in-stories, carry-your-story-key-ring"
+    }
+  ],
   "blocks": [
     {
       "type": "tile",

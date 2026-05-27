@@ -1,111 +1,207 @@
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
   .si-author-section {
-    background-color: #fcf9e2;
+    padding: 120px 90px;
+    background: #fcf9e2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .si-author-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(107,26,42,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(184,146,74,0.06) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .si-author-section::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent 0px, transparent 31px,
+      rgba(184,146,74,0.10) 31px, rgba(184,146,74,0.10) 32px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .si-author-frame {
+    position: relative;
+    z-index: 1;
+  }
+  .si-author-frame::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(184,146,74,0.3);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .si-author-frame::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(184,146,74,0.12);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .si-author-img {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  @media (min-width: 768px) {
-    .si-author-section {
-      min-height: 668px;
-    }
-  }
-  .si-author-col1,
-  .si-author-col2 {
-    width: 100%;
-  }
-  @media (min-width: 768px) {
-    .si-author-col1,
-    .si-author-col2 {
-      width: 50%;
-      height: 100%;
-    }
-  }
-  .si-author-col1 {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .si-author-col1 img {
-    width: 100%;
-    height: 585px;
-    object-fit: contain;
-    object-position: top center;
-    margin-top: 27px;
-  }
-  .si-author-col2 {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #f5eaec 0%, #e8d8d0 35%, #d8c0b8 65%, #c8a8a0 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    font-size: 80px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(74,15,28,0.15);
   }
-  @media (min-width: 768px) {
-    .si-author-col2 {
-      padding: 0;
-    }
-  }
-  .si-author-container {
-    margin-top: 27px;
+  .si-author-img img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    max-width: 400px;
-    text-align: center;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    z-index: 1;
   }
-  @media (min-width: 1024px) {
-    .si-author-container {
-      width: 29vw;
-      max-width: none;
-    }
-  }
-  .si-author-container img {
-    margin: 0 auto;
-    display: block;
-    max-width: 100%;
-  }
-  .si-author-heading {
-    font-size: 40px;
-    color: #610a1e;
+
+  .si-author-tag {
+    display: inline-block;
+    border: 1px solid rgba(196, 150, 78, 0.3);
+    color: #c4964e;
+    font-family: 'Cinzel', serif;
+    font-size: 9.28px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: var(--si-serif), serif;
-    font-weight: 500 !important;
-    line-height: 1.2;
-    text-align: center;
+    padding: 5px 14px;
+    margin-bottom: 22px;
+  }
+  .si-author-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: #6b1a2a;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+  .si-author-title em {
+    font-style: italic;
+    color: #c4964e;
+  }
+  .si-author-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.6);
+    margin-bottom: 28px;
+    margin-top: 0;
+  }
+  .si-author-quote {
+    border-left: 2px solid rgba(196, 150, 78, 0.35);
+    padding-left: 22px;
+    margin-bottom: 26px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17.28px;
+    font-style: italic;
+    color: rgba(97, 10, 30, 0.7);
+    line-height: 1.7;
+    margin-top: 0;
   }
   .si-author-text {
-    color: #610a1e;
-    font-size: 15px;
-    margin: 0;
-    line-height: 1.5;
-    text-align: left;
-    font-family: var(--si-sans), sans-serif;
+    font-size: 14.4px;
+    color: rgba(97, 10, 30, 0.65);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 32px;
+    margin-top: 0;
+    font-family: 'Jost', sans-serif;
   }
-  .si-author-text + .si-author-text {
-    margin-top: 27px;
+  .si-author-cta {
+    display: inline-block;
+    padding: 15px 38px;
+    background: #6b1a2a;
+    color: #fcf9e2;
+    font-family: 'Jost', sans-serif;
+    font-size: 11.2px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.28s;
+    position: relative;
+    overflow: hidden;
+  }
+  .si-author-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #8b2e42;
+    transform: translateX(-100%);
+    transition: transform 0.32s ease;
+  }
+  .si-author-cta:hover::before {
+    transform: translateX(0);
+  }
+  .si-author-cta span {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .si-author-section {
+      grid-template-columns: 1fr;
+      padding: 60px 24px;
+      gap: 40px;
+    }
+    .si-author-img {
+      aspect-ratio: 3/4;
+    }
   }
 </style>
 
 <section class='si-author-section'>
-  <div class='si-author-col1'>
-    <img src='{{ 'heart-full.jpg' | asset_url }}' alt='Jessie Heart'>
-  </div>
-  <div class='si-author-col2'>
-    <div class='si-author-container'>
-      <img src='{{ 'shelf-indulgence.png' | asset_url }}' alt='Shelf Indulgence'>
-      <h2 class='si-author-heading'>THE MIND BEHIND STORIES</h2>
-      <p class='si-author-text'>
-        Jessie Heart has always lived with one foot in reality and the other in a story. As a child, she would gaze out
-        car windows, weaving fantastical tales from the world rushing by. That love for storytelling never left her.
-        Having been a passionate school teacher for 24 years, wife, and proud mother of four beautiful children, Jessie
-        continues to inspire others through her words and creativity.
-      </p>
-      <p class='si-author-text'>
-        A devoted lover of books, history, and all things royal, she finds joy in crafting stories and getting lost in
-        new worlds. Having lived an unpredictable—and sometimes unbelievable—life, Jessie meets every plot twist with a
-        smile, a laugh, and the fierce determination of a warrior. Her stories and book range are a celebration of
-        imagination, resilience, and the magic that lives in us all.
-      </p>
+  <div class='si-author-frame'>
+    <div class='si-author-img'>
+      <img src="{{ 'heart-full.jpg' | asset_url }}" alt="Jessie Heart" loading="lazy">
     </div>
+  </div>
+  <div>
+    <div class='si-author-tag'>The Mind Behind the Stories</div>
+    <h2 class='si-author-title'>Meet <em>Jessie Heart</em></h2>
+    <p class='si-author-role'>Author · Teacher · Storyteller</p>
+    <blockquote class='si-author-quote'>
+      "As a child, she would gaze out car windows, weaving fantastical tales from the world rushing by. That love for
+      storytelling never left her."
+    </blockquote>
+    <p class='si-author-text'>
+      Having been a passionate school teacher for 24 years, wife, and proud mother of four beautiful children, Jessie
+      continues to inspire others through her words and creativity. A devoted lover of books, history, and all things
+      royal, she finds joy in crafting stories and getting lost in new worlds.
+    </p>
+    <p class='si-author-text'>
+      Everflow is her debut novel — a world built in stolen moments, between lesson plans and bedtime stories, where
+      four students learn what it truly means to carry an element within them.
+    </p>
   </div>
 </section>
 

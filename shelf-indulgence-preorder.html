@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-order — Wear Your Story™ | Shelf Indulgence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-
-{%- style -%}
+<style>
 /* ═══════════════════════════════════════════
    ROOT & TOKENS
 ═══════════════════════════════════════════ */
@@ -29,10 +34,10 @@
   --purple-hoodie:  #c8b0e0;
 }
 
-.si-preorder-full-page, .si-preorder-full-page *,.si-preorder-full-page *::before,.si-preorder-full-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
-.si-preorder-full-page {
+body {
   font-family: 'Jost', sans-serif;
   background: var(--cream);
   color: var(--ink);
@@ -43,7 +48,7 @@ html { scroll-behavior: smooth; }
 /* ═══════════════════════════════════════════
    DREAMY PAGE-LINES TEXTURE
 ═══════════════════════════════════════════ */
-.si-preorder-full-page::before {
+body::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -56,12 +61,86 @@ html { scroll-behavior: smooth; }
   z-index: 0;
 }
 
+/* ═══════════════════════════════════════════
+   ANNOUNCEMENT
+═══════════════════════════════════════════ */
+.announce {
+  background: var(--burg-dk);
+  color: rgba(250,246,237,0.85);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  position: relative;
+  z-index: 10;
+}
+.announce b { color: var(--gold-lt); font-weight: 600; }
 
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,246,237,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--cream-wm);
+  padding: 0 60px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--burg);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.nav-links { display: flex; gap: 34px; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color .2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--burg);
+  transition: width .3s;
+}
+.nav-links a:hover { color: var(--burg); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--burg); }
+.nav-links a.active::after { width: 100%; }
+.nav-cart {
+  background: var(--burg);
+  color: var(--cream) !important;
+  padding: 9px 22px;
+  letter-spacing: 0.14em;
+}
+.nav-cart::after { display: none !important; }
+.nav-cart:hover { background: var(--burg-lt) !important; color: var(--cream) !important; }
 
 /* ═══════════════════════════════════════════
    HERO — DREAMY ATMOSPHERIC
 ═══════════════════════════════════════════ */
-.si-preorder-full-page .hero {
+.hero {
   position: relative;
   min-height: 88vh;
   display: flex;
@@ -75,7 +154,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* misty radial atmosphere */
-.si-preorder-full-page .hero::before {
+.hero::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -87,15 +166,15 @@ html { scroll-behavior: smooth; }
 }
 
 /* floating dreamy orbs */
-.si-preorder-full-page .orb {
+.orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   animation: floatOrb ease-in-out infinite;
 }
-.si-preorder-full-page .orb-1 { width:320px; height:320px; background:radial-gradient(circle, rgba(107,26,42,0.09), transparent 70%); top:-60px; left:-80px; animation-duration:14s; }
-.si-preorder-full-page .orb-2 { width:260px; height:260px; background:radial-gradient(circle, rgba(184,146,74,0.08), transparent 70%); top:40%; right:-60px; animation-duration:18s; animation-delay:-5s; }
-.si-preorder-full-page .orb-3 { width:180px; height:180px; background:radial-gradient(circle, rgba(107,26,42,0.07), transparent 70%); bottom:-40px; left:30%; animation-duration:12s; animation-delay:-8s; }
+.orb-1 { width:320px; height:320px; background:radial-gradient(circle, rgba(107,26,42,0.09), transparent 70%); top:-60px; left:-80px; animation-duration:14s; }
+.orb-2 { width:260px; height:260px; background:radial-gradient(circle, rgba(184,146,74,0.08), transparent 70%); top:40%; right:-60px; animation-duration:18s; animation-delay:-5s; }
+.orb-3 { width:180px; height:180px; background:radial-gradient(circle, rgba(107,26,42,0.07), transparent 70%); bottom:-40px; left:30%; animation-duration:12s; animation-delay:-8s; }
 
 @keyframes floatOrb {
   0%,100% { transform: translateY(0) scale(1); }
@@ -103,7 +182,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* scattered floating pages */
-.si-preorder-full-page .float-page {
+.float-page {
   position: absolute;
   pointer-events: none;
   opacity: 0;
@@ -116,8 +195,8 @@ html { scroll-behavior: smooth; }
   100% { opacity:0; transform: translateY(-80px) rotate(var(--rot-end)); }
 }
 
-.si-preorder-full-page .hero-eyebrow {
-  font-size: 10.4px;
+.hero-eyebrow {
+  font-size: 0.65rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--gold);
@@ -127,11 +206,11 @@ html { scroll-behavior: smooth; }
   animation: fadeUp .9s ease both .1s;
   position: relative;
 }
-.si-preorder-full-page .hero-eyebrow::before,
-.si-preorder-full-page .hero-eyebrow::after { content:''; display:inline-block; width:30px; height:1px; background:var(--gold); opacity:.6; }
+.hero-eyebrow::before,
+.hero-eyebrow::after { content:''; display:inline-block; width:30px; height:1px; background:var(--gold); opacity:.6; }
 
-.si-preorder-full-page .hero-tag {
-  font-size: 9.6px;
+.hero-tag {
+  font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cream);
@@ -143,9 +222,9 @@ html { scroll-behavior: smooth; }
   position: relative;
 }
 
-.si-preorder-full-page .hero-title {
+.hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(57.6px, 7vw, 104px);
+  font-size: clamp(3.6rem, 7vw, 6.5rem);
   font-weight: 300;
   line-height: 1.02;
   color: var(--burg-dk);
@@ -154,12 +233,12 @@ html { scroll-behavior: smooth; }
   position: relative;
   letter-spacing: -0.01em;
 }
-.si-preorder-full-page .hero-title em {
+.hero-title em {
   font-style: italic;
   font-weight: 400;
   color: var(--burg);
 }
-.si-preorder-full-page .hero-title .tm {
+.hero-title .tm {
   font-family: 'Jost', sans-serif;
   font-size: 0.28em;
   vertical-align: super;
@@ -168,9 +247,9 @@ html { scroll-behavior: smooth; }
   color: var(--gold);
 }
 
-.si-preorder-full-page .hero-subtitle {
+.hero-subtitle {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(16px, 1.8vw, 20.8px);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
   font-style: italic;
   color: var(--muted);
   max-width: 560px;
@@ -180,14 +259,14 @@ html { scroll-behavior: smooth; }
   position: relative;
 }
 
-.si-preorder-full-page .hero-cta-group {
+.hero-cta-group {
   display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   animation: fadeUp 1s ease both .5s;
   position: relative;
 }
 
 /* scroll indicator */
-.si-preorder-full-page .scroll-hint {
+.scroll-hint {
   position: absolute;
   bottom: 32px;
   left: 50%;
@@ -199,8 +278,8 @@ html { scroll-behavior: smooth; }
   animation: fadeUp 1s ease both 1.2s;
   color: var(--muted-lt);
 }
-.si-preorder-full-page .scroll-hint span { font-size: 9.28px; letter-spacing: 0.22em; text-transform: uppercase; }
-.si-preorder-full-page .scroll-line {
+.scroll-hint span { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.scroll-line {
   width: 1px; height: 40px;
   background: linear-gradient(to bottom, var(--gold), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
@@ -213,16 +292,16 @@ html { scroll-behavior: smooth; }
 /* ═══════════════════════════════════════════
    WAVY DIVIDER
 ═══════════════════════════════════════════ */
-.si-preorder-full-page .wave-div {
+.wave-div {
   position: relative;
   height: 80px;
   overflow: hidden;
   background: var(--burg-dk);
 }
-.si-preorder-full-page .wave-div svg { position:absolute; bottom:0; width:100%; }
-.si-preorder-full-page .wave-div.light { background: var(--cream); }
-.si-preorder-full-page .wave-div.light svg path { fill: var(--cream-dk); }
-.si-preorder-full-page .wave-div.dark  svg path { fill: var(--cream); }
+.wave-div svg { position:absolute; bottom:0; width:100%; }
+.wave-div.light { background: var(--cream); }
+.wave-div.light svg path { fill: var(--cream-dk); }
+.wave-div.dark  svg path { fill: var(--cream); }
 
 /* ═══════════════════════════════════════════
    HOODIE SHOWCASE — THE STAR SECTION
@@ -249,7 +328,7 @@ html { scroll-behavior: smooth; }
   margin-bottom: 72px;
 }
 .section-eyebrow {
-  font-size: 9.92px;
+  font-size: 0.62rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold);
@@ -262,7 +341,7 @@ html { scroll-behavior: smooth; }
 
 .section-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 51.2px);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 400;
   color: var(--burg-dk);
   line-height: 1.1;
@@ -309,6 +388,30 @@ html { scroll-behavior: smooth; }
 .hs-darkrom   { background: linear-gradient(160deg, #e8e6e4 0%, #d8d4d0 35%, #c8c2bc 65%, #b0a898 100%); }
 .hs-fantasy   { background: linear-gradient(160deg, #ede8f8 0%, #ddd0f0 35%, #ccc0e8 65%, #b4a0d8 100%); }
 
+/* dreamy misty overlay on scene */
+.hoodie-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,255,255,0.45), transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* subtle page texture inside scene */
+.hoodie-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0px, transparent 23px,
+    rgba(255,255,255,0.18) 23px, rgba(255,255,255,0.18) 24px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
 /* hoodie visual — oversized centred shape */
 .hoodie-visual {
   position: relative;
@@ -350,7 +453,7 @@ html { scroll-behavior: smooth; }
 }
 
 .genre-tag {
-  font-size: 9.28px;
+  font-size: 0.58rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 700;
@@ -365,7 +468,7 @@ html { scroll-behavior: smooth; }
 
 .hoodie-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19.2px;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--burg-dk);
   line-height: 1.25;
@@ -373,7 +476,7 @@ html { scroll-behavior: smooth; }
 }
 .hoodie-tagline {
   font-family: 'EB Garamond', serif;
-  font-size: 14.08px;
+  font-size: 0.88rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 14px;
@@ -391,9 +494,9 @@ html { scroll-behavior: smooth; }
   border: 1.5px solid rgba(0,0,0,0.1);
   flex-shrink: 0;
 }
-.color-name { font-size: 11.52px; color: var(--muted); font-weight: 300; }
+.color-name { font-size: 0.72rem; color: var(--muted); font-weight: 300; }
 .hoodie-price {
-  font-size: 14.4px;
+  font-size: 0.9rem;
   color: var(--burg);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -405,7 +508,7 @@ html { scroll-behavior: smooth; }
   border: 1px solid var(--burg);
   color: var(--burg);
   font-family: 'Jost', sans-serif;
-  font-size: 10.56px;
+  font-size: 0.66rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 600;
@@ -468,7 +571,7 @@ html { scroll-behavior: smooth; }
 .order-form-wrap {}
 
 .form-eyebrow {
-  font-size: 9.6px;
+  font-size: 0.6rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--gold);
@@ -480,7 +583,7 @@ html { scroll-behavior: smooth; }
 
 .form-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 41.6px;
+  font-size: 2.6rem;
   font-weight: 400;
   color: var(--burg-dk);
   line-height: 1.12;
@@ -490,7 +593,7 @@ html { scroll-behavior: smooth; }
 
 .form-subtitle {
   font-family: 'EB Garamond', serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 36px;
@@ -498,7 +601,7 @@ html { scroll-behavior: smooth; }
 }
 
 .form-select-label {
-  font-size: 10.56px;
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
@@ -537,8 +640,8 @@ html { scroll-behavior: smooth; }
 .go-ya      .genre-dot { background: var(--blue-hoodie); }
 .go-darkrom .genre-dot { background: var(--grey-hoodie); }
 .go-fantasy .genre-dot { background: var(--purple-hoodie); }
-.genre-option-name { font-size: 12.48px; font-weight: 500; color: var(--burg-dk); }
-.genre-option-sub  { font-size: 10.56px; color: var(--muted); font-weight: 300; }
+.genre-option-name { font-size: 0.78rem; font-weight: 500; color: var(--burg-dk); }
+.genre-option-sub  { font-size: 0.66rem; color: var(--muted); font-weight: 300; }
 .go-check {
   position: absolute;
   right: 12px; top: 50%;
@@ -562,7 +665,7 @@ html { scroll-behavior: smooth; }
   border: 1px solid var(--cream-wm);
   background: #fff;
   font-family: 'Jost', sans-serif;
-  font-size: 11.84px;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--muted);
   cursor: pointer;
@@ -576,7 +679,7 @@ html { scroll-behavior: smooth; }
   border-left: 3px solid var(--burg-soft);
   padding: 14px 18px;
   margin-bottom: 28px;
-  font-size: 13.12px;
+  font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.65;
   font-style: italic;
@@ -588,7 +691,7 @@ html { scroll-behavior: smooth; }
   background: var(--burg);
   color: var(--cream);
   font-family: 'Jost', sans-serif;
-  font-size: 11.52px;
+  font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 600;
@@ -614,7 +717,7 @@ html { scroll-behavior: smooth; }
   margin-top: 14px;
   justify-content: center;
 }
-.secure-row span { font-size: 10.88px; color: var(--muted-lt); letter-spacing: 0.08em; }
+.secure-row span { font-size: 0.68rem; color: var(--muted-lt); letter-spacing: 0.08em; }
 
 /* right — order summary */
 .order-summary {}
@@ -627,7 +730,7 @@ html { scroll-behavior: smooth; }
 }
 .summary-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22.4px;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--burg-dk);
   margin-bottom: 24px;
@@ -642,20 +745,20 @@ html { scroll-behavior: smooth; }
 }
 .summary-item:last-of-type { border-bottom: none; }
 .si-left { flex: 1; }
-.si-name { font-size: 14.08px; font-weight: 500; color: var(--burg-dk); margin-bottom: 4px; }
-.si-detail { font-size: 12px; color: var(--muted); font-weight: 300; }
-.si-price { font-size: 14.08px; font-weight: 600; color: var(--burg); white-space: nowrap; }
+.si-name { font-size: 0.88rem; font-weight: 500; color: var(--burg-dk); margin-bottom: 4px; }
+.si-detail { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+.si-price { font-size: 0.88rem; font-weight: 600; color: var(--burg); white-space: nowrap; }
 .summary-total {
   display: flex; justify-content: space-between; align-items: center;
   padding-top: 18px;
   margin-top: 4px;
   border-top: 1.5px solid var(--burg-dk);
 }
-.st-label { font-family: 'Cormorant Garamond', serif; font-size: 17.6px; font-weight: 500; color: var(--burg-dk); }
-.st-amount { font-family: 'Cormorant Garamond', serif; font-size: 22.4px; font-weight: 600; color: var(--burg); }
+.st-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--burg-dk); }
+.st-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--burg); }
 .summary-perks { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-.perk-row { display: flex; align-items: center; gap: 10px; font-size: 12.48px; color: var(--muted); font-weight: 300; }
-.perk-icon { color: var(--gold); font-size: 14.4px; flex-shrink: 0; }
+.perk-row { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+.perk-icon { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; }
 
 /* ═══════════════════════════════════════════
    ABOUT HOODIES SECTION
@@ -688,7 +791,7 @@ html { scroll-behavior: smooth; }
 .ap-badge {
   border: 1px solid rgba(184,146,74,0.4);
   color: var(--gold-lt);
-  font-size: 9.28px;
+  font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 4px 14px;
@@ -696,7 +799,7 @@ html { scroll-behavior: smooth; }
 }
 .ap-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(35.2px, 3.5vw, 51.2px);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
   font-weight: 400;
   color: var(--cream);
   line-height: 1.12;
@@ -705,14 +808,14 @@ html { scroll-behavior: smooth; }
 .ap-title em { font-style: italic; color: #e8c4b0; }
 .ap-series {
   font-family: 'EB Garamond', serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: italic;
   color: rgba(250,246,237,0.55);
   margin-bottom: 28px;
 }
 .ap-desc {
   color: rgba(250,246,237,0.65);
-  font-size: 14.72px;
+  font-size: 0.92rem;
   line-height: 1.9;
   font-weight: 300;
   margin-bottom: 32px;
@@ -720,7 +823,7 @@ html { scroll-behavior: smooth; }
 .feature-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
 .feature-item { display: flex; align-items: flex-start; gap: 14px; }
 .feat-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
-.feat-text { font-size: 14.08px; color: rgba(250,246,237,0.75); line-height: 1.55; font-weight: 300; }
+.feat-text { font-size: 0.88rem; color: rgba(250,246,237,0.75); line-height: 1.55; font-weight: 300; }
 .feat-text b { color: var(--cream); font-weight: 500; }
 
 /* stacked dreamy hoodie display */
@@ -782,7 +885,7 @@ html { scroll-behavior: smooth; }
   position: relative;
   cursor: pointer;
 }
-.gal-tile img { width:100%; height:100%; object-fit:cover; object-position:center top; transition: transform .5s ease; }
+.gal-tile img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
 .gal-tile:hover img { transform: scale(1.06); }
 .gal-tile .gal-overlay {
   position: absolute; inset: 0;
@@ -791,14 +894,14 @@ html { scroll-behavior: smooth; }
   display: flex; align-items: center; justify-content: center;
 }
 .gal-tile:hover .gal-overlay { background: rgba(74,15,28,0.3); }
-.gal-icon { color: var(--cream); font-size: 24px; opacity: 0; transition: opacity .3s; }
+.gal-icon { color: var(--cream); font-size: 1.5rem; opacity: 0; transition: opacity .3s; }
 .gal-tile:hover .gal-icon { opacity: 1; }
 /* placeholder colours */
 .gc-1 { background: linear-gradient(145deg,#e8c0c8,#c09098); }
 .gc-2 { background: linear-gradient(145deg,#c0d8e8,#8aaccA); }
 .gc-3 { background: linear-gradient(145deg,#d8d0c8,#a09088); }
 .gc-4 { background: linear-gradient(145deg,#d0c0e8,#a090c8); }
-.gal-ph { width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;opacity:.35; }
+.gal-ph { width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.35; }
 
 /* ═══════════════════════════════════════════
    BOTTOM CTA / NEWSLETTER
@@ -824,16 +927,16 @@ html { scroll-behavior: smooth; }
 .bottom-cta::after {
   content: '📖';
   position: absolute;
-  font-size: 352px;
+  font-size: 22rem;
   top:50%;left:50%;
   transform:translate(-50%,-50%);
   opacity: 0.03;
   pointer-events: none;
 }
-.bc-eyebrow { color: var(--gold-lt); font-size: 9.92px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 16px; position: relative; }
+.bc-eyebrow { color: var(--gold-lt); font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 16px; position: relative; }
 .bc-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 51.2px);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 400;
   color: var(--cream);
   margin-bottom: 16px;
@@ -842,7 +945,7 @@ html { scroll-behavior: smooth; }
 .bc-title em { font-style: italic; }
 .bc-desc {
   color: rgba(250,246,237,.65);
-  font-size: 14.88px;
+  font-size: .93rem;
   font-weight: 300;
   max-width: 440px;
   margin: 0 auto 38px;
@@ -853,7 +956,7 @@ html { scroll-behavior: smooth; }
 .nl-input {
   flex:1; padding:15px 20px;
   font-family:'Jost',sans-serif;
-  font-size:13.44px;
+  font-size:.84rem;
   border:1px solid rgba(255,255,255,.18);
   background:rgba(255,255,255,.1);
   color:var(--cream);
@@ -866,7 +969,7 @@ html { scroll-behavior: smooth; }
   background:var(--gold);
   color:var(--burg-dk);
   font-family:'Jost',sans-serif;
-  font-size:10.72px;
+  font-size:.67rem;
   letter-spacing:.18em;
   text-transform:uppercase;
   font-weight:700;
@@ -876,7 +979,56 @@ html { scroll-behavior: smooth; }
 }
 .nl-btn:hover { background:var(--gold-lt); }
 
-
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--burg-dk);
+  padding: 70px 80px 36px;
+  color: rgba(250,246,237,.55);
+  position: relative;
+  z-index: 1;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 48px;
+}
+.ft-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;
+  font-weight:600;
+  color:var(--cream);
+  display:block;
+  margin-bottom:14px;
+}
+.ft-desc { font-size:.83rem; line-height:1.8; margin-bottom:26px; font-weight:300; max-width:260px; }
+.ft-socials { display:flex; gap:10px; }
+.soc-btn {
+  width:34px; height:34px;
+  border:1px solid rgba(255,255,255,.14);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(250,246,237,.65);
+  font-size:.72rem; font-weight:600;
+  text-decoration:none;
+  transition:all .2s;
+}
+.soc-btn:hover { background:var(--burg-lt); border-color:var(--burg-lt); color:var(--cream); }
+.ft-col-title {
+  font-size:.58rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold-lt); font-weight:700; margin-bottom:20px; display:block;
+}
+.ft-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.ft-links a { text-decoration:none; color:rgba(250,246,237,.5); font-size:.83rem; transition:color .2s; font-weight:300; }
+.ft-links a:hover { color:var(--cream); }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:26px;
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:.7rem;
+  color:rgba(250,246,237,.28);
+}
 
 /* ═══════════════════════════════════════════
    SHARED ANIMATIONS
@@ -890,34 +1042,6 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:var(--cream); }
 ::-webkit-scrollbar-thumb { background:var(--burg); }
-
-/* Shopify containment: keep imported HTML from changing the theme header/footer. */
-.si-preorder-full-page {
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  line-height: normal;
-  letter-spacing: normal;
-  font-family: 'Jost', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
-}
-body:has(.si-preorder-full-page) #MainContent {
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-body:has(.si-preorder-full-page) #MainContent > .shopify-section {
-  margin: 0;
-}
-
 /* ── success modal ── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 9999;
@@ -1014,25 +1138,45 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
   vertical-align: middle;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-{%- endstyle -%}
+</style>
+</head>
+<body>
 
-<div class="si-preorder-full-page">
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  <b>Pre-order now open</b> — Wear Your Story™ hoodies ship after production · <b>Limited quantities per genre</b>
+</div>
 
-{%- assign hoodie_collection = collections['bookish-hoodies'] -%}
-{%- assign products = hoodie_collection.products -%}
-{%- assign genre_keys = 'romance,ya,darkrom,fantasy' | split: ',' -%}
-{%- assign genre_labels = 'Romance,Young Adult,Dark Romance,Fantasy' | split: ',' -%}
-{%- assign genre_taglines = 'For the hopeless romantic on every page,For the dreamer who grew up in pages,For the reader who likes their love complicated,For those who belong between the worlds' | split: ',' -%}
-{%- assign h_classes = 'h-pink,h-blue,h-grey,h-purple' | split: ',' -%}
-{%- assign hs_classes = 'hs-romance,hs-ya,hs-darkrom,hs-fantasy' | split: ',' -%}
-{%- assign gt_classes = 'gt-romance,gt-ya,gt-darkrom,gt-fantasy' | split: ',' -%}
-{%- assign sparkle_set = '#e898aa,#7aaece,#a09890,#a080c8' | split: ',' -%}
-{%- assign color_swatches = '#f0b0be,#96c0dc,#b8b2aa,#b898d8' | split: ',' -%}
-{%- assign color_labels = 'Dusty Pink,Baby Blue,Titanium Grey,Deep Purple' | split: ',' -%}
-{%- assign static_titles = 'Heart Full,Raised On Stories,Soft Heart Dark Desires,Lost in Realms' | split: ',' -%}
-{%- assign hsc_classes = 'hsc-1,hsc-2,hsc-3,hsc-4' | split: ',' -%}
-{%- assign gc_classes = 'gc-1,gc-2,gc-3,gc-4' | split: ',' -%}
-{%- assign static_gallery = '👕,📚,☕,🌿' | split: ',' -%}
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <!-- inline open-book SVG -->
+    <svg class="nav-logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="6" width="10" height="16" rx="1" fill="#6b1a2a" opacity="0.15"/>
+      <rect x="16" y="6" width="10" height="16" rx="1" fill="#6b1a2a" opacity="0.15"/>
+      <line x1="2" y1="9"  x2="12" y2="9"  stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="2" y1="12" x2="12" y2="12" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="2" y1="15" x2="12" y2="15" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="2" y1="18" x2="12" y2="18" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="16" y1="9"  x2="26" y2="9"  stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="16" y1="12" x2="26" y2="12" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="16" y1="15" x2="26" y2="15" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <line x1="16" y1="18" x2="26" y2="18" stroke="#6b1a2a" stroke-width="0.7" opacity="0.5"/>
+      <path d="M12 6 Q14 8 14 14 Q14 20 12 22" stroke="#b8924a" stroke-width="1.2" fill="none"/>
+      <path d="M16 6 Q14 8 14 14 Q14 20 16 22" stroke="#b8924a" stroke-width="1.2" fill="none"/>
+    </svg>
+    Shelf Indulgence
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/pre-order" class="active">Pre-order</a></li>
+    <li><a href="/pages/everflow">Everflow</a></li>
+    <li><a href="/shop">Shop</a></li>
+    <li><a href="/pages/blog">Blog</a></li>
+    <li><a href="/pages/events">Events</a></li>
+    <li><a href="/cart" class="nav-cart">Cart (0)</a></li>
+  </ul>
+</nav>
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
@@ -1056,7 +1200,7 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
   </p>
   <div class="hero-cta-group">
     <a href="#choose" class="btn-primary"><span>Choose Your Genre →</span></a>
-    <a href="#about" class="btn-ghost" style="padding:14px 32px;display:inline-block;border:1px solid var(--burg);color:var(--burg);font-family:'Jost',sans-serif;font-size:11.52px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:all .25s;" onmouseover="this.style.background='var(--burg)';this.style.color='var(--cream)'" onmouseout="this.style.background='transparent';this.style.color='var(--burg)'">Learn More</a>
+    <a href="#about" class="btn-ghost" style="padding:14px 32px;display:inline-block;border:1px solid var(--burg);color:var(--burg);font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:all .25s;" onmouseover="this.style.background='var(--burg)';this.style.color='var(--cream)'" onmouseout="this.style.background='transparent';this.style.color='var(--burg)'">Learn More</a>
   </div>
 
   <div class="scroll-hint">
@@ -1075,112 +1219,203 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
 <!-- ══════════ HOODIE SHOWCASE ══════════ -->
 <section class="showcase" id="choose">
   <div class="showcase-intro">
-    <div class="section-eyebrow">Four Genres. One Perfect Hoodie.asdfasdf</div>
+    <div class="section-eyebrow">Four Genres. One Perfect Hoodie.</div>
     <h2 class="section-title">Choose Your <em>Reading World</em></h2>
   </div>
 
   <div class="hoodie-grid">
 
-{% if products.size > 0 %}
-  {% assign delays = '3.2s,3.8s,3.5s,4.2s' | split: ',' %}
-  {% assign delays2 = '-1.5s,-2s,-1s,-1.8s' | split: ',' %}
-  {% assign delays3 = '-0.8s,0s,0s,-3s' | split: ',' %}
-  {% for product in products limit: 4 %}
-    {% assign idx = forloop.index0 %}
-    {% assign gk = genre_keys[idx] %}
-    {% assign sc = sparkle_set[idx] %}
-    <div class="hoodie-card {{ h_classes[idx] }}" onclick="selectHoodie(this,'{{ gk }}')">
+    <!-- 1. ROMANCE -->
+    <div class="hoodie-card h-pink" onclick="selectHoodie(this,'romance')">
       <div class="hoodie-card-inner">
-        <div class="hoodie-scene {{ hs_classes[idx] }}">
-          {% if product.featured_image %}
-            <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
-          {% endif %}
-          <div class="sparkle" style="width:5px;height:5px;background:{{ sc }};top:18%;left:20%;animation-duration:{{ delays[idx] }};"></div>
-          <div class="sparkle" style="width:4px;height:4px;background:{{ sc }};top:35%;right:18%;animation-duration:4.1s;animation-delay:{{ delays2[idx] }};"></div>
-          <div class="sparkle" style="width:3px;height:3px;background:{{ sc }};bottom:22%;left:35%;animation-duration:2.8s;animation-delay:{{ delays3[idx] }};"></div>
+        <div class="hoodie-scene hs-romance">
+          <!-- sparkle particles -->
+          <div class="sparkle" style="width:5px;height:5px;background:#e898aa;top:18%;left:20%;animation-duration:3.2s;"></div>
+          <div class="sparkle" style="width:4px;height:4px;background:#e898aa;top:35%;right:18%;animation-duration:4.1s;animation-delay:-1.5s;"></div>
+          <div class="sparkle" style="width:3px;height:3px;background:#e898aa;bottom:22%;left:35%;animation-duration:2.8s;animation-delay:-0.8s;"></div>
           <div class="hoodie-visual">
-            {% unless product.featured_image %}
             <svg class="hoodie-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- hood -->
               <path d="M60 30 Q65 10 100 8 Q135 10 140 30" stroke="var(--hc2)" stroke-width="2" fill="none"/>
+              <!-- shoulder seams -->
               <path d="M30 55 L60 30 L140 30 L170 55" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1.5"/>
+              <!-- body -->
               <rect x="30" y="54" width="140" height="130" rx="4" fill="var(--hc)"/>
+              <!-- sleeves -->
               <path d="M30 55 L5 90 Q4 110 8 125 L35 120 L30 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
               <path d="M170 55 L195 90 Q196 110 192 125 L165 120 L170 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <!-- cuffs -->
               <path d="M5 110 Q4 122 8 125 L35 120 Q34 108 30 105 Z" fill="var(--hc2)"/>
               <path d="M195 110 Q196 122 192 125 L165 120 Q166 108 170 105 Z" fill="var(--hc2)"/>
+              <!-- ribbed hem -->
               <rect x="30" y="174" width="140" height="10" rx="2" fill="var(--hc2)"/>
-              <text x="100" y="100" font-family="serif" font-size="10" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">{{ product.title | truncate: 12 }}</text>
+              <!-- puff print text -->
+              <text x="100" y="100" font-family="serif" font-size="11" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">Heart Full</text>
+              <text x="100" y="118" font-family="sans-serif" font-size="7.5" fill="var(--hc-text)" text-anchor="middle" letter-spacing="2" opacity="0.65">ROMANCE</text>
+              <!-- small heart detail -->
+              <path d="M92 130 Q100 122 108 130 Q116 138 100 148 Q84 138 92 130 Z" fill="var(--hc-text)" opacity="0.2"/>
+              <!-- hood string -->
               <line x1="85" y1="38" x2="78" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
               <line x1="115" y1="38" x2="122" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
               <circle cx="78" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
               <circle cx="122" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
-              <rect x="70" y="148" width="60" height="24" rx="2" fill="var(--hc2)" opacity="0.3"/>
-            </svg>
-            {% endunless %}
-          </div>
-        </div>
-        <div class="hoodie-meta">
-          <span class="genre-tag {{ gt_classes[idx] }}">{{ genre_labels[idx] }}</span>
-          <p class="hoodie-name">{{ product.title }}</p>
-          <p class="hoodie-tagline">{{ genre_taglines[idx] }}</p>
-          <div class="hoodie-color-row">
-            <div class="color-swatch" style="background:{{ color_swatches[idx] }};"></div>
-            <span class="color-name">{{ color_labels[idx] }}</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span class="hoodie-price">{{ product.price | money }}</span>
-          </div>
-          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('{{ gk }}')">Pre-order Now</a>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-{% else %}
-  {% for i in (0..3) %}
-    {% assign gk = genre_keys[i] %}
-    {% assign sc = sparkle_set[i] %}
-    <div class="hoodie-card {{ h_classes[i] }}" onclick="selectHoodie(this,'{{ gk }}')">
-      <div class="hoodie-card-inner">
-        <div class="hoodie-scene {{ hs_classes[i] }}">
-          <div class="sparkle" style="width:5px;height:5px;background:{{ sc }};top:18%;left:20%;animation-duration:3.2s;"></div>
-          <div class="sparkle" style="width:4px;height:4px;background:{{ sc }};top:35%;right:18%;animation-duration:4.1s;animation-delay:-1.5s;"></div>
-          <div class="sparkle" style="width:3px;height:3px;background:{{ sc }};bottom:22%;left:35%;animation-duration:2.8s;animation-delay:-0.8s;"></div>
-          <div class="hoodie-visual">
-            <svg class="hoodie-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M60 30 Q65 10 100 8 Q135 10 140 30" stroke="var(--hc2)" stroke-width="2" fill="none"/>
-              <path d="M30 55 L60 30 L140 30 L170 55" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1.5"/>
-              <rect x="30" y="54" width="140" height="130" rx="4" fill="var(--hc)"/>
-              <path d="M30 55 L5 90 Q4 110 8 125 L35 120 L30 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
-              <path d="M170 55 L195 90 Q196 110 192 125 L165 120 L170 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
-              <path d="M5 110 Q4 122 8 125 L35 120 Q34 108 30 105 Z" fill="var(--hc2)"/>
-              <path d="M195 110 Q196 122 192 125 L165 120 Q166 108 170 105 Z" fill="var(--hc2)"/>
-              <rect x="30" y="174" width="140" height="10" rx="2" fill="var(--hc2)"/>
-              <text x="100" y="100" font-family="serif" font-size="10" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">{{ static_titles[i] | truncate: 12 }}</text>
-              <line x1="85" y1="38" x2="78" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
-              <line x1="115" y1="38" x2="122" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
-              <circle cx="78" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
-              <circle cx="122" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <!-- pocket -->
               <rect x="70" y="148" width="60" height="24" rx="2" fill="var(--hc2)" opacity="0.3"/>
             </svg>
           </div>
         </div>
         <div class="hoodie-meta">
-          <span class="genre-tag {{ gt_classes[i] }}">{{ genre_labels[i] }}</span>
-          <p class="hoodie-name">{{ static_titles[i] }}</p>
-          <p class="hoodie-tagline">{{ genre_taglines[i] }}</p>
+          <span class="genre-tag gt-romance">Romance</span>
+          <p class="hoodie-name">Heart Full</p>
+          <p class="hoodie-tagline">For the hopeless romantic on every page</p>
           <div class="hoodie-color-row">
-            <div class="color-swatch" style="background:{{ color_swatches[i] }};"></div>
-            <span class="color-name">{{ color_labels[i] }}</span>
+            <div class="color-swatch" style="background:#f0b0be;"></div>
+            <span class="color-name">Dusty Pink</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span class="hoodie-price">AU$125.00</span>
           </div>
-          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('{{ gk }}')">Pre-order Now</a>
+          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('romance')">Pre-order Now</a>
         </div>
       </div>
     </div>
-  {% endfor %}
-{% endif %}
+
+    <!-- 2. YOUNG ADULT -->
+    <div class="hoodie-card h-blue" onclick="selectHoodie(this,'ya')">
+      <div class="hoodie-card-inner">
+        <div class="hoodie-scene hs-ya">
+          <div class="sparkle" style="width:5px;height:5px;background:#7aaece;top:22%;right:22%;animation-duration:3.8s;"></div>
+          <div class="sparkle" style="width:3px;height:3px;background:#7aaece;bottom:28%;left:22%;animation-duration:4.5s;animation-delay:-2s;"></div>
+          <div class="hoodie-visual">
+            <svg class="hoodie-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 30 Q65 10 100 8 Q135 10 140 30" stroke="var(--hc2)" stroke-width="2" fill="none"/>
+              <path d="M30 55 L60 30 L140 30 L170 55" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1.5"/>
+              <rect x="30" y="54" width="140" height="130" rx="4" fill="var(--hc)"/>
+              <path d="M30 55 L5 90 Q4 110 8 125 L35 120 L30 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M170 55 L195 90 Q196 110 192 125 L165 120 L170 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M5 110 Q4 122 8 125 L35 120 Q34 108 30 105 Z" fill="var(--hc2)"/>
+              <path d="M195 110 Q196 122 192 125 L165 120 Q166 108 170 105 Z" fill="var(--hc2)"/>
+              <rect x="30" y="174" width="140" height="10" rx="2" fill="var(--hc2)"/>
+              <text x="100" y="98" font-family="serif" font-size="9" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">Raised On</text>
+              <text x="100" y="114" font-family="serif" font-size="11" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.85">Stories</text>
+              <text x="100" y="130" font-family="sans-serif" font-size="7" fill="var(--hc-text)" text-anchor="middle" letter-spacing="2" opacity="0.55">YOUNG ADULT</text>
+              <!-- star -->
+              <path d="M100 143 L102 149 L108 149 L103 153 L105 159 L100 155 L95 159 L97 153 L92 149 L98 149 Z" fill="var(--hc-text)" opacity="0.18"/>
+              <line x1="85" y1="38" x2="78" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <line x1="115" y1="38" x2="122" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="78" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <circle cx="122" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <rect x="70" y="148" width="60" height="24" rx="2" fill="var(--hc2)" opacity="0.3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="hoodie-meta">
+          <span class="genre-tag gt-ya">Young Adult</span>
+          <p class="hoodie-name">Raised On Stories</p>
+          <p class="hoodie-tagline">For the dreamer who grew up in pages</p>
+          <div class="hoodie-color-row">
+            <div class="color-swatch" style="background:#96c0dc;"></div>
+            <span class="color-name">Baby Blue</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="hoodie-price">AU$125.00</span>
+          </div>
+          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('ya')">Pre-order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. DARK ROMANCE -->
+    <div class="hoodie-card h-grey" onclick="selectHoodie(this,'darkrom')">
+      <div class="hoodie-card-inner">
+        <div class="hoodie-scene hs-darkrom">
+          <div class="sparkle" style="width:4px;height:4px;background:#a09890;top:20%;left:25%;animation-duration:3.5s;animation-delay:-1s;"></div>
+          <div class="sparkle" style="width:3px;height:3px;background:#a09890;bottom:30%;right:20%;animation-duration:4s;animation-delay:-2.5s;"></div>
+          <div class="hoodie-visual">
+            <svg class="hoodie-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 30 Q65 10 100 8 Q135 10 140 30" stroke="var(--hc2)" stroke-width="2" fill="none"/>
+              <path d="M30 55 L60 30 L140 30 L170 55" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1.5"/>
+              <rect x="30" y="54" width="140" height="130" rx="4" fill="var(--hc)"/>
+              <path d="M30 55 L5 90 Q4 110 8 125 L35 120 L30 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M170 55 L195 90 Q196 110 192 125 L165 120 L170 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M5 110 Q4 122 8 125 L35 120 Q34 108 30 105 Z" fill="var(--hc2)"/>
+              <path d="M195 110 Q196 122 192 125 L165 120 Q166 108 170 105 Z" fill="var(--hc2)"/>
+              <rect x="30" y="174" width="140" height="10" rx="2" fill="var(--hc2)"/>
+              <text x="100" y="94" font-family="serif" font-size="9" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.75">Soft Heart,</text>
+              <text x="100" y="110" font-family="serif" font-size="9" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">Dark Desires</text>
+              <text x="100" y="126" font-family="sans-serif" font-size="7" fill="var(--hc-text)" text-anchor="middle" letter-spacing="2" opacity="0.5">DARK ROMANCE</text>
+              <!-- crescent moon detail -->
+              <path d="M100 140 Q93 135 90 144 Q94 155 100 153 Q94 148 96 142 Q100 140 100 140 Z" fill="var(--hc-text)" opacity="0.18"/>
+              <line x1="85" y1="38" x2="78" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <line x1="115" y1="38" x2="122" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="78" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <circle cx="122" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <rect x="70" y="148" width="60" height="24" rx="2" fill="var(--hc2)" opacity="0.3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="hoodie-meta">
+          <span class="genre-tag gt-darkrom">Dark Romance</span>
+          <p class="hoodie-name">Soft Heart, Dark Desires</p>
+          <p class="hoodie-tagline">For the reader who likes their love complicated</p>
+          <div class="hoodie-color-row">
+            <div class="color-swatch" style="background:#b8b2aa;"></div>
+            <span class="color-name">Titanium Grey</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="hoodie-price">AU$125.00</span>
+          </div>
+          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('darkrom')">Pre-order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. FANTASY -->
+    <div class="hoodie-card h-purple" onclick="selectHoodie(this,'fantasy')">
+      <div class="hoodie-card-inner">
+        <div class="hoodie-scene hs-fantasy">
+          <div class="sparkle" style="width:5px;height:5px;background:#a080c8;top:16%;right:20%;animation-duration:4.2s;"></div>
+          <div class="sparkle" style="width:4px;height:4px;background:#a080c8;bottom:25%;left:18%;animation-duration:3.6s;animation-delay:-1.8s;"></div>
+          <div class="sparkle" style="width:3px;height:3px;background:#a080c8;top:50%;right:14%;animation-duration:5s;animation-delay:-3s;"></div>
+          <div class="hoodie-visual">
+            <svg class="hoodie-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 30 Q65 10 100 8 Q135 10 140 30" stroke="var(--hc2)" stroke-width="2" fill="none"/>
+              <path d="M30 55 L60 30 L140 30 L170 55" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1.5"/>
+              <rect x="30" y="54" width="140" height="130" rx="4" fill="var(--hc)"/>
+              <path d="M30 55 L5 90 Q4 110 8 125 L35 120 L30 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M170 55 L195 90 Q196 110 192 125 L165 120 L170 55 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
+              <path d="M5 110 Q4 122 8 125 L35 120 Q34 108 30 105 Z" fill="var(--hc2)"/>
+              <path d="M195 110 Q196 122 192 125 L165 120 Q166 108 170 105 Z" fill="var(--hc2)"/>
+              <rect x="30" y="174" width="140" height="10" rx="2" fill="var(--hc2)"/>
+              <text x="100" y="98" font-family="serif" font-size="10" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">Lost in Realms</text>
+              <text x="100" y="116" font-family="sans-serif" font-size="7" fill="var(--hc-text)" text-anchor="middle" letter-spacing="2" opacity="0.55">FANTASY</text>
+              <!-- tiny dragon/wing detail -->
+              <path d="M88 130 Q82 125 80 132 Q85 140 92 136 Z" fill="var(--hc-text)" opacity="0.18"/>
+              <path d="M112 130 Q118 125 120 132 Q115 140 108 136 Z" fill="var(--hc-text)" opacity="0.18"/>
+              <circle cx="100" cy="142" r="4" fill="none" stroke="var(--hc-text)" stroke-width="0.8" opacity="0.2"/>
+              <line x1="85" y1="38" x2="78" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <line x1="115" y1="38" x2="122" y2="62" stroke="var(--hc2)" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="78" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <circle cx="122" cy="64" r="3" fill="var(--hc2)" opacity="0.7"/>
+              <rect x="70" y="148" width="60" height="24" rx="2" fill="var(--hc2)" opacity="0.3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="hoodie-meta">
+          <span class="genre-tag gt-fantasy">Fantasy</span>
+          <p class="hoodie-name">Lost in Realms</p>
+          <p class="hoodie-tagline">For those who belong between the worlds</p>
+          <div class="hoodie-color-row">
+            <div class="color-swatch" style="background:#b898d8;"></div>
+            <span class="color-name">Deep Purple</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="hoodie-price">AU$125.00</span>
+          </div>
+          <a href="#choose-form" class="hoodie-cta" onclick="selectGenre('fantasy')">Pre-order Now</a>
+        </div>
+      </div>
+    </div>
 
   </div><!-- /hoodie-grid -->
 </section>
@@ -1204,35 +1439,46 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
 
       <label class="form-select-label">1 · Choose Your Genre</label>
       <div class="genre-select-grid" id="genreGrid">
-{% if products.size > 0 %}
-  {% for product in products limit: 4 %}
-    {% assign gk = genre_keys[forloop.index0] %}
-        <div class="genre-option go-{{ gk }}" onclick="setGenre('{{ gk }}',this)">
+        <div class="genre-option go-romance" onclick="setGenre('romance',this)">
           <div class="genre-dot"></div>
           <div>
-            <div class="genre-option-name">{{ product.title }}</div>
-            <div class="genre-option-sub">{{ genre_labels[forloop.index0] }} · {{ color_labels[forloop.index0] }}</div>
+            <div class="genre-option-name">Heart Full</div>
+            <div class="genre-option-sub">Romance · Pink</div>
           </div>
           <div class="go-check">
             <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
-  {% endfor %}
-{% else %}
-  {% for i in (0..3) %}
-    {% assign gk = genre_keys[i] %}
-        <div class="genre-option go-{{ gk }}" onclick="setGenre('{{ gk }}',this)">
+        <div class="genre-option go-ya" onclick="setGenre('ya',this)">
           <div class="genre-dot"></div>
           <div>
-            <div class="genre-option-name">{{ static_titles[i] }}</div>
-            <div class="genre-option-sub">{{ genre_labels[i] }} · {{ color_labels[i] }}</div>
+            <div class="genre-option-name">Raised On Stories</div>
+            <div class="genre-option-sub">Young Adult · Baby Blue</div>
           </div>
           <div class="go-check">
             <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
-  {% endfor %}
-{% endif %}
+        <div class="genre-option go-darkrom" onclick="setGenre('darkrom',this)">
+          <div class="genre-dot"></div>
+          <div>
+            <div class="genre-option-name">Soft Heart, Dark Desires</div>
+            <div class="genre-option-sub">Dark Romance · Grey</div>
+          </div>
+          <div class="go-check">
+            <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="genre-option go-fantasy" onclick="setGenre('fantasy',this)">
+          <div class="genre-dot"></div>
+          <div>
+            <div class="genre-option-name">Lost in Realms</div>
+            <div class="genre-option-sub">Fantasy · Deep Purple</div>
+          </div>
+          <div class="go-check">
+            <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
       </div>
 
       <label class="form-select-label">2 · Select Your Size</label>
@@ -1334,37 +1580,65 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
 
     <!-- stacked fanned hoodie display -->
     <div class="hoodie-stack">
-{% if products.size > 0 %}
-  {% for product in products limit: 4 %}
-    {% assign stack_idx = forloop.index0 | plus: 1 %}
-      <div class="hs-card hs-card-{{ stack_idx }}">
-        <div class="hs-inner {{ hsc_classes[forloop.index0] }}">
-          {% if product.featured_image %}
-            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" style="width:100%;height:100%;object-fit:cover;">
-          {% else %}
-            <span style="font-size:2rem;opacity:0.4;font-family:serif;">📚</span>
-          {% endif %}
-        </div>
-      </div>
-  {% endfor %}
-{% else %}
-  {% for i in (0..3) %}
-    {% assign stack_idx = i | plus: 1 %}
-      <div class="hs-card hs-card-{{ stack_idx }}">
-        <div class="hs-inner {{ hsc_classes[i] }}">
+      <!-- card 1 - romance -->
+      <div class="hs-card hs-card-1">
+        <div class="hs-inner hsc-1">
           <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M36 20 Q38 8 60 7 Q82 8 84 20" stroke="var(--hc2)" stroke-width="1.5" fill="none"/>
-            <path d="M18 36 L36 20 L84 20 L102 36" fill="var(--hc)" stroke="var(--hc2)" stroke-width="1"/>
-            <rect x="18" y="35" width="84" height="80" rx="2" fill="var(--hc)"/>
-            <path d="M18 36 L3 58 Q2 70 5 78 L21 74 L18 36 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="0.8"/>
-            <path d="M102 36 L117 58 Q118 70 115 78 L99 74 L102 36 Z" fill="var(--hc)" stroke="var(--hc2)" stroke-width="0.8"/>
-            <rect x="18" y="107" width="84" height="8" rx="1" fill="var(--hc2)"/>
-            <text x="60" y="65" font-family="serif" font-size="7" font-style="italic" fill="var(--hc-text)" text-anchor="middle" opacity="0.8">{{ static_titles[i] }}</text>
+            <path d="M36 20 Q38 8 60 7 Q82 8 84 20" stroke="#e898aa" stroke-width="1.5" fill="none"/>
+            <path d="M18 36 L36 20 L84 20 L102 36" fill="#f0b0be" stroke="#e898aa" stroke-width="1"/>
+            <rect x="18" y="35" width="84" height="80" rx="2" fill="#f0b0be"/>
+            <path d="M18 36 L3 58 Q2 70 5 78 L21 74 L18 36 Z" fill="#f0b0be" stroke="#e898aa" stroke-width="0.8"/>
+            <path d="M102 36 L117 58 Q118 70 115 78 L99 74 L102 36 Z" fill="#f0b0be" stroke="#e898aa" stroke-width="0.8"/>
+            <rect x="18" y="107" width="84" height="8" rx="1" fill="#e898aa"/>
+            <text x="60" y="65" font-family="serif" font-size="7" font-style="italic" fill="#8b2a40" text-anchor="middle" opacity="0.8">Heart Full</text>
           </svg>
         </div>
       </div>
-  {% endfor %}
-{% endif %}
+      <!-- card 2 - ya -->
+      <div class="hs-card hs-card-2">
+        <div class="hs-inner hsc-2">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36 20 Q38 8 60 7 Q82 8 84 20" stroke="#7aaece" stroke-width="1.5" fill="none"/>
+            <path d="M18 36 L36 20 L84 20 L102 36" fill="#96c0dc" stroke="#7aaece" stroke-width="1"/>
+            <rect x="18" y="35" width="84" height="80" rx="2" fill="#96c0dc"/>
+            <path d="M18 36 L3 58 Q2 70 5 78 L21 74 L18 36 Z" fill="#96c0dc" stroke="#7aaece" stroke-width="0.8"/>
+            <path d="M102 36 L117 58 Q118 70 115 78 L99 74 L102 36 Z" fill="#96c0dc" stroke="#7aaece" stroke-width="0.8"/>
+            <rect x="18" y="107" width="84" height="8" rx="1" fill="#7aaece"/>
+            <text x="60" y="62" font-family="serif" font-size="6" font-style="italic" fill="#2a5a7a" text-anchor="middle" opacity="0.8">Raised On</text>
+            <text x="60" y="72" font-family="serif" font-size="7" font-style="italic" fill="#2a5a7a" text-anchor="middle" opacity="0.8">Stories</text>
+          </svg>
+        </div>
+      </div>
+      <!-- card 3 - dark rom -->
+      <div class="hs-card hs-card-3">
+        <div class="hs-inner hsc-3">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36 20 Q38 8 60 7 Q82 8 84 20" stroke="#a09890" stroke-width="1.5" fill="none"/>
+            <path d="M18 36 L36 20 L84 20 L102 36" fill="#b8b2aa" stroke="#a09890" stroke-width="1"/>
+            <rect x="18" y="35" width="84" height="80" rx="2" fill="#b8b2aa"/>
+            <path d="M18 36 L3 58 Q2 70 5 78 L21 74 L18 36 Z" fill="#b8b2aa" stroke="#a09890" stroke-width="0.8"/>
+            <path d="M102 36 L117 58 Q118 70 115 78 L99 74 L102 36 Z" fill="#b8b2aa" stroke="#a09890" stroke-width="0.8"/>
+            <rect x="18" y="107" width="84" height="8" rx="1" fill="#a09890"/>
+            <text x="60" y="62" font-family="serif" font-size="5.5" font-style="italic" fill="#4a3a30" text-anchor="middle" opacity="0.8">Soft Heart,</text>
+            <text x="60" y="72" font-family="serif" font-size="5.5" font-style="italic" fill="#4a3a30" text-anchor="middle" opacity="0.8">Dark Desires</text>
+          </svg>
+        </div>
+      </div>
+      <!-- card 4 - fantasy -->
+      <div class="hs-card hs-card-4">
+        <div class="hs-inner hsc-4">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36 20 Q38 8 60 7 Q82 8 84 20" stroke="#a080c8" stroke-width="1.5" fill="none"/>
+            <path d="M18 36 L36 20 L84 20 L102 36" fill="#b898d8" stroke="#a080c8" stroke-width="1"/>
+            <rect x="18" y="35" width="84" height="80" rx="2" fill="#b898d8"/>
+            <path d="M18 36 L3 58 Q2 70 5 78 L21 74 L18 36 Z" fill="#b898d8" stroke="#a080c8" stroke-width="0.8"/>
+            <path d="M102 36 L117 58 Q118 70 115 78 L99 74 L102 36 Z" fill="#b898d8" stroke="#a080c8" stroke-width="0.8"/>
+            <rect x="18" y="107" width="84" height="8" rx="1" fill="#a080c8"/>
+            <text x="60" y="62" font-family="serif" font-size="6" font-style="italic" fill="#3a1a60" text-anchor="middle" opacity="0.8">Lost in</text>
+            <text x="60" y="72" font-family="serif" font-size="7" font-style="italic" fill="#3a1a60" text-anchor="middle" opacity="0.8">Realms</text>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1382,23 +1656,22 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
   <h2 class="section-title" style="text-align:center;margin-top:10px;">Wear Your <em>Story</em></h2>
 
   <div class="gallery-grid">
-{% if products.size > 0 %}
-  {% for product in products limit: 4 %}
-    <div class="gal-tile {{ gc_classes[forloop.index0] }}">
-      {% if product.featured_image %}
-        <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
-      {% endif %}
+    <div class="gal-tile gc-1">
+      <div class="gal-ph">👕</div>
       <div class="gal-overlay"><span class="gal-icon">+</span></div>
     </div>
-  {% endfor %}
-{% else %}
-  {% for i in (0..3) %}
-    <div class="gal-tile {{ gc_classes[i] }}">
-      <div class="gal-ph">{{ static_gallery[i] }}</div>
+    <div class="gal-tile gc-2">
+      <div class="gal-ph">📚</div>
       <div class="gal-overlay"><span class="gal-icon">+</span></div>
     </div>
-  {% endfor %}
-{% endif %}
+    <div class="gal-tile gc-3">
+      <div class="gal-ph">☕</div>
+      <div class="gal-overlay"><span class="gal-icon">+</span></div>
+    </div>
+    <div class="gal-tile gc-4">
+      <div class="gal-ph">🌿</div>
+      <div class="gal-overlay"><span class="gal-icon">+</span></div>
+    </div>
   </div>
 </section>
 
@@ -1413,7 +1686,53 @@ body:has(.si-preorder-full-page) #MainContent > .shopify-section {
   </div>
 </section>
 
-
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="ft-logo">📚 Shelf Indulgence</span>
+      <p class="ft-desc">Your go-to bookish vendor across Australia, bringing event-loved treasures to your door and onto your shelves.</p>
+      <div class="ft-socials">
+        <a href="https://www.facebook.com/profile.php?id=61578745126932" class="soc-btn">FB</a>
+        <a href="https://www.instagram.com/shelf_indulgence_aus/" class="soc-btn">IG</a>
+      </div>
+    </div>
+    <div>
+      <span class="ft-col-title">Shop</span>
+      <ul class="ft-links">
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">Pre-order Hoodies</a></li>
+        <li><a href="#">Book Clips</a></li>
+        <li><a href="#">Shelf Décor</a></li>
+        <li><a href="#">Mystery Boxes</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="ft-col-title">Discover</span>
+      <ul class="ft-links">
+        <li><a href="#">About Jessie</a></li>
+        <li><a href="#">Everflow Series</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="ft-col-title">Help</span>
+      <ul class="ft-links">
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Shelf Indulgence. All rights reserved. Australia.</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;">Designed with love for readers everywhere.</span>
+  </div>
+</footer>
 
 <script>
 /* ── state ── */
@@ -1421,34 +1740,18 @@ let selectedGenre = null;
 let selectedSize  = null;
 
 const genreNames = {
-{% if products.size > 0 %}
-  {% for product in products limit: 4 %}
-    {% assign gk = genre_keys[forloop.index0] %}
-    {% assign cl = color_labels[forloop.index0] %}
-    {% assign gl = genre_labels[forloop.index0] %}
-    '{{ gk }}': '{{ product.title }} — {{ gl }} · {{ cl }}'{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-{% else %}
-  {% for i in (0..3) %}
-    {% assign gk = genre_keys[i] %}
-    {% assign cl = color_labels[i] %}
-    {% assign gl = genre_labels[i] %}
-    '{{ gk }}': '{{ static_titles[i] }} — {{ gl }} · {{ cl }}'{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-{% endif %}
+  romance: 'Heart Full — Romance · Pink',
+  ya:      'Raised On Stories — Young Adult · Blue',
+  darkrom: 'Soft Heart, Dark Desires — Dark Romance · Grey',
+  fantasy: 'Lost in Realms — Fantasy · Purple'
 };
 
+/* Replace these IDs with your actual Shopify variant IDs */
 const variantMap = {
-{% if products.size > 0 %}
-  {% for product in products limit: 4 %}
-    {% assign gk = genre_keys[forloop.index0] %}
-    '{{ gk }}': {
-      {% for variant in product.variants %}
-        '{{ variant.title }}': {{ variant.id }}{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    },
-  {% endfor %}
-{% endif %}
+  romance: { XS: 0, S: 0, M: 0, L: 0, XL: 0 },
+  ya:      { XS: 0, S: 0, M: 0, L: 0, XL: 0 },
+  darkrom: { XS: 0, S: 0, M: 0, L: 0, XL: 0 },
+  fantasy: { XS: 0, S: 0, M: 0, L: 0, XL: 0 }
 };
 
 /* ── hoodie card click ── */
@@ -1518,7 +1821,7 @@ function handleOrder() {
   formData.append('id', variantId);
   formData.append('quantity', 1);
 
-  fetch(window.routes.cart_add_url, {
+  fetch('/cart/add.js', {
     method: 'POST',
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
     body: formData
@@ -1598,21 +1901,10 @@ document.querySelectorAll('.hoodie-card, .sig-card, .event-card').forEach(el => 
     <p class="modal-size" id="modalSize"></p>
     <div class="modal-actions">
       <button class="modal-btn modal-btn-ghost" onclick="closeModal()">Continue Shopping</button>
-      <a href="{{ routes.cart_url }}" class="modal-btn modal-btn-primary">View Cart</a>
+      <a href="/cart" class="modal-btn modal-btn-primary">View Cart</a>
     </div>
   </div>
 </div>
 
-</div>
-
-{% schema %}
-{
-  "name": "SI Pre-order HTML",
-  "settings": [],
-  "presets": [
-    {
-      "name": "SI Pre-order HTML"
-    }
-  ]
-}
-{% endschema %}
+</body>
+</html>

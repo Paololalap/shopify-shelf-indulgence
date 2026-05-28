@@ -1,41 +1,223 @@
 <style>
-  .si-shop-banner {
-    width: 100%;
-    height: 435px;
-    background-image: url('{{ 'lost-in-dreams.jpg' | asset_url }}');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
+  /* ═══════════════════════════════════════════
+   ATMOSPHERIC SHOP HERO
+  ═══════════════════════════════════════════ */
+  .si-shop-hero {
+    position: relative;
+    min-height: 80vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  .si-shop-banner-heading {
-    color: #fcf9e2 !important;
-    font-size: 50px;
     text-align: center;
-    font-weight: 500 !important;
-    font-family: var(--si-serif);
-    margin: 0;
+    overflow: hidden;
+    padding: 100px 40px 80px;
+  }
+
+  .si-shop-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .si-shop-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .si-shop-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(107, 26, 42, 0.55) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(30, 14, 20, 0.3) 0%, rgba(74, 15, 28, 0.7) 100%);
+  }
+
+  /* floating dreamy orbs */
+  .si-shop-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: siShopFloatOrb ease-in-out infinite;
+  }
+  .si-shop-orb-1 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(184, 146, 74, 0.12), transparent 70%);
+    top: -60px;
+    left: -80px;
+    animation-duration: 14s;
+  }
+  .si-shop-orb-2 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(107, 26, 42, 0.1), transparent 70%);
+    top: 40%;
+    right: -60px;
+    animation-duration: 18s;
+    animation-delay: -5s;
+  }
+  .si-shop-orb-3 {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(184, 146, 74, 0.08), transparent 70%);
+    bottom: -40px;
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: -8s;
+  }
+
+  @keyframes siShopFloatOrb {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-30px) scale(1.08);
+    }
+  }
+
+  /* hero content */
+  .si-shop-hero-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .si-shop-hero-eyebrow {
+    font-family: var(--si-sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #d4b870;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    animation: siShopFadeUp 0.9s ease both 0.1s;
+  }
+  .si-shop-hero-eyebrow::before,
+  .si-shop-hero-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: #d4b870;
+    opacity: 0.6;
+  }
+
+  .si-shop-hero-heading {
+    font-family: var(--si-serif) !important;
+    font-size: clamp(44px, 6vw, 80px) !important;
+    font-weight: 400 !important;
+    line-height: 1.05;
+    color: #fcf9e2 !important;
+    margin: 0 0 14px;
+    text-shadow: 0 2px 40px rgba(30, 14, 20, 0.3);
+    animation: siShopFadeUp 1s ease both 0.22s;
     text-transform: none;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.02em;
     text-wrap: balance;
     max-width: 800px;
-    padding: 0 20px;
   }
-  @media screen and (max-width: 749px) {
-    .si-shop-banner {
-      height: 450px;
-      background-size: cover;
+
+  .si-shop-hero-subtitle {
+    font-family: var(--si-serif);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-style: italic;
+    color: rgba(250, 246, 237, 0.75);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+    animation: siShopFadeUp 1s ease both 0.36s;
+  }
+
+  .si-shop-hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: siShopFadeUp 1s ease both 1.2s;
+    z-index: 10;
+  }
+  .si-shop-hero-scroll span {
+    font-family: var(--si-sans);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 237, 0.5);
+  }
+  .si-shop-hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #d4b870, transparent);
+    animation: siShopScrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes siShopScrollPulse {
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scaleY(1);
     }
-    .si-shop-banner-heading {
-      font-size: 32px;
+    50% {
+      opacity: 0.9;
+      transform: scaleY(1.15);
+    }
+  }
+
+  @keyframes siShopFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+   RESPONSIVE
+  ═══════════════════════════════════════════ */
+  @media screen and (max-width: 749px) {
+    .si-shop-hero {
+      min-height: 65vh;
+      padding: 80px 24px 60px;
     }
   }
 </style>
 
-<div class='si-shop-banner'>
-  <h1 class='si-shop-banner-heading'>Shelf Indulgence Products</h1>
+<div class='si-shop-hero'>
+  <div class='si-shop-hero-bg'>
+    <img
+      src='{{ "lost-in-dreams.jpg" | asset_url }}'
+      alt='Shelf Indulgence Products'
+      width='1600'
+      height='900'
+      loading='eager'
+    >
+  </div>
+
+  <div class='si-shop-orb si-shop-orb-1'></div>
+  <div class='si-shop-orb si-shop-orb-2'></div>
+  <div class='si-shop-orb si-shop-orb-3'></div>
+
+  <div class='si-shop-hero-content'>
+    <p class='si-shop-hero-eyebrow'>The Collection</p>
+    <h1 class='si-shop-hero-heading'>Shelf Indulgence Products</h1>
+    <p class='si-shop-hero-subtitle'>Curated bookish goods for readers who want comfort without compromising style.</p>
+  </div>
+
+  <div class='si-shop-hero-scroll'>
+    <span>Explore</span>
+    <div class='si-shop-hero-scroll-line'></div>
+  </div>
 </div>
 
 {% schema %}

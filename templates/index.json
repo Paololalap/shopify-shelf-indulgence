@@ -190,10 +190,28 @@
         }
       },
       "block_order": [
-        "img_01", "img_02", "img_03", "img_04", "img_05", "img_06",
-        "img_07", "img_08", "img_09", "img_10", "img_11", "img_12",
-        "img_13", "img_14", "img_15", "img_16", "img_17", "img_18",
-        "img_19", "img_20", "img_21", "img_22"
+        "img_01",
+        "img_02",
+        "img_03",
+        "img_04",
+        "img_05",
+        "img_06",
+        "img_07",
+        "img_08",
+        "img_09",
+        "img_10",
+        "img_11",
+        "img_12",
+        "img_13",
+        "img_14",
+        "img_15",
+        "img_16",
+        "img_17",
+        "img_18",
+        "img_19",
+        "img_20",
+        "img_21",
+        "img_22"
       ],
       "settings": {
         "heading": "FEATURED PRODUCTS GALLERY",
@@ -214,15 +232,15 @@
         "ev_1": {
           "type": "event",
           "settings": {
-            "date": "9 Aug 2026",
-            "name": "Indie Bookworm — Chapter 6, Book Lovers Day",
+            "date": "29 Aug",
+            "name": "Books and Baubles",
             "link": "/pages/events"
           }
         },
         "ev_2": {
           "type": "event",
           "settings": {
-            "date": "29 Aug 2026",
+            "date": "29 Aug",
             "name": "Romance on the Vines",
             "link": "/pages/events"
           }
@@ -230,40 +248,57 @@
         "ev_3": {
           "type": "event",
           "settings": {
-            "date": "7 Nov 2026",
-            "name": "Sweet Love Book Fair",
+            "date": "22 Nov 2026",
+            "name": "Bookish Amour",
             "link": "/pages/events"
           }
         },
         "ev_4": {
           "type": "event",
           "settings": {
-            "date": "22 Nov 2026",
-            "name": "Bookish Amour",
+            "date": "7 Nov 2026",
+            "name": "Sweet Love Book Fair",
             "link": "/pages/events"
           }
         },
         "ev_5": {
           "type": "event",
           "settings": {
-            "date": "Coming soon",
-            "name": "More events to be announced",
+            "date": "29 Aug 2026",
+            "name": "Romance on the Vines",
+            "link": "/pages/events"
+          }
+        },
+        "ev_6": {
+          "type": "event",
+          "settings": {
+            "date": "9 Aug 2026",
+            "name": "Indie Bookworm — Chapter 6, Book Lovers Day",
+            "link": "/pages/events"
+          }
+        },
+        "ev_7": {
+          "type": "event",
+          "settings": {
+            "date": "6 Feb 2027",
+            "name": "Unbound Pages",
+            "link": "/pages/events"
+          }
+        },
+        "ev_8": {
+          "type": "event",
+          "settings": {
+            "date": "15 Aug 2027",
+            "name": "Sweet Love Book Fair",
             "link": "/pages/events"
           }
         }
       },
-      "block_order": ["ev_1", "ev_2", "ev_3", "ev_4", "ev_5"],
+      "block_order": ["ev_1", "ev_2", "ev_3", "ev_4", "ev_5", "ev_6", "ev_7", "ev_8"],
       "settings": {
         "heading": "Find us at events across Australia"
       }
     }
   },
-  "order": [
-    "si_hero",
-    "si_marquee",
-    "si_featured_gallery",
-    "si_curated_collection",
-    "si_author",
-    "si_events"
-  ]
+  "order": ["si_hero", "si_marquee", "si_featured_gallery", "si_curated_collection", "si_author", "si_events"]
 }

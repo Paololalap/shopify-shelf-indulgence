@@ -18,7 +18,7 @@
         "btn_primary_text": "Shop products",
         "btn_primary_link": "shopify:\/\/collections\/all",
         "btn_ghost_text": "Find us at events",
-        "btn_ghost_link": "",
+        "btn_ghost_link": "/pages/events",
         "card_label": "Coming Soon November 23",
         "card_image_asset": "coming-soon-jessie-heart.png",
         "card_title": "The Balance-Born Saga<br><span style=\"font-size: 0.6em; font-family: var(--si-sans); font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;\">Year 1</span>",

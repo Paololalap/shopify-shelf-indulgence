@@ -283,25 +283,11 @@
       <p class='si-hero-card-title'>{{ section.settings.card_title }}</p>
       <div class='si-hero-card-columns'>
         <div>
-          {% if section.settings.card_image != blank %}
-            <img
-              src='{{ section.settings.card_image | image_url: width: 400 }}'
-              alt='{{ section.settings.card_title | strip_html | escape }}'
-              class='si-hero-card-image'
-            >
-          {% elsif section.settings.card_image_asset != blank %}
-            <img
-              src='{{ section.settings.card_image_asset | asset_url }}'
-              alt='{{ section.settings.card_title | strip_html | escape }}'
-              class='si-hero-card-image'
-            >
-          {% else %}
-            <p class='si-hero-card-from'>From</p>
-            <p class='si-hero-card-price'>
-              {{ section.settings.card_price -}}
-              <span>.00</span>
-            </p>
-          {% endif %}
+          <img
+            src='{{ "everflow-book-cover.jpg" | asset_url }}'
+            alt='{{ section.settings.card_title | strip_html | escape }}'
+            class='si-hero-card-image'
+          >
         </div>
         <div>
           <p class='si-hero-card-text'>

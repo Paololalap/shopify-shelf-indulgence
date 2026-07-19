@@ -245,7 +245,7 @@
             "link": "/pages/events"
           }
         },
-        "ev_5": {
+        "ev_3": {
           "type": "event",
           "settings": {
             "date": "29 Aug 2026",
@@ -253,7 +253,7 @@
             "link": "/pages/events"
           }
         },
-        "ev_6": {
+        "ev_4": {
           "type": "event",
           "settings": {
             "date": "9 Aug 2026",
@@ -261,7 +261,15 @@
             "link": "/pages/events"
           }
         },
-        "ev_7": {
+        "ev_5": {
+          "type": "event",
+          "settings": {
+            "date": "22 Nov 2026",
+            "name": "Bookish Amour",
+            "link": "/pages/events"
+          }
+        },
+        "ev_6": {
           "type": "event",
           "settings": {
             "date": "6 Feb 2027",
@@ -269,7 +277,7 @@
             "link": "/pages/events"
           }
         },
-        "ev_8": {
+        "ev_7": {
           "type": "event",
           "settings": {
             "date": "15 Aug 2027",
@@ -278,7 +286,7 @@
           }
         }
       },
-      "block_order": ["ev_1", "ev_2", "ev_5", "ev_6", "ev_7", "ev_8"],
+      "block_order": ["ev_1", "ev_2", "ev_3", "ev_4", "ev_5", "ev_6", "ev_7"],
       "settings": {
         "heading": "Find us at events across Australia"
       }

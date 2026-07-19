@@ -497,7 +497,7 @@
   .elements-section {
     position: relative;
     padding: 0;
-    background: #FDF9F4;
+    background: #fdf9f4;
     overflow: hidden;
   }
 
@@ -1003,7 +1003,7 @@
 ═══════════════════════════════════════ */
   .characters-section {
     padding: 110px 80px;
-    background: #FDF9F4;
+    background: #fdf9f4;
     position: relative;
     overflow: hidden;
   }
@@ -1391,8 +1391,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(107,26,42,0.07) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(184,146,74,0.06) 0%, transparent 55%);
+      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(107, 26, 42, 0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(184, 146, 74, 0.06) 0%, transparent 55%);
     pointer-events: none;
   }
   .author-section::after {
@@ -1401,8 +1401,10 @@
     inset: 0;
     background-image: repeating-linear-gradient(
       180deg,
-      transparent 0px, transparent 31px,
-      var(--page-line) 31px, var(--page-line) 32px
+      transparent 0px,
+      transparent 31px,
+      var(--page-line) 31px,
+      var(--page-line) 32px
     );
     pointer-events: none;
     z-index: 0;
@@ -1419,7 +1421,7 @@
     left: -20px;
     right: 20px;
     bottom: 20px;
-    border: 1px solid rgba(184,146,74,0.3);
+    border: 1px solid rgba(184, 146, 74, 0.3);
     z-index: 2;
     pointer-events: none;
   }
@@ -1430,7 +1432,7 @@
     left: -8px;
     right: 8px;
     bottom: 8px;
-    border: 1px solid rgba(184,146,74,0.12);
+    border: 1px solid rgba(184, 146, 74, 0.12);
     z-index: 2;
     pointer-events: none;
   }
@@ -1445,7 +1447,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(74,15,28,0.15);
+    box-shadow: 0 20px 60px rgba(74, 15, 28, 0.15);
   }
   .author-img img {
     position: absolute;
@@ -1696,7 +1698,7 @@
   }
   .si-everflow-page-wrapper {
     font-family: 'Jost', sans-serif;
-    background: #FDF9F4;
+    background: #fdf9f4;
     color: var(--cream);
     overflow-x: hidden;
     position: relative;
@@ -2377,7 +2379,7 @@
   <section class='author-section'>
     <div class='author-frame reveal'>
       <div class='author-img'>
-        <img src="{{ 'heart-full.jpg' | asset_url }}" alt="Jessie Heart" loading="lazy">
+        <img src='{{ 'heart-full.jpg' | asset_url }}' alt='Jessie Heart' loading='lazy'>
       </div>
     </div>
     <div class='reveal'>

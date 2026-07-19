@@ -1,4 +1,7 @@
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link
+  href='https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap'
+  rel='stylesheet'
+>
 
 <style>
   .si-author-section {
@@ -16,8 +19,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(107,26,42,0.07) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(184,146,74,0.06) 0%, transparent 55%);
+      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(107, 26, 42, 0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(184, 146, 74, 0.06) 0%, transparent 55%);
     pointer-events: none;
   }
   .si-author-section::after {
@@ -26,8 +29,10 @@
     inset: 0;
     background-image: repeating-linear-gradient(
       180deg,
-      transparent 0px, transparent 31px,
-      rgba(184,146,74,0.10) 31px, rgba(184,146,74,0.10) 32px
+      transparent 0px,
+      transparent 31px,
+      rgba(184, 146, 74, 0.1) 31px,
+      rgba(184, 146, 74, 0.1) 32px
     );
     pointer-events: none;
     z-index: 0;
@@ -44,7 +49,7 @@
     left: -20px;
     right: 20px;
     bottom: 20px;
-    border: 1px solid rgba(184,146,74,0.3);
+    border: 1px solid rgba(184, 146, 74, 0.3);
     z-index: 2;
     pointer-events: none;
   }
@@ -55,7 +60,7 @@
     left: -8px;
     right: 8px;
     bottom: 8px;
-    border: 1px solid rgba(184,146,74,0.12);
+    border: 1px solid rgba(184, 146, 74, 0.12);
     z-index: 2;
     pointer-events: none;
   }
@@ -70,7 +75,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(74,15,28,0.15);
+    box-shadow: 0 20px 60px rgba(74, 15, 28, 0.15);
   }
   .si-author-img img {
     position: absolute;
@@ -182,7 +187,7 @@
 <section class='si-author-section'>
   <div class='si-author-frame'>
     <div class='si-author-img'>
-      <img src="{{ 'heart-full.jpg' | asset_url }}" alt="Jessie Heart" loading="lazy">
+      <img src='{{ 'heart-full.jpg' | asset_url }}' alt='Jessie Heart' loading='lazy'>
     </div>
   </div>
   <div>

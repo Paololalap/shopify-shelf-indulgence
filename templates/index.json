@@ -245,14 +245,6 @@
             "link": "/pages/events"
           }
         },
-        "ev_4": {
-          "type": "event",
-          "settings": {
-            "date": "7 Nov 2026",
-            "name": "Sweet Love Book Fair",
-            "link": "/pages/events"
-          }
-        },
         "ev_5": {
           "type": "event",
           "settings": {
@@ -286,7 +278,7 @@
           }
         }
       },
-      "block_order": ["ev_1", "ev_2", "ev_4", "ev_5", "ev_6", "ev_7", "ev_8"],
+      "block_order": ["ev_1", "ev_2", "ev_5", "ev_6", "ev_7", "ev_8"],
       "settings": {
         "heading": "Find us at events across Australia"
       }

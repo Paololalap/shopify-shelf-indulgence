@@ -245,14 +245,6 @@
             "link": "/pages/events"
           }
         },
-        "ev_3": {
-          "type": "event",
-          "settings": {
-            "date": "22 Nov 2026",
-            "name": "Bookish Amour",
-            "link": "/pages/events"
-          }
-        },
         "ev_4": {
           "type": "event",
           "settings": {
@@ -294,7 +286,7 @@
           }
         }
       },
-      "block_order": ["ev_1", "ev_2", "ev_3", "ev_4", "ev_5", "ev_6", "ev_7", "ev_8"],
+      "block_order": ["ev_1", "ev_2", "ev_4", "ev_5", "ev_6", "ev_7", "ev_8"],
       "settings": {
         "heading": "Find us at events across Australia"
       }

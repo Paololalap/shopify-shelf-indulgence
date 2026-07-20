@@ -127,7 +127,7 @@
   }
   .si-hero-card-columns {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     align-items: center;
     margin: 1.5rem 0;
@@ -137,7 +137,7 @@
   .si-hero-card-columns .si-hero-card-image {
     margin: 0 auto;
     width: 100%;
-    max-width: 220px;
+    max-width: 320px;
   }
   .si-hero-card-text {
     font-size: calc(0.65rem + 5px);
@@ -284,21 +284,10 @@
       <div class='si-hero-card-columns'>
         <div>
           <img
-            src='{{ "everflow-book-cover.jpg" | asset_url }}'
+            src='{{ "Everflow_Book_Cover_(1).jpg" | asset_url }}'
             alt='{{ section.settings.card_title | strip_html | escape }}'
             class='si-hero-card-image'
           >
-        </div>
-        <div>
-          <p class='si-hero-card-text'>
-            Four students.<br>
-            Four elements.<br>
-            One fragile balance.<br>
-            Everflow was meant to train them.<br>
-            Instead, it might destroy them.<br>
-            Because when the elements awaken…<br>
-            the truth rises with them.
-          </p>
         </div>
       </div>
       <span class='si-hero-card-btn'>{{ section.settings.card_btn_text }}</span>

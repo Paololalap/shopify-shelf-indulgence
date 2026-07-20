@@ -814,7 +814,7 @@
     position: relative;
   }
   .book-3d {
-    width: 230px;
+    width: 477px;
     transform: perspective(1200px) rotateY(-22deg) rotateX(2deg);
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -825,7 +825,7 @@
     transform: perspective(1200px) rotateY(-10deg) rotateX(1deg) translateY(-8px);
   }
   .book-face {
-    width: 230px;
+    width: 477px;
     height: 344px;
     border-radius: 2px 5px 5px 2px;
     position: relative;
@@ -1690,6 +1690,50 @@
     transform: translateY(0);
   }
 
+  /* Responsive Media Queries */
+  @media screen and (max-width: 1024px) {
+    .char-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .synopsis-section {
+      grid-template-columns: 1fr !important;
+      padding: 60px 20px !important;
+      gap: 40px !important;
+    }
+    .author-section {
+      grid-template-columns: 1fr !important;
+      padding: 60px 20px !important;
+      gap: 40px !important;
+    }
+    .elements-section, .characters-section, .teaser-section {
+      padding: 60px 20px !important;
+    }
+    .nl-section {
+      padding: 60px 20px !important;
+    }
+    .book-3d, .book-face {
+      width: 100% !important;
+      max-width: 477px;
+      height: auto !important;
+      aspect-ratio: 477/344;
+    }
+    .book-cover-art img {
+      position: relative !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .element-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .char-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
   .si-everflow-page-wrapper,
   .si-everflow-page-wrapper *,
   .si-everflow-page-wrapper *::before,
@@ -2065,56 +2109,12 @@
           <div class='book-band book-band-top'></div>
           <div class='book-band book-band-bot'></div>
 
-          <div class='book-cover-art'>
-            <!-- element symbol ring -->
-            <svg width='130' height='130' viewBox='0 0 130 130' fill='none' style='margin-bottom:10px;'>
-              <!-- outer ring -->
-              <circle cx="65" cy="65" r="62" stroke="#c4964e" stroke-width="0.6" opacity="0.4"/>
-              <circle cx="65" cy="65" r="50" stroke="#c4964e" stroke-width="0.4" opacity="0.2"/>
-
-              <!-- cardinal element glyphs -->
-              <!-- water (top) -->
-              <path d="M65 10 Q72 22 65 30 Q58 22 65 10 Z" fill="#5aaad4" opacity="0.7"/>
-              <!-- fire (right) -->
-              <path d="M120 65 Q108 72 100 65 Q108 58 120 65 Z" fill="#f07a30" opacity="0.7"/>
-              <!-- earth (bottom) -->
-              <rect x="58" y="95" width="14" height="14" fill="#7aaa5a" opacity="0.6" transform="rotate(45 65 102)"/>
-              <!-- air (left) -->
-              <circle cx="10" cy="65" r="6" stroke="#c0d4ec" stroke-width="1" fill="none" opacity="0.7"/>
-
-              <!-- connecting lines -->
-              <line x1="65" y1="30" x2="65" y2="55" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
-              <line x1="100" y1="65" x2="80" y2="65" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
-              <line x1="65" y1="95" x2="65" y2="75" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
-              <line x1="16" y1="65" x2="50" y2="65" stroke="#c4964e" stroke-width="0.4" opacity="0.3"/>
-
-              <!-- centre circle -->
-              <circle cx="65" cy="65" r="10" stroke="#c4964e" stroke-width="0.8" fill="#07030a"/>
-              <circle cx="65" cy="65" r="4" fill="#c4964e" opacity="0.8">
-                <animate attributeName="r" dur="2.5s" repeatCount="indefinite" values="4;5.5;4"/>
-                <animate attributeName="opacity" dur="2.5s" repeatCount="indefinite" values="0.8;1;0.8"/>
-              </circle>
-            </svg>
-
-            <!-- title on cover -->
-            <div style='text-align:center;'>
-              <p style="font-family:'Cinzel',serif;font-size:20.8px;font-weight:600;letter-spacing:0.1em;color:rgba(200,220,255,0.9);line-height:1.1;margin-bottom:6px;">
-                EVERFLOW
-              </p>
-              <p style="font-family:'Cormorant Garamond',serif;font-size:11.52px;font-style:italic;color:rgba(196,150,78,0.7);letter-spacing:0.08em;">
-                The Balance-Born Saga
-              </p>
-              <p style="font-size:8.8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(196,150,78,0.5);margin-top:4px;font-family:'Cinzel',serif;">
-                Year One
-              </p>
-            </div>
-
-            <!-- author at bottom -->
-            <div style='margin-top:auto;padding-top:16px;text-align:center;border-top:1px solid rgba(196,150,78,0.2);width:100%;'>
-              <p style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(250,246,237,0.4);letter-spacing:0.06em;">
-                Jessie Heart
-              </p>
-            </div>
+          <div class='book-cover-art' style="padding: 0;">
+            <img
+              src='{{ "Everflow_Book_Cover_(1).jpg" | asset_url }}'
+              alt='Everflow Book Cover'
+              style='width: 100%; height: 100%; object-fit: contain;'
+            >
           </div>
         </div>
       </div>
